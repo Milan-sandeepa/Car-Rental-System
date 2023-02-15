@@ -1,6 +1,9 @@
 body{
     background-color: #edf1f7;
 }
+.container{
+    margin-top: 50px;
+}
 .nav-link{
     transition: all 0.2s;
     position: relative;
@@ -24,6 +27,36 @@ body{
 .nav-item{
     margin-right: 10px;
 }
+.master__head{
+    background-image: url("../img/bg-image.jpg");
+    background-size: cover;
+    min-height: 60vh;
+    background-repeat: no-repeat;
+    position: relative;
+    min-width: 100%;
+    border-radius: 30px;
+    box-shadow: 3px 3px 9px rgb(164 164 186);
+    border: 1px solid #fff;
+}
+
+.car {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 20px;
+    padding: 10px;
+    background: linear-gradient(1turn, #f1f6fd 30%, #edf1f7);
+    box-shadow: 3px 3px 9px rgb(164 164 186);
+    border: 1px solid #fff;
+}
+.car img{
+    width: 100%;
+    border-radius: 8px;
+}
+
 .car__footer {
     display: flex;
     flex-direction: row;
