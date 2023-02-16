@@ -126,5 +126,9 @@ body {
 }
 
 #signup-form{
-    margin-top: 100px;
+    margin-top: 90px;
+}
+#form-top{
+    border-top: 3px solid blue;
+    border-bottom: 3px solid blue;
 }
