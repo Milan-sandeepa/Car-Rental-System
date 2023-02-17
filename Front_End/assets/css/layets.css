@@ -72,7 +72,8 @@ p.count{
 #sidebar li a{
     display: block;
     padding-left: 30px;
-    padding-bottom: 7px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding-right: 65px;
     font-size: 20px;
     font-weight: 500;
@@ -89,4 +90,44 @@ p.count{
 #sidebar li.active a{
     color: #9e5151 !important;
     background: #ebebebad;
+}
+.container{
+    margin-right: 0px;
+}
+#card-1{
+    margin-top: 20px;
+    margin-left: 10px;
+}
+#card-2{
+    margin-top: 20px;
+    width: 330px;
+}
+#card-3{
+    margin-top: 20px;
+    width: 330px;
+}
+#card-4{
+    margin-top: 20px;
+    width: 320px;
+}
+.card{
+    width: 288px;
+    height: 100px;
+    padding-left: 0px;
+    padding-right: 0px;
+    box-shadow: 3px 3px 9px rgb(164 164 186);
+    border: 1px solid #fff;
+    transition: all 0.3s;
+}
+.card:hover{
+    transform: scale(1.05);
+}
+
+#header{
+    box-shadow: 3px 3px 9px rgb(164 164 186);
+}
+
+#table-dashboard{
+    width: 75vw;
+    height: 44vh;
 }
