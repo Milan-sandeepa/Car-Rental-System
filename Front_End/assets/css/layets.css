@@ -118,6 +118,7 @@ p.count{
     box-shadow: 3px 3px 9px rgb(164 164 186);
     border: 1px solid #fff;
     transition: all 0.3s;
+    background: rgba(154, 248, 154, 0.47);
 }
 .card:hover{
     transform: scale(1.05);
