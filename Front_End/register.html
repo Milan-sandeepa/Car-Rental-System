@@ -87,26 +87,26 @@
             <p class="text-center text-muted lead">It's Free and Takes a Minute</p>
 
             <!--            form Start-->
-            <form action="#">
+            <form id="userForm">
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
-                    <input type="text" class="form-control" placeholder="Name">
+                    <input type="text" class="form-control" placeholder="Name" id="txtUserName" name="name">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="Contact Number">
+                    <input type="text" class="form-control" placeholder="Contact Number" id="txtUserContact" name="contact">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-address-book"></i></span>
-                    <input type="text" class="form-control" placeholder="Address">
+                    <input type="text" class="form-control" placeholder="Address" id="txtUserAddress" name="address">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                    <input type="text" class="form-control" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="Email" id="txtUserEmail" name="email">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
-                    <input type="text" class="form-control" placeholder="Nic Number">
+                    <input type="text" class="form-control" placeholder="Nic Number" id="txtUserNic" name="nicNo">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-file"></i></span>
@@ -114,19 +114,19 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" id="txtUserPwd" name="userPwd">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Conform Password">
+                    <input type="password" class="form-control" placeholder="Conform Password" id="txtUserConPwd" name="userConPwd">
                 </div>
                 <div class="d-grid mb-3">
-                    <button type="button" class="btn btn-primary">SignUp Now</button>
+                    <button type="button" class="btn btn-primary" id="btnUser">SignUp Now</button>
                     <p class="text-center text-muted mt-2">When You Register by Clicking Signup Button, You Agree to our
                         <a href="#">Terms and Conditions</a>and <a href="#">Privacy Policy</a></p>
 
                     <p class="text-center">
-                        Already Have an Account ? <a href="#">Login Here</a>
+                        Already Have an Account ? <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login Here</a>
                     </p>
                 </div>
             </form>
@@ -150,5 +150,37 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
+
+<script>
+    let baseUrl="http://localhost:8080/Car_Rental_System_war/";
+
+    //Add User
+    $("#btnUser").click(function () {
+        let formData = $("#userForm").serialize();
+        $.ajax({
+            url: baseUrl+"user",
+            method: "post",
+            data: formData,
+            dataType: "json",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                console.log("Success Method Invoked")
+                console.log(res);
+                alert(res.message);
+                // getAllCustomers();
+            },
+            error: function (error) {
+                // invokes if status code range is 500 range or 400 range
+                console.log("Error Method Invoked");
+                console.log(JSON.parse(error.responseText));
+                alert(JSON.parse(error.responseText).message);
+
+            }
+        });
+
+    });
+
+
+</script>
 </body>
 </html>
