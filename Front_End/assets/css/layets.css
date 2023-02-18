@@ -172,3 +172,24 @@ p.count{
     position: relative;
     right: 0px;
 }
+
+#table-car{
+    width: 75vw;
+    height: 44vh;
+}
+#table-customer{
+    width: 75vw;
+    height: 44vh;
+}
+#table-driver{
+    width: 75vw;
+    height: 44vh;
+}
+#table-booking{
+    width: 75vw;
+    height: 44vh;
+}
+#table-income{
+    width: 75vw;
+    height: 44vh;
+}
