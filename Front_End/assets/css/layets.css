@@ -193,3 +193,11 @@ p.count{
     width: 75vw;
     height: 44vh;
 }
+
+#seachIconCar{
+    position: relative;
+    left: 25px;
+}
+#searchCarInput{
+    padding-left: 28px;
+}
