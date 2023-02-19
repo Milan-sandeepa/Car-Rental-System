@@ -376,75 +376,118 @@
 
 <!--Customer Start-->
 <main class="container" id="customer-section">
-    <div>
-        <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-3">
-            <div  class="table-style   mt-4 border shadow rounded-3 p-4">
-                <div class="pb-2"><h2>Customer List</h2></div>
-                <div class="col mt-2 table-responsive">
-                    <table class="table table-bordered table-hover" id="table-customer">
-                        <thead style="background:rgba(154, 248, 154, 0.47);">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">End Date</th>
-                            <th scope="col">Driver</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Option</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        </tbody>
-                    </table>
+    <div class="row">
+        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
+            <div class="col-6">
+                <h4>Customer List</h4>
+                <p>Manage your Customers</p>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#customerAddModal" style="background: #FF9F43;color: white;" >+ Add Customer</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Customer Modal -->
+    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCusatomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleCusatomerModalLabel">Add Customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerAddForm">
+                        <div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusId">CID</label>
+                                <input class="form-control" id="txtCusId" type="text">
+                                <span class="control-error" id="lblCusId"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusName">Name</label>
+                                <input class="form-control" id="txtCusName" type="text">
+                                <span class="control-error" id="lblCusName"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusNic">NIC</label>
+                                <input class="form-control" id="txtCusNic" type="text">
+                                <span class="control-error" id="lblCusNic"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusGender">Gender</label>
+                                <input class="form-control" id="txtCusGender" type="text">
+                                <span class="control-error" id="lblCusGender"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusAddress">Address</label>
+                                <input class="form-control" id="txtCusAddress" type="text">
+                                <span class="control-error" id="lblCusAddress"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusContact">Contact</label>
+                                <input class="form-control" id="txtCusContact" type="text">
+                                <span class="control-error" id="lblCusContact"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusEmail">Email</label>
+                                <input class="form-control" id="txtCusEmail" type="text">
+                                <span class="control-error" id="lblCusEmail"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusPwd">Password</label>
+                                <input class="form-control" id="txtCusPwd" type="text">
+                                <span class="control-error" id="lblCusPwd"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCusAction">Action</label>
+                                <input class="form-control" id="txtCusAction" type="text">
+                                <span class="control-error" id="lblCusAction"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Add</button>
+
                 </div>
             </div>
         </div>
     </div>
+    <!--Add Customer Modal end-->
+
+    <section class="row">
+        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
+            <div class=" bg-light border shadow rounded-3 p-4">
+                <div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconCustomer"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchCustomerInput">
+                    </div>
+                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
+                        <table class="table  table-hover">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">CID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">NIC</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblCustomer">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </main>
 <!--Customer End-->
 

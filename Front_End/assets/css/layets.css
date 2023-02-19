@@ -201,3 +201,10 @@ p.count{
 #searchCarInput{
     padding-left: 28px;
 }
+#seachIconCustomer{
+    position: relative;
+    left: 25px;
+}
+#searchCustomerInput{
+    padding-left: 28px;
+}
