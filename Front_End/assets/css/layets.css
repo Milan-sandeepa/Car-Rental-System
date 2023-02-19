@@ -208,3 +208,10 @@ p.count{
 #searchCustomerInput{
     padding-left: 28px;
 }
+#seachIconDriver{
+    position: relative;
+    left: 25px;
+}
+#searchDriverInput{
+    padding-left: 28px;
+}

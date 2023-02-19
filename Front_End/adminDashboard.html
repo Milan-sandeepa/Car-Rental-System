@@ -389,11 +389,11 @@
     </div>
 
     <!--Add Customer Modal -->
-    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCusatomerModalLabel" aria-hidden="true">
+    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCustomerModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleCusatomerModalLabel">Add Customer</h1>
+                    <h1 class="modal-title fs-5" id="exampleCustomerModalLabel">Add Customer</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -438,11 +438,6 @@
                                 <label for="txtCusPwd">Password</label>
                                 <input class="form-control" id="txtCusPwd" type="text">
                                 <span class="control-error" id="lblCusPwd"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusAction">Action</label>
-                                <input class="form-control" id="txtCusAction" type="text">
-                                <span class="control-error" id="lblCusAction"></span>
                             </div>
                         </div>
                     </form>
@@ -493,75 +488,107 @@
 
 <!--Driver Start-->
 <main class="container" id="driver-section">
-    <div>
-        <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-4">
-            <div  class="table-style   mt-4 border shadow rounded-3 p-4">
-                <div class="pb-2"><h2>Driver List</h2></div>
-                <div class="col mt-2 table-responsive">
-                    <table class="table table-bordered table-hover" id="table-driver">
-                        <thead style="background:rgba(154, 248, 154, 0.47);">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Customer</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">End Date</th>
-                            <th scope="col">Driver</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Option</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        </tbody>
-                    </table>
+    <div class="row">
+        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
+            <div class="col-6">
+                <h4>Driver List</h4>
+                <p>Manage your Drivers</p>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#driverAddModal" style="background: #FF9F43;color: white;" >+ Add Driver</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Driver Modal -->
+    <div class="modal fade" id="driverAddModal" tabindex="-1" aria-labelledby="exampleDriverModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleDriverModalLabel">Add Driver</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="driverAddForm">
+                        <div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverId">DriverID</label>
+                                <input class="form-control" id="txtDriverId" type="text">
+                                <span class="control-error" id="lblDriverId"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverName">Name</label>
+                                <input class="form-control" id="txtDriverName" type="text">
+                                <span class="control-error" id="lblDriverName"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverLicenNo">Driver Licen No</label>
+                                <input class="form-control" id="txtDriverLicenNo" type="text">
+                                <span class="control-error" id="lblDriverLicenNo"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverAddress">Address</label>
+                                <input class="form-control" id="txtDriverAddress" type="text">
+                                <span class="control-error" id="lblDriverAddress"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverGender">Gender</label>
+                                <input class="form-control" id="txtDriverGender" type="text">
+                                <span class="control-error" id="lblDriverGender"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverContact">Contact</label>
+                                <input class="form-control" id="txtDriverContact" type="text">
+                                <span class="control-error" id="lblDriverContact"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDriverEmail">Email</label>
+                                <input class="form-control" id="txtDriverEmail" type="text">
+                                <span class="control-error" id="lblDriverEmail"></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverAddBtn">Add</button>
                 </div>
             </div>
         </div>
     </div>
+    <!--Add Driver Modal end-->
+
+    <section class="row">
+        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
+            <div class=" bg-light border shadow rounded-3 p-4">
+                <div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconDriver"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchDriverInput">
+                    </div>
+                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
+                        <table class="table  table-hover">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">DriverID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Licen No</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblDriver">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </main>
 <!--Driver End-->
 
