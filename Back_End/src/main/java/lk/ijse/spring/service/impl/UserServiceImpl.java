@@ -5,6 +5,7 @@ import lk.ijse.spring.entity.User;
 import lk.ijse.spring.repo.UserRepo;
 import lk.ijse.spring.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -40,7 +41,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ArrayList<UserDTO> getAllUser() {
-        return null;
+        ArrayList<UserDTO> allList=mapper.map(userRepo.findAll(),new TypeToken<ArrayList<UserDTO>>(){}.getType());
+        return allList;
     }
 
     @Override

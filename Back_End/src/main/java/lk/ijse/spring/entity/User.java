@@ -16,10 +16,11 @@ import javax.persistence.Id;
 @ToString
 public class User {
     private String name;
-    private String contact;
+    private String nicNo;
+    private String gender;
     private String address;
+    private String contact;
     @Id
     private String email;
-    private String nicNo;
     private String userPwd;
 }

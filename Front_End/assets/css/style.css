@@ -132,3 +132,8 @@ body {
     border-top: 3px solid blue;
     border-bottom: 3px solid blue;
 }
+
+#profileIcon-home{
+    width: 25px;
+    height: 25px;
+}

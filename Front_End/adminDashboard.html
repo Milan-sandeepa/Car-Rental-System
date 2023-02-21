@@ -84,10 +84,10 @@
                         <a href="#" ><i class="fa-solid fa-house"></i>Dashboard</a>
                     </li>
                     <li id="carBtn">
-                        <a href="#"><i class="fa-solid fa-car-side"></i>Car</a>
+                        <a href="car.html"><i class="fa-solid fa-car-side"></i>Car</a>
                     </li>
                     <li id="customerBtn">
-                        <a href="#"><i class="fa-solid fa-users"></i>Customer</a>
+                        <a href="customer.html"><i class="fa-solid fa-users"></i>Customer</a>
                     </li>
                     <li id="driverBtn">
                         <a href="#"><i class="fa-solid fa-user"></i>Driver</a>
@@ -243,248 +243,248 @@
 </main>
 <!--Dashboard End-->
 
-<!--Car Start-->
-<main class="container" id="car-section">
-    <div class="row">
-        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
-            <div class="col-6">
-                <h4>Car List</h4>
-                <p>Manage your Cars</p>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#carAddModal" style="background: #FF9F43;color: white;" >+ Add Car</button>
-            </div>
-        </div>
-    </div>
+<!--&lt;!&ndash;Car Start&ndash;&gt;-->
+<!--<main class="container" id="car-section">-->
+<!--    <div class="row">-->
+<!--        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">-->
+<!--            <div class="col-6">-->
+<!--                <h4>Car List</h4>-->
+<!--                <p>Manage your Cars</p>-->
+<!--            </div>-->
+<!--            <div class="col-6 d-flex justify-content-end">-->
+<!--                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#carAddModal" style="background: #FF9F43;color: white;" >+ Add Car</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <!--Add Car Modal -->
-    <div class="modal fade" id="carAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Car</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="carAddForm">
-                        <div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtRegNo">Car Reg No</label>
-                                <input class="form-control" id="txtRegNo" type="text">
-                                <span class="control-error" id="lblRegNo"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCarModel">Car Model</label>
-                                <input class="form-control" id="txtCarModel" type="text">
-                                <span class="control-error" id="lblmodel"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCarType">Car Type</label>
-                                <input class="form-control" id="txtCarType" type="text">
-                                <span class="control-error" id="lblcartype"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtTransmission">Transmission</label>
-                                <input class="form-control" id="txtTransmission" type="text">
-                                <span class="control-error" id="lbltransmission"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtFuelType">Fuel Type</label>
-                                <input class="form-control" id="txtFuelType" type="text">
-                                <span class="control-error" id="lblfueltype"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtLossDammage">Loss Damage</label>
-                                <input class="form-control" id="txtLossDammage" type="text">
-                                <span class="control-error" id="lbllossdammage"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCarColor">Color</label>
-                                <input class="form-control" id="txtCarColor" type="text">
-                                <span class="control-error" id="lblcolor"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDailyRate">Daily rate</label>
-                                <input class="form-control" id="txtDailyRate" type="text">
-                                <span class="control-error" id="lbldailyrate"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtMonathlyRate">Monthly rate</label>
-                                <input class="form-control" id="txtMonathlyRate" type="text">
-                                <span class="control-error" id="lblmonthlyrate"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtExtraKm">Extra Km Price</label>
-                                <input class="form-control" id="txtExtraKm" type="text">
-                                <span class="control-error" id="lblextrakm"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCarImage-1">Image</label>
-                                <input class="form-control" id="txtCarImage-1" type="file">
-                                <span class="control-error" id="lblimage"></span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="itemAddBtn">Add</button>
+<!--    &lt;!&ndash;Add Car Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="carAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Car</h1>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form id="carAddForm">-->
+<!--                        <div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtRegNo">Car Reg No</label>-->
+<!--                                <input class="form-control" id="txtRegNo" type="text">-->
+<!--                                <span class="control-error" id="lblRegNo"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCarModel">Car Model</label>-->
+<!--                                <input class="form-control" id="txtCarModel" type="text">-->
+<!--                                <span class="control-error" id="lblmodel"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCarType">Car Type</label>-->
+<!--                                <input class="form-control" id="txtCarType" type="text">-->
+<!--                                <span class="control-error" id="lblcartype"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtTransmission">Transmission</label>-->
+<!--                                <input class="form-control" id="txtTransmission" type="text">-->
+<!--                                <span class="control-error" id="lbltransmission"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtFuelType">Fuel Type</label>-->
+<!--                                <input class="form-control" id="txtFuelType" type="text">-->
+<!--                                <span class="control-error" id="lblfueltype"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtLossDammage">Loss Damage</label>-->
+<!--                                <input class="form-control" id="txtLossDammage" type="text">-->
+<!--                                <span class="control-error" id="lbllossdammage"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCarColor">Color</label>-->
+<!--                                <input class="form-control" id="txtCarColor" type="text">-->
+<!--                                <span class="control-error" id="lblcolor"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtDailyRate">Daily rate</label>-->
+<!--                                <input class="form-control" id="txtDailyRate" type="text">-->
+<!--                                <span class="control-error" id="lbldailyrate"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtMonathlyRate">Monthly rate</label>-->
+<!--                                <input class="form-control" id="txtMonathlyRate" type="text">-->
+<!--                                <span class="control-error" id="lblmonthlyrate"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtExtraKm">Extra Km Price</label>-->
+<!--                                <input class="form-control" id="txtExtraKm" type="text">-->
+<!--                                <span class="control-error" id="lblextrakm"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCarImage-1">Image</label>-->
+<!--                                <input class="form-control" id="txtCarImage-1" type="file">-->
+<!--                                <span class="control-error" id="lblimage"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="itemAddBtn">Add</button>-->
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Add Car Modal end-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;Add Car Modal end&ndash;&gt;-->
 
-    <section class="row">
-        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
-            <div class=" bg-light border shadow rounded-3 p-4">
-                <div>
-                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-magnifying-glass" id="seachIconCar"></i>
-                        <input class="form-control" type="text" placeholder="Search.." id="searchCarInput">
-                    </div>
-                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
-                        <table class="table  table-hover">
-                            <thead>
-                            <tr class="table-primary">
-                                <th scope="col">Car Reg No</th>
-                                <th scope="col">Car Model</th>
-                                <th scope="col">Car Type</th>
-                                <th scope="col">Transmission</th>
-                                <th scope="col">Fuel Type</th>
-                                <th scope="col">Loss Damage</th>
-                                <th scope="col">Color</th>
-                                <th scope="col">Daily rate</th>
-                                <th scope="col">Monthly rate</th>
-                                <th scope="col">Extra Km Price</th>
-                                <th scope="col">Images</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tblCar">
+<!--    <section class="row">-->
+<!--        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">-->
+<!--            <div class=" bg-light border shadow rounded-3 p-4">-->
+<!--                <div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">-->
+<!--                        <i class="fa-solid fa-magnifying-glass" id="seachIconCar"></i>-->
+<!--                        <input class="form-control" type="text" placeholder="Search.." id="searchCarInput">-->
+<!--                    </div>-->
+<!--                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">-->
+<!--                        <table class="table  table-hover">-->
+<!--                            <thead>-->
+<!--                            <tr class="table-primary">-->
+<!--                                <th scope="col">Car Reg No</th>-->
+<!--                                <th scope="col">Car Model</th>-->
+<!--                                <th scope="col">Car Type</th>-->
+<!--                                <th scope="col">Transmission</th>-->
+<!--                                <th scope="col">Fuel Type</th>-->
+<!--                                <th scope="col">Loss Damage</th>-->
+<!--                                <th scope="col">Color</th>-->
+<!--                                <th scope="col">Daily rate</th>-->
+<!--                                <th scope="col">Monthly rate</th>-->
+<!--                                <th scope="col">Extra Km Price</th>-->
+<!--                                <th scope="col">Images</th>-->
+<!--                                <th scope="col">Action</th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody id="tblCar">-->
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
-</main>
-<!--Car End-->
+<!--</main>-->
+<!--&lt;!&ndash;Car End&ndash;&gt;-->
 
-<!--Customer Start-->
-<main class="container" id="customer-section">
-    <div class="row">
-        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
-            <div class="col-6">
-                <h4>Customer List</h4>
-                <p>Manage your Customers</p>
-            </div>
-            <div class="col-6 d-flex justify-content-end">
-                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#customerAddModal" style="background: #FF9F43;color: white;" >+ Add Customer</button>
-            </div>
-        </div>
-    </div>
+<!--&lt;!&ndash;Customer Start&ndash;&gt;-->
+<!--<main class="container" id="customer-section">-->
+<!--    <div class="row">-->
+<!--        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">-->
+<!--            <div class="col-6">-->
+<!--                <h4>Customer List</h4>-->
+<!--                <p>Manage your Customers</p>-->
+<!--            </div>-->
+<!--            <div class="col-6 d-flex justify-content-end">-->
+<!--                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#customerAddModal" style="background: #FF9F43;color: white;" >+ Add Customer</button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <!--Add Customer Modal -->
-    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCustomerModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleCustomerModalLabel">Add Customer</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="customerAddForm">
-                        <div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusId">CID</label>
-                                <input class="form-control" id="txtCusId" type="text">
-                                <span class="control-error" id="lblCusId"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusName">Name</label>
-                                <input class="form-control" id="txtCusName" type="text">
-                                <span class="control-error" id="lblCusName"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusNic">NIC</label>
-                                <input class="form-control" id="txtCusNic" type="text">
-                                <span class="control-error" id="lblCusNic"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusGender">Gender</label>
-                                <input class="form-control" id="txtCusGender" type="text">
-                                <span class="control-error" id="lblCusGender"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusAddress">Address</label>
-                                <input class="form-control" id="txtCusAddress" type="text">
-                                <span class="control-error" id="lblCusAddress"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusContact">Contact</label>
-                                <input class="form-control" id="txtCusContact" type="text">
-                                <span class="control-error" id="lblCusContact"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusEmail">Email</label>
-                                <input class="form-control" id="txtCusEmail" type="text">
-                                <span class="control-error" id="lblCusEmail"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusPwd">Password</label>
-                                <input class="form-control" id="txtCusPwd" type="text">
-                                <span class="control-error" id="lblCusPwd"></span>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Add</button>
+<!--    &lt;!&ndash;Add Customer Modal &ndash;&gt;-->
+<!--    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCustomerModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h1 class="modal-title fs-5" id="exampleCustomerModalLabel">Add Customer</h1>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form id="customerAddForm">-->
+<!--                        <div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusId">CID</label>-->
+<!--                                <input class="form-control" id="txtCusId" type="text">-->
+<!--                                <span class="control-error" id="lblCusId"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusName">Name</label>-->
+<!--                                <input class="form-control" id="txtCusName" type="text">-->
+<!--                                <span class="control-error" id="lblCusName"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusNic">NIC</label>-->
+<!--                                <input class="form-control" id="txtCusNic" type="text">-->
+<!--                                <span class="control-error" id="lblCusNic"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusGender">Gender</label>-->
+<!--                                <input class="form-control" id="txtCusGender" type="text">-->
+<!--                                <span class="control-error" id="lblCusGender"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusAddress">Address</label>-->
+<!--                                <input class="form-control" id="txtCusAddress" type="text">-->
+<!--                                <span class="control-error" id="lblCusAddress"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusContact">Contact</label>-->
+<!--                                <input class="form-control" id="txtCusContact" type="text">-->
+<!--                                <span class="control-error" id="lblCusContact"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusEmail">Email</label>-->
+<!--                                <input class="form-control" id="txtCusEmail" type="text">-->
+<!--                                <span class="control-error" id="lblCusEmail"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusPwd">Password</label>-->
+<!--                                <input class="form-control" id="txtCusPwd" type="text">-->
+<!--                                <span class="control-error" id="lblCusPwd"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--                <div class="modal-footer">-->
+<!--                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Add</button>-->
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--Add Customer Modal end-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;Add Customer Modal end&ndash;&gt;-->
 
-    <section class="row">
-        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
-            <div class=" bg-light border shadow rounded-3 p-4">
-                <div>
-                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-magnifying-glass" id="seachIconCustomer"></i>
-                        <input class="form-control" type="text" placeholder="Search.." id="searchCustomerInput">
-                    </div>
-                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
-                        <table class="table  table-hover">
-                            <thead>
-                            <tr class="table-primary">
-                                <th scope="col">CID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">NIC</th>
-                                <th scope="col">Gender</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">Contact</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Password</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody id="tblCustomer">
+<!--    <section class="row">-->
+<!--        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">-->
+<!--            <div class=" bg-light border shadow rounded-3 p-4">-->
+<!--                <div>-->
+<!--                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">-->
+<!--                        <i class="fa-solid fa-magnifying-glass" id="seachIconCustomer"></i>-->
+<!--                        <input class="form-control" type="text" placeholder="Search.." id="searchCustomerInput">-->
+<!--                    </div>-->
+<!--                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">-->
+<!--                        <table class="table  table-hover">-->
+<!--                            <thead>-->
+<!--                            <tr class="table-primary">-->
+<!--                                <th scope="col">CID</th>-->
+<!--                                <th scope="col">Name</th>-->
+<!--                                <th scope="col">NIC</th>-->
+<!--                                <th scope="col">Gender</th>-->
+<!--                                <th scope="col">Address</th>-->
+<!--                                <th scope="col">Contact</th>-->
+<!--                                <th scope="col">Email</th>-->
+<!--                                <th scope="col">Password</th>-->
+<!--                                <th scope="col">Action</th>-->
+<!--                            </tr>-->
+<!--                            </thead>-->
+<!--                            <tbody id="tblCustomer">-->
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-<!--Customer End-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</main>-->
+<!--&lt;!&ndash;Customer End&ndash;&gt;-->
 
 <!--Driver Start-->
 <main class="container" id="driver-section">
