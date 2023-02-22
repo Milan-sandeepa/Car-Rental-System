@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Customer | Online Booking</title>
+    <title>Admin Driver | Online Booking</title>
 
     <meta name="keywords" content="Easy car rental private limited,online car rental">
     <meta name="description" content="This is a Easy Car Rental online booking system">
@@ -26,6 +26,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
 </head>
 <body>
 <header class="fixed-top" id="header">
@@ -87,10 +88,10 @@
                     <li  id="carBtn">
                         <a href="car.html "><i class="fa-solid fa-car-side"></i>Car</a>
                     </li>
-                    <li class="active" id="customerBtn">
+                    <li id="customerBtn">
                         <a href="customer.html"><i class="fa-solid fa-users"></i>Customer</a>
                     </li>
-                    <li id="driverBtn">
+                    <li class="active" id="driverBtn">
                         <a href="driver.html"><i class="fa-solid fa-user"></i>Driver</a>
                     </li>
                     <li id="bookingBtn">
@@ -112,107 +113,100 @@
     <!--    Sidebar end-->
 </header>
 
-<!--Customer Start-->
-<main class="container" id="customer-section">
+<!--Driver Start-->
+<main class="container" id="driver-section">
     <div class="row">
         <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
             <div class="col-6">
-                <h4>Customer List</h4>
-                <p>Manage your Customers</p>
+                <h4>Driver List</h4>
+                <p>Manage your Drivers</p>
             </div>
             <div class="col-6 d-flex justify-content-end">
-                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#customerAddModal" style="background: #FF9F43;color: white;" >+ Add Customer</button>
+                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#driverAddModal" style="background: #FF9F43;color: white;" >+ Add Driver</button>
             </div>
         </div>
     </div>
 
-    <!--Add Customer Modal -->
-    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCustomerModalLabel" aria-hidden="true">
+    <!--Add Driver Modal -->
+    <div class="modal fade" id="driverAddModal" tabindex="-1" aria-labelledby="exampleDriverModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleCustomerModalLabel">Add Customer</h1>
+                    <h1 class="modal-title fs-5" id="exampleDriverModalLabel">Add Driver</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="customerAddForm">
+                    <form id="driverAddForm">
                         <div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusId">CID</label>
-                                <input class="form-control" id="txtCusId" type="text">
-                                <span class="control-error" id="lblCusId"></span>
+                                <label for="txtDriverId">DriverID</label>
+                                <input class="form-control" id="txtDriverId" type="text">
+                                <span class="control-error" id="lblDriverId"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusName">Name</label>
-                                <input class="form-control" id="txtCusName" type="text">
-                                <span class="control-error" id="lblCusName"></span>
+                                <label for="txtDriverName">Name</label>
+                                <input class="form-control" id="txtDriverName" type="text">
+                                <span class="control-error" id="lblDriverName"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusNic">NIC</label>
-                                <input class="form-control" id="txtCusNic" type="text">
-                                <span class="control-error" id="lblCusNic"></span>
+                                <label for="txtDriverLicenNo">Driver Licen No</label>
+                                <input class="form-control" id="txtDriverLicenNo" type="text">
+                                <span class="control-error" id="lblDriverLicenNo"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusGender">Gender</label>
-                                <input class="form-control" id="txtCusGender" type="text">
-                                <span class="control-error" id="lblCusGender"></span>
+                                <label for="txtDriverAddress">Address</label>
+                                <input class="form-control" id="txtDriverAddress" type="text">
+                                <span class="control-error" id="lblDriverAddress"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusAddress">Address</label>
-                                <input class="form-control" id="txtCusAddress" type="text">
-                                <span class="control-error" id="lblCusAddress"></span>
+                                <label for="txtDriverGender">Gender</label>
+                                <input class="form-control" id="txtDriverGender" type="text">
+                                <span class="control-error" id="lblDriverGender"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusContact">Contact</label>
-                                <input class="form-control" id="txtCusContact" type="text">
-                                <span class="control-error" id="lblCusContact"></span>
+                                <label for="txtDriverContact">Contact</label>
+                                <input class="form-control" id="txtDriverContact" type="text">
+                                <span class="control-error" id="lblDriverContact"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCusEmail">Email</label>
-                                <input class="form-control" id="txtCusEmail" type="text">
-                                <span class="control-error" id="lblCusEmail"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusPwd">Password</label>
-                                <input class="form-control" id="txtCusPwd" type="text">
-                                <span class="control-error" id="lblCusPwd"></span>
+                                <label for="txtDriverEmail">Email</label>
+                                <input class="form-control" id="txtDriverEmail" type="text">
+                                <span class="control-error" id="lblDriverEmail"></span>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Add</button>
-
+                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverAddBtn">Add</button>
                 </div>
             </div>
         </div>
     </div>
-    <!--Add Customer Modal end-->
+    <!--Add Driver Modal end-->
 
     <section class="row">
         <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
             <div class=" bg-light border shadow rounded-3 p-4">
                 <div>
                     <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
-                        <i class="fa-solid fa-magnifying-glass" id="seachIconCustomer"></i>
-                        <input class="form-control" type="text" placeholder="Search.." id="searchCustomerInput">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconDriver"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchDriverInput">
                     </div>
                     <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
                         <table class="table  table-hover">
                             <thead>
                             <tr class="table-primary">
-                                <th scope="col">CID</th>
+                                <th scope="col">DriverID</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">NIC</th>
-                                <th scope="col">Gender</th>
+                                <th scope="col">Licen No</th>
                                 <th scope="col">Address</th>
+                                <th scope="col">Gender</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
-                            <tbody id="tblCustomer">
+                            <tbody id="tblDriver">
 
                             </tbody>
                         </table>
@@ -221,8 +215,9 @@
             </div>
         </div>
     </section>
+
 </main>
-<!--Customer End-->
+<!--Driver End-->
 
 <script src="assets/js/jquery-3.6.1.min.js"></script>
 <!--<script src="assets/js/bootstrap.min.js"></script>-->
@@ -232,44 +227,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
-
-<script>
-    let baseUrl="http://localhost:8080/Car_Rental_System_war/";
-
-    getAllCustomers();
-
-
-    //Get all Customer Function
-    function getAllCustomers() {
-        console.log("success load");
-        $("#tblCustomer").empty();
-        $.ajax({
-            url: baseUrl+"user",
-            success: function (res) {
-                for (let c of res.data) {
-                    let name = c.name;
-                    let nic = c.nicNo;
-                    let gender = c.gender;
-                    let address = c.address;
-                    let contact = c.contact;
-                    let email = c.email;
-                    let userPwd = c.userPwd;
-
-                    console.log(name,nic,gender,address,contact,email,userPwd);
-
-                    let row = "<tr><td>" + name + "</td><td>" + nic + "</td><td>" + gender + "</td><td>" + address + "</td><td>" + contact + "</td><td>" + email + "</td><td>" + userPwd + "</td></tr>";
-                    $("#tblCustomer").append(row);
-                }
-                // bindRowClickEvents();
-                // setTextFieldValues("", "", "", "");
-            },
-            error: function (error) {
-                let message = JSON.parse(error.responseText).message;
-                alert(message);
-            }
-        });
-    }
-
-</script>
 </body>
 </html>
