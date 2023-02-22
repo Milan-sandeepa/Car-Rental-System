@@ -118,15 +118,23 @@
     </div>
     <div class="row row--grid">
         <div class="col-12 col-md-2 col-xl-3 d-flex justify-content-center" id="card-1">
-            <div class="card">
+            <div class="card"  >
                 <div class="d-flex">
                     <div class="item-title">
                         <h2>Cars</h2>
-                        <p>40</p>
+                        <div class="d-flex">
+                            <p>Available</p>
+                            <p>40</p>
+                        </div>
+                        <div class="d-flex">
+                            <p>Reserved</p>
+                            <p>40</p>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="card-img-1" src="assets/img/icons/car.png" alt="car">
                     </div>
+
                 </div>
             </div>
         </div>
@@ -135,7 +143,10 @@
                 <div class="d-flex">
                     <div class="item-title">
                         <h2>Customers</h2>
-                        <p>40</p>
+                        <div class="d-flex">
+                            <p>Total</p>
+                            <p>40</p>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="card-img-2" src="assets/img/icons/customer.png" alt="car">
@@ -148,7 +159,14 @@
                 <div class="d-flex">
                     <div class="item-title">
                         <h2>Drivers</h2>
-                        <p>30</p>
+                        <div class="d-flex">
+                            <p>Available</p>
+                            <p>40</p>
+                        </div>
+                        <div class="d-flex">
+                            <p>Hired</p>
+                            <p>5</p>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="card-img-3" src="assets/img/icons/driver.png" alt="car">
@@ -161,7 +179,14 @@
                 <div class="d-flex">
                     <div class="item-title">
                         <h2>Reservations</h2>
-                        <p>5</p>
+                        <div class="d-flex">
+                            <p>Active</p>
+                            <p>5</p>
+                        </div>
+                        <div class="d-flex">
+                            <p>Total</p>
+                            <p>10</p>
+                        </div>
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="card-img-4" src="assets/img/icons/reservation.png" alt="car">
@@ -172,8 +197,8 @@
     </div>
 
     <div>
-        <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-1">
-            <div  class="table-style   mt-4 border shadow rounded-3 p-4">
+        <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-1" style="margin-left: 10px">
+            <div  class="table-style   mt-4 border shadow rounded-3 p-3"  style="width: 83vw">
                 <div class="pb-2"><h2>Recent Requests</h2></div>
                 <div class="col mt-2 table-responsive">
                     <table class="table table-bordered table-hover" id="table-dashboard">
