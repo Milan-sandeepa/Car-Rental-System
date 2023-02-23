@@ -41,7 +41,8 @@
                             <a class="nav-link active" href="register.html">Register</a>
                         </li>
                     </ul>
-                    <button class="btn btn-light me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
+                    <button class="btn btn-light me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Login
+                    </button>
                 </div>
             </div>
         </nav>
@@ -82,7 +83,7 @@
 
 <main class="container">
     <section class="row" id="signup-form">
-        <div class="col-lg-4 bg-white m-auto rounded-top rounded-bottom" id="form-top">
+        <div class=" col-lg-4 bg-white rounded-top rounded-bottom" id="form-top" style="width: 40vw;margin: auto;">
             <h2 class="text-center pt-3">Signup Now</h2>
             <p class="text-center text-muted lead">It's Free and Takes a Minute</p>
 
@@ -94,13 +95,8 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
-                    <input type="text" class="form-control" placeholder="Nic Number" id="txtUserNic" name="nicNo">
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
                     <select class="form-control" id="txtUserGender" name="gender">
-                        <option value="None">None</option>
+                        <option value="None">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
@@ -111,7 +107,8 @@
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
-                    <input type="text" class="form-control" placeholder="Contact Number" id="txtUserContact" name="contact">
+                    <input type="text" class="form-control" placeholder="Contact Number" id="txtUserContact"
+                           name="contact">
                 </div>
 
                 <div class="input-group mb-3">
@@ -119,17 +116,31 @@
                     <input type="text" class="form-control" placeholder="Email" id="txtUserEmail" name="email">
                 </div>
 
+                <!--image upload section start-->
                 <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                    <input type="text" class="form-control" placeholder="Nic Number" id="txtUserNic" name="nicNo">
                     <span class="input-group-text"><i class="fa fa-file"></i></span>
-                    <input type="file" class="form-control" placeholder="Nic Photo Upload here">
+                    <input id="file-1" type="file" name="nicPhoto" class="form-control" placeholder="Nic Photo Upload here">
                 </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                    <input type="text" class="form-control" placeholder="License Number" id="txtUserDriving"
+                           name="licenseNo">
+                    <span class="input-group-text"><i class="fa fa-file"></i></span>
+                    <input id="file-2" type="file" name="licencePhoto" class="form-control" placeholder="License Photo Upload here">
+                </div>
+                <!--image upload section end-->
+
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
                     <input type="password" class="form-control" placeholder="Password" id="txtUserPwd" name="userPwd">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Conform Password" id="txtUserConPwd" name="userConPwd">
+                    <input type="password" class="form-control" placeholder="Conform Password" id="txtUserConPwd"
+                           name="userConPwd">
                 </div>
                 <div class="d-grid mb-3">
                     <button type="button" class="btn btn-primary" id="btnUser">SignUp Now</button>
@@ -137,7 +148,8 @@
                         <a href="#">Terms and Conditions</a>and <a href="#">Privacy Policy</a></p>
 
                     <p class="text-center">
-                        Already Have an Account ? <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login Here</a>
+                        Already Have an Account ? <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">Login
+                        Here</a>
                     </p>
                 </div>
             </form>
@@ -163,17 +175,51 @@
         crossorigin="anonymous"></script>
 
 <script>
-    let baseUrl="http://localhost:8080/Car_Rental_System_war/";
+    let baseUrl = "http://localhost:8080/Car_Rental_System_war/";
 
 
     //Add User
     $("#btnUser").click(function () {
-        let formData = $("#userForm").serialize();
+
+
+        let formData = new FormData();
+
+        let name = $("#txtUserName").val();
+        let gender = $("#txtUserGender").val();
+        let address = $("#txtUserAddress").val();
+        let contact = $("#txtUserContact").val();
+        let email = $("#txtUserEmail").val();
+        let nicNo = $("#txtUserNic").val();
+        let licenseNo = $("#txtUserDriving").val();
+        let pass = $("#txtUserPwd").val();
+
+        formData.append("name",name);
+        formData.append("gender",gender);
+        formData.append("address",address);
+        formData.append("contact",contact);
+        formData.append("email",email);
+        formData.append("nicNo",nicNo);
+        formData.append("licenseNo",licenseNo);
+        formData.append("pass",pass);
+
+        let file1 = $("#file-1")[0].files[0];
+        let fileName1 = $("#file-1")[0].files[0].name;
+
+        let file2 = $("#file-2")[0].files[0];
+        let fileName2 = $("#file-2")[0].files[0].name;
+
+        formData.append("nicPhoto",file1,fileName1);
+        formData.append("licencePhoto",file2,fileName2);
+
         $.ajax({
-            url: baseUrl+"user",
+            url: baseUrl + "user",
             method: "post",
             data: formData,
             dataType: "json",
+            async: true,
+            contentType: false,
+            processData: false,
+            enctype:"multipart/form-data",
             success: function (res) {
                 // invoked if the response status code is in 200 range
                 console.log("Success Method Invoked")
