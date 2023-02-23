@@ -28,21 +28,19 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseUtil saveUser(@RequestPart("name") String name,
-                                 @RequestPart("gender") String gender,
-                                 @RequestPart("address") String address,
-                                 @RequestPart("contact") String contact,
-                                 @RequestPart("email") String email,
-                                 @RequestPart("nicNo") String nicNo,
-                                 @RequestPart("licenseNo") String licenseNo,
-                                 @RequestPart("pass") String pass,
+//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseUtil saveUser(@RequestPart("name") String name,@RequestPart("gender") String gender, @RequestPart("address") String address,
+                                 @RequestPart("contact") String contact, @RequestPart("email") String email, @RequestPart("nicNo") String nicNo,
+                                 @RequestPart("licenseNo") String licenseNo, @RequestPart("pass") String pass,
                                  @RequestPart("nicPhoto") MultipartFile file1, @RequestPart("licencePhoto") MultipartFile file2) {
 
 
         System.out.println(name+"-"+gender+"-"+address+"-"+contact+"-"+email+"-"+nicNo+"-"+licenseNo+"-"+pass);
         System.out.println(file1);
         System.out.println(file2);
+
+        String role="guest";
 
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
@@ -52,7 +50,7 @@ public class UserController {
             file1.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file1.getOriginalFilename()));
             file2.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file2.getOriginalFilename()));
 
-            UserDTO userDTO = new UserDTO(name,gender,address,contact,email,nicNo,"uploads/"+file1.getOriginalFilename(),licenseNo,"uploads/"+file2.getOriginalFilename(),pass);
+            UserDTO userDTO = new UserDTO(name,gender,address,contact,email,nicNo,"uploads/"+file1.getOriginalFilename(),licenseNo,"uploads/"+file2.getOriginalFilename(),pass,role);
             userService.saveUser(userDTO);
 
         } catch (URISyntaxException e) {

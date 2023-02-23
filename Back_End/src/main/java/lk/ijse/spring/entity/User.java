@@ -26,4 +26,5 @@ public class User {
     private String licenseNo;
     private String licensePhoto;
     private String userPwd;
+    private String role;
 }
