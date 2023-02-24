@@ -119,17 +119,9 @@
                 <!--image upload section start-->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
-                    <input type="text" class="form-control" placeholder="Nic Number" id="txtUserNic" name="nicNo">
+                    <input type="text" class="form-control" placeholder="Nic/License Number" id="txtUserNic" name="nic/licenseNo">
                     <span class="input-group-text"><i class="fa fa-file"></i></span>
-                    <input id="file-1" type="file" name="nicPhoto" class="form-control" placeholder="Nic Photo Upload here">
-                </div>
-
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
-                    <input type="text" class="form-control" placeholder="License Number" id="txtUserDriving"
-                           name="licenseNo">
-                    <span class="input-group-text"><i class="fa fa-file"></i></span>
-                    <input id="file-2" type="file" name="licencePhoto" class="form-control" placeholder="License Photo Upload here">
+                    <input id="file-1" type="file" name="nic/licensePhoto" class="form-control" placeholder="Nic Photo Upload here">
                 </div>
                 <!--image upload section end-->
 
@@ -190,7 +182,6 @@
         let contact = $("#txtUserContact").val();
         let email = $("#txtUserEmail").val();
         let nicNo = $("#txtUserNic").val();
-        let licenseNo = $("#txtUserDriving").val();
         let pass = $("#txtUserPwd").val();
 
         formData.append("name",name);
@@ -198,18 +189,13 @@
         formData.append("address",address);
         formData.append("contact",contact);
         formData.append("email",email);
-        formData.append("nicNo",nicNo);
-        formData.append("licenseNo",licenseNo);
+        formData.append("nic/licenseNo",nicNo);
         formData.append("pass",pass);
 
         let file1 = $("#file-1")[0].files[0];
         let fileName1 = $("#file-1")[0].files[0].name;
 
-        let file2 = $("#file-2")[0].files[0];
-        let fileName2 = $("#file-2")[0].files[0].name;
-
-        formData.append("nicPhoto",file1,fileName1);
-        formData.append("licencePhoto",file2,fileName2);
+        formData.append("nic/licensePhoto",file1,fileName1);
 
         $.ajax({
             url: baseUrl + "user",

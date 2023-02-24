@@ -138,63 +138,99 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="customerAddForm">
-                        <div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusId">CID</label>
-                                <input class="form-control" id="txtCusId" type="text">
-                                <span class="control-error" id="lblCusId"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusName">Name</label>
-                                <input class="form-control" id="txtCusName" type="text">
-                                <span class="control-error" id="lblCusName"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusNic">NIC</label>
-                                <input class="form-control" id="txtCusNic" type="text">
-                                <span class="control-error" id="lblCusNic"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusGender">Gender</label>
-                                <input class="form-control" id="txtCusGender" type="text">
-                                <span class="control-error" id="lblCusGender"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusAddress">Address</label>
-                                <input class="form-control" id="txtCusAddress" type="text">
-                                <span class="control-error" id="lblCusAddress"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusContact">Contact</label>
-                                <input class="form-control" id="txtCusContact" type="text">
-                                <span class="control-error" id="lblCusContact"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusEmail">Email</label>
-                                <input class="form-control" id="txtCusEmail" type="text">
-                                <span class="control-error" id="lblCusEmail"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtCusPwd">Password</label>
-                                <input class="form-control" id="txtCusPwd" type="text">
-                                <span class="control-error" id="lblCusPwd"></span>
-                            </div>
-                            <div>
-                                <table class="table  table-hover">
-                                    <thead>
-                                    <tr class="table-primary">
-                                        <th scope="col">CID</th>
-                                        <th scope="col">Name</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody id="tblImages">
 
-                                    </tbody>
-                                </table>
-                            </div>
+                    <form id="customerAddForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtUserName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtUserGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtUserAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact Number" id="txtUserContact"
+                                   name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtUserEmail" name="email">
+                        </div>
+
+                        <!--image upload section start-->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <input type="text" class="form-control" placeholder="Nic/License Number" id="txtUserNic" name="nic/licenseNo">
+                            <span class="input-group-text"><i class="fa fa-file"></i></span>
+                            <input id="file-1" type="file" name="nic/licensePhoto" class="form-control" placeholder="Nic Photo Upload here">
+                        </div>
+                        <!--image upload section end-->
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtUserPwd" name="userPwd">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Conform Password" id="txtUserConPwd"
+                                   name="userConPwd">
                         </div>
                     </form>
+
+<!--                    <form id="customerAddForm">-->
+<!--                        <div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusId">CID</label>-->
+<!--                                <input class="form-control" id="txtCusId" type="text">-->
+<!--                                <span class="control-error" id="lblCusId"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusName">Name</label>-->
+<!--                                <input class="form-control" id="txtCusName" type="text">-->
+<!--                                <span class="control-error" id="lblCusName"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusNic">NIC</label>-->
+<!--                                <input class="form-control" id="txtCusNic" type="text">-->
+<!--                                <span class="control-error" id="lblCusNic"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusGender">Gender</label>-->
+<!--                                <input class="form-control" id="txtCusGender" type="text">-->
+<!--                                <span class="control-error" id="lblCusGender"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusAddress">Address</label>-->
+<!--                                <input class="form-control" id="txtCusAddress" type="text">-->
+<!--                                <span class="control-error" id="lblCusAddress"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusContact">Contact</label>-->
+<!--                                <input class="form-control" id="txtCusContact" type="text">-->
+<!--                                <span class="control-error" id="lblCusContact"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusEmail">Email</label>-->
+<!--                                <input class="form-control" id="txtCusEmail" type="text">-->
+<!--                                <span class="control-error" id="lblCusEmail"></span>-->
+<!--                            </div>-->
+<!--                            <div class="form-group ms-2 me-2">-->
+<!--                                <label for="txtCusPwd">Password</label>-->
+<!--                                <input class="form-control" id="txtCusPwd" type="text">-->
+<!--                                <span class="control-error" id="lblCusPwd"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </form>-->
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Add</button>
@@ -217,16 +253,14 @@
                         <table class="table  table-hover">
                             <thead>
                             <tr class="table-primary">
-                                <th scope="col">CID</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Gender</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">NIC</th>
-                                <th scope="col">NIC PHOTO</th>
-                                <th scope="col">LICENSE</th>
-                                <th scope="col">NIC PHOTO</th>
+                                <th scope="col">NIC/LICENSE No</th>
+                                <th scope="col">Photo</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Password</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -256,7 +290,60 @@
     let baseUrl="http://localhost:8080/Car_Rental_System_war/";
 
     getAllCustomers();
-    getAllImages();
+
+    //Add User
+    $("#customerAddBtn").click(function () {
+
+        let formData = new FormData();
+
+        let name = $("#txtUserName").val();
+        let gender = $("#txtUserGender").val();
+        let address = $("#txtUserAddress").val();
+        let contact = $("#txtUserContact").val();
+        let email = $("#txtUserEmail").val();
+        let nicNo = $("#txtUserNic").val();
+        let pass = $("#txtUserPwd").val();
+
+        formData.append("name",name);
+        formData.append("gender",gender);
+        formData.append("address",address);
+        formData.append("contact",contact);
+        formData.append("email",email);
+        formData.append("nic/licenseNo",nicNo);
+        formData.append("pass",pass);
+
+        let file1 = $("#file-1")[0].files[0];
+        let fileName1 = $("#file-1")[0].files[0].name;
+
+        formData.append("nic/licensePhoto",file1,fileName1);
+
+        $.ajax({
+            url: baseUrl + "user",
+            method: "post",
+            data: formData,
+            dataType: "json",
+            async: true,
+            contentType: false,
+            processData: false,
+            enctype:"multipart/form-data",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                console.log("Success Method Invoked")
+                console.log(res);
+                alert(res.message);
+                // getAllCustomers();
+
+            },
+            error: function (error) {
+                // invokes if status code range is 500 range or 400 range
+                console.log("Error Method Invoked");
+                console.log(JSON.parse(error.responseText));
+                alert(JSON.parse(error.responseText).message);
+
+            }
+        });
+
+    });
 
     //Get all Customer Function
     function getAllCustomers() {
@@ -267,30 +354,25 @@
             success: function (res) {
                 for (let c of res.data) {
                     let name = c.name;
-                    let nic = c.nicNo;
                     let gender = c.gender;
                     let address = c.address;
                     let contact = c.contact;
                     let email = c.email;
-                    let licenseNo = c.licenseNo;
-                    let licencePhoto = c.licencePhoto;
+                    let nic_licenseNo = c.nic_licenseNo;
+                    let nic_licensePhoto = c.nic_licensePhoto;
                     let userPwd = c.userPwd;
-
-                    let nicPhoto = c.nicPhoto;
-
+                    let role = c.role;
 
                     let row = `<tr>
 
-                        <td>${"id"}</td>
                         <td>${name}</td>
                         <td>${gender}</td>
                         <td>${address}</td>
                         <td>${contact}</td>
                         <td>${email}</td>
-                        <td>${nic}</td>
-                        <td><img src="${baseUrl + nicPhoto}" width="100px"></td>
-                        <td>${licenseNo}</td>
-
+                        <td>${nic_licenseNo}</td>
+                        <td><img src="${baseUrl + nic_licensePhoto}" width="100px"></td>
+                        <td>${role}</td>
                         <td>${userPwd}</td>
                         <td><button>close</button></td>
 
@@ -310,35 +392,6 @@
         });
     }
 
-    function getAllImages() {
-        console.log("success load");
-        $("#tblCustomer").empty();
-        $.ajax({
-            url: baseUrl+"user",
-            success: function (res) {
-                for (let c of res.data) {
-
-                    var licencePhoto = c.licencePhoto;
-                    var nicPhoto = c.nicPhoto;
-
-                    let row = `<tr>
-
-                            <td>${ nicPhoto}</td>
-                            <td>${ licencePhoto}</td>
-
-                        </tr>`;
-
-
-
-                    $("#tblImages").append(row);
-                }
-            },
-            error: function (error) {
-                let message = JSON.parse(error.responseText).message;
-                alert(message);
-            }
-        });
-    }
 
 </script>
 </body>

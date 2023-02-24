@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.Normalizer;
+import java.util.ArrayList;
 
 @RestController
 @CrossOrigin
@@ -31,15 +32,13 @@ public class UserController {
 //    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
     public ResponseUtil saveUser(@RequestPart("name") String name,@RequestPart("gender") String gender, @RequestPart("address") String address,
-                                 @RequestPart("contact") String contact, @RequestPart("email") String email, @RequestPart("nicNo") String nicNo,
-                                 @RequestPart("licenseNo") String licenseNo, @RequestPart("pass") String pass,
-                                 @RequestPart("nicPhoto") MultipartFile file1, @RequestPart("licencePhoto") MultipartFile file2) {
+                                 @RequestPart("contact") String contact, @RequestPart("email") String email, @RequestPart("nic/licenseNo") String nicNo,
+                                 @RequestPart("pass") String pass,
+                                 @RequestPart("nic/licensePhoto") MultipartFile file1) {
 
 
-        System.out.println(name+"-"+gender+"-"+address+"-"+contact+"-"+email+"-"+nicNo+"-"+licenseNo+"-"+pass);
+        System.out.println(name+"-"+gender+"-"+address+"-"+contact+"-"+email+"-"+nicNo+"-"+"-"+pass);
         System.out.println(file1);
-        System.out.println(file2);
-
         String role="guest";
 
         try {
@@ -48,15 +47,11 @@ public class UserController {
             System.out.println(projectPath);
             uploadsDir.mkdir();
             file1.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file1.getOriginalFilename()));
-            file2.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file2.getOriginalFilename()));
 
-            UserDTO userDTO = new UserDTO(name,gender,address,contact,email,nicNo,"uploads/"+file1.getOriginalFilename(),licenseNo,"uploads/"+file2.getOriginalFilename(),pass,role);
+            UserDTO userDTO = new UserDTO(name,gender,address,contact,email,nicNo,"uploads/"+file1.getOriginalFilename(),pass,role);
             userService.saveUser(userDTO);
 
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return new ResponseUtil("Ok", "Successfully Saved", null);
-        } catch (IOException e) {
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
             return new ResponseUtil("Ok", "Successfully Saved", null);
         }

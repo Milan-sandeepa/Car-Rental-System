@@ -21,10 +21,8 @@ public class User {
     private String contact;
     @Id
     private String email;
-    private String nicNo;
-    private String nicPhoto;
-    private String licenseNo;
-    private String licensePhoto;
+    private String nic_licenseNo;
+    private String nic_licensePhoto;
     private String userPwd;
-    private String role;
+    private String role="guest";
 }
