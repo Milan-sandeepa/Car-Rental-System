@@ -226,6 +226,7 @@
                                 <th scope="col">NIC</th>
                                 <th scope="col">NIC PHOTO</th>
                                 <th scope="col">LICENSE</th>
+                                <th scope="col">NIC PHOTO</th>
                                 <th scope="col">Password</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -277,7 +278,6 @@
 
                     let nicPhoto = c.nicPhoto;
 
-                    console.log(name,nic,gender,address,contact,email,userPwd);
 
                     let row = `<tr>
 
@@ -290,6 +290,7 @@
                         <td>${nic}</td>
                         <td><img src="${baseUrl + nicPhoto}" width="100px"></td>
                         <td>${licenseNo}</td>
+
                         <td>${userPwd}</td>
                         <td><button>close</button></td>
 
@@ -317,14 +318,13 @@
             success: function (res) {
                 for (let c of res.data) {
 
-                    let licencePhoto = c.licencePhoto;
-                    let nicPhoto = c.nicPhoto;
+                    var licencePhoto = c.licencePhoto;
+                    var nicPhoto = c.nicPhoto;
 
                     let row = `<tr>
 
-                        <td>
-
-                        <img src="${baseUrl + licencePhoto}" width="100px"></td>
+                            <td>${ nicPhoto}</td>
+                            <td>${ licencePhoto}</td>
 
                         </tr>`;
 

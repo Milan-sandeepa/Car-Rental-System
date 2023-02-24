@@ -173,12 +173,12 @@
 
     <div>
         <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-1">
-            <div  class="table-style   mt-4 border shadow rounded-3 p-4">
-                <div class="pb-2"><h2>Recent Requests</h2></div>
-                <div class="col mt-2 table-responsive">
-                    <table class="table table-bordered table-hover" id="table-dashboard">
-                        <thead style="background:rgba(154, 248, 154, 0.47);">
-                        <tr>
+            <div  class="table-style   mt-4 border shadow rounded-3 p-4" style="width: 82vw;margin-left: 20px;">
+                <div class="pb-2"><h2>Active </h2></div>
+                <div class="col mt-2 table-responsive pt-3" style="height: 130px; overflow-y: scroll">
+                    <table class="table  table-hover">
+                        <thead>
+                        <tr class="table-primary">
                             <th scope="col">ID</th>
                             <th scope="col">Customer</th>
                             <th scope="col">Start Date</th>
@@ -187,8 +187,9 @@
                             <th scope="col">Amount</th>
                             <th scope="col">Option</th>
                         </tr>
+                        </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tblCarActive">
                         <tr>
                             <th scope="row">INV-0123</th>
                             <td>Jhon Smith</td>
@@ -198,6 +199,59 @@
                             <td>100$</td>
                             <td>Paid</td>
                         </tr>
+                        <tr>
+                            <th scope="row">INV-0123</th>
+                            <td>Jhon Smith</td>
+                            <td>10-Sep 2022</td>
+                            <td>13-Sep 2022</td>
+                            <td>Yes</td>
+                            <td>100$</td>
+                            <td>Paid</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">INV-0123</th>
+                            <td>Jhon Smith</td>
+                            <td>10-Sep 2022</td>
+                            <td>13-Sep 2022</td>
+                            <td>Yes</td>
+                            <td>100$</td>
+                            <td>Paid</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">INV-0123</th>
+                            <td>Jhon Smith</td>
+                            <td>10-Sep 2022</td>
+                            <td>13-Sep 2022</td>
+                            <td>Yes</td>
+                            <td>100$</td>
+                            <td>Paid</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-2">
+            <div  class="table-style   mt-4 border shadow rounded-3 p-4" style="width: 82vw;margin-left: 20px;">
+                <div class="pb-2"><h2>Recent Requests</h2></div>
+                <div class="col mt-2 table-responsive pt-3" style="height: 185px; overflow-y: scroll">
+                    <table class="table  table-hover">
+                        <thead>
+                        <tr class="table-primary">
+                            <th scope="col">ID</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Driver</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Option</th>
+                        </tr>
+                        </tr>
+                        </thead>
+                        <tbody id="tblCarRequest">
                         <tr>
                             <th scope="row">INV-0123</th>
                             <td>Jhon Smith</td>
