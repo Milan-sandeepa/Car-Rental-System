@@ -1,5 +1,6 @@
 package lk.ijse.spring.controller;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.UserDTO;
 import lk.ijse.spring.service.impl.UserServiceImpl;
 import lk.ijse.spring.util.ResponseUtil;
@@ -40,6 +41,7 @@ public class UserController {
         System.out.println(name+"-"+gender+"-"+address+"-"+contact+"-"+email+"-"+nicNo+"-"+"-"+pass);
         System.out.println(file1);
         String role="guest";
+        String status="Not Active";
 
         try {
             String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
@@ -48,7 +50,7 @@ public class UserController {
             uploadsDir.mkdir();
             file1.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file1.getOriginalFilename()));
 
-            UserDTO userDTO = new UserDTO(name,gender,address,contact,email,nicNo,"uploads/"+file1.getOriginalFilename(),pass,role);
+            UserDTO userDTO = new UserDTO(name,gender,address,contact,email,nicNo,"uploads/"+file1.getOriginalFilename(),pass,role,status);
             userService.saveUser(userDTO);
 
         } catch (IOException | URISyntaxException e) {
@@ -63,5 +65,18 @@ public class UserController {
     public ResponseUtil getCustomer() {
 
         return new ResponseUtil("Ok", "Successfully Loaded", userService.getAllUser());
+    }
+
+    @PutMapping
+    public ResponseUtil updateCustomer(@RequestBody UserDTO userDTO) {
+
+        userService.updateUser(userDTO);
+        return new ResponseUtil("Ok", userDTO.getEmail() + " Successfully Updated", null);
+    }
+
+    @DeleteMapping
+    public ResponseUtil deleteCustomer(String id) {
+        userService.deleteUser(id);
+        return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
 }

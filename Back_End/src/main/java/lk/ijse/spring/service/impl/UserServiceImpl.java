@@ -1,6 +1,7 @@
 package lk.ijse.spring.service.impl;
 
 import lk.ijse.spring.dto.UserDTO;
+import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.entity.User;
 import lk.ijse.spring.repo.UserRepo;
 import lk.ijse.spring.service.UserService;
@@ -31,12 +32,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(String id) {
-
+        if (!userRepo.existsById(id)) {
+            throw new RuntimeException("Customer Not exists.Please enter valid Id");
+        }
+        userRepo.deleteById(id);
     }
 
     @Override
     public void updateUser(UserDTO userDTO) {
+        if (!userRepo.existsById(userDTO.getEmail())) {
+            throw new RuntimeException("Car Not exists.Please enter valid Id");
+        }
 
+
+        User map = mapper.map(userDTO, User.class);
+        userRepo.save(map);
     }
 
     @Override

@@ -24,5 +24,7 @@ public class User {
     private String nic_licenseNo;
     private String nic_licensePhoto;
     private String userPwd;
-    private String role="guest";
+    private String role;
+    private String status;
+
 }

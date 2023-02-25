@@ -241,6 +241,71 @@
     </div>
     <!--Add Customer Modal end-->
 
+    <!--Update Customer Modal -->
+    <div class="modal fade" id="customerEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">Update Customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerUpdateForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtUpdateUserName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtUpdateUserGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtUpdateUserAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact Number" id="txtUpdateUserContact"
+                                   name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtUpdateUserEmail" name="email">
+                        </div>
+
+                        <!--image upload section start-->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <input type="text" class="form-control" placeholder="Nic/License Number" id="txtUpdateUserNic" name="nic/licenseNo">
+                            <span class="input-group-text"><i class="fa fa-file"></i></span>
+                            <input id="file-2" type="file" name="nic/licensePhoto" class="form-control" placeholder="Nic Photo Upload here">
+                        </div>
+                        <!--image upload section end-->
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtUpdateUserPwd" name="userPwd">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Conform Password" id="txtUpdateUserConPwd"
+                                   name="userConPwd">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerUpdateBtn">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update Customer Modal end-->
+
     <section class="row">
         <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
             <div class=" bg-light border shadow rounded-3 p-4">
@@ -262,6 +327,7 @@
                                 <th scope="col">Photo</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Password</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -362,6 +428,7 @@
                     let nic_licensePhoto = c.nic_licensePhoto;
                     let userPwd = c.userPwd;
                     let role = c.role;
+                    let status = c.status;
 
                     console.log(nic_licensePhoto);
 
@@ -371,12 +438,14 @@
                         <td>${gender}</td>
                         <td>${address}</td>
                         <td>${contact}</td>
-                        <td>${email}</td>
+                        <td class="email">${email}</td>
                         <td>${nic_licenseNo}</td>
                         <td><img src="${baseUrl + nic_licensePhoto}" width="100px"></td>
                         <td>${role}</td>
                         <td>${userPwd}</td>
-                        <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash" style="margin-left: 10px"></i></td>
+                        <td>${status}</td>
+                        <td><i class="editIconCustomer fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#customerEditModal"></i>
+                        <i class="deleteIconCustomer fa-solid fa-trash" style="margin-left: 10px"></i></td>
 
                         </tr>`;
 
@@ -384,7 +453,7 @@
 
                     $("#tblCustomer").append(row);
                 }
-                // bindRowClickEvents();
+                bindRowClickEvents();
                 // setTextFieldValues("", "", "", "");
             },
             error: function (error) {
@@ -393,6 +462,116 @@
             }
         });
     }
+
+    function bindRowClickEvents() {
+        $(".editIconCustomer").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var searchID = row.find(".email").text();
+
+            if (searchID!=null){
+                $.ajax({
+                    url: baseUrl+"user",
+                    success: function (res) {
+                        for (let c of res.data) {
+                            if (c.email == searchID) {
+                                $('#txtUpdateUserName').val(c.name);
+                                $('#txtUpdateUserGender').val(c.gender);
+                                $('#txtUpdateUserAddress').val(c.address);
+                                $('#txtUpdateUserContact').val(c.contact);
+                                $('#txtUpdateUserEmail').val(c.email);
+                                $('#txtUpdateUserNic').val(c.nic_licenseNo);
+                                $('#txtUpdateUserPwd').val(c.userPwd);
+                                $('#txtUpdateUserConPwd').val(c.userPwd);
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+
+            }else {
+                alert("No such customer to edit. please try Again");
+            }
+        });
+
+        $(".deleteIconCustomer").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var id = row.find(".email").text();
+
+            let option = confirm("Do you really want to delete Customer Email :" + id);
+
+            if (option){
+                $.ajax({
+                    url: baseUrl+"user?id=" + id,
+                    method: "delete",
+                    success: function (resp) {
+                        getAllCustomers();
+                        alert(resp.message);
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+            }
+        });
+    }
+
+    $("#customerUpdateBtn").click(function () {
+        let res = confirm("Do you want to add this Update Customer.?");
+        if (res) {
+
+            let name =$('#txtUpdateUserName').val();
+            let gender =$('#txtUpdateUserGender').val();
+            let address =$('#txtUpdateUserAddress').val();
+            let contact =$('#txtUpdateUserContact').val();
+            let email =$('#txtUpdateUserEmail').val();
+            let nic_licenseNo =$('#txtUpdateUserNic').val();
+            let userPwd =$('#txtUpdateUserPwd').val();
+            let role =$('#txtUpdateUserConPwd').val();
+
+
+            var customerOb = {
+                name: name,
+                gender: gender,
+                address: address,
+                contact: contact,
+                email: email,
+                nic_licenseNo: nic_licenseNo,
+                userPwd: userPwd,
+                role: role
+            }
+
+            $.ajax({
+                url: baseUrl+"user",
+                method: "put",
+                contentType: "application/json",
+                data: JSON.stringify(customerOb),
+                dataType: "json",
+                success: function (resp) {
+                    getAllCustomers();
+                    alert(resp.message);
+                },
+                error: function (error) {
+                    let message = JSON.parse(error.responseText).message;
+                    alert(message);
+                }
+            });
+
+        }else {
+            alert("Update Failed..!");
+        }
+    });
 
 
     // customer seach bar

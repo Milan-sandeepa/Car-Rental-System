@@ -58,7 +58,7 @@ public class CarController {
     }
 
     @PutMapping
-    public ResponseUtil updateCustomer(@RequestBody CarDTO carDTO) {
+    public ResponseUtil updateCar(@RequestBody CarDTO carDTO) {
 
         carService.updateCar(carDTO);
         return new ResponseUtil("Ok", carDTO.getRegNo() + " Successfully Updated", null);
