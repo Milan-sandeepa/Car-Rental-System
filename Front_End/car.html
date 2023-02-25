@@ -142,66 +142,77 @@
                         <div>
                             <div class="form-group ms-2 me-2">
                                 <label for="txtRegNo">Car Reg No</label>
-                                <input class="form-control" id="txtRegNo" type="text">
+                                <input class="form-control" id="txtRegNo" type="text" name="regNo">
                                 <span class="control-error" id="lblRegNo"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
                                 <label for="txtCarModel">Car Model</label>
-                                <input class="form-control" id="txtCarModel" type="text">
+                                <input class="form-control" id="txtCarModel" type="text" name="carModel">
                                 <span class="control-error" id="lblmodel"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
                                 <label for="txtCarType">Car Type</label>
-                                <input class="form-control" id="txtCarType" type="text">
-                                <span class="control-error" id="lblcartype"></span>
+                                <select class="form-control" id="txtCarType" name="carType">
+                                    <option value="General">General</option>
+                                    <option value="Premium">Premium</option>
+                                    <option value="Luxury">Luxury</option>
+                                </select>
                             </div>
                             <div class="form-group ms-2 me-2">
                                 <label for="txtTransmission">Transmission</label>
-                                <input class="form-control" id="txtTransmission" type="text">
-                                <span class="control-error" id="lbltransmission"></span>
+                                <select class="form-control" id="txtTransmission" name="carTransmission">
+                                    <option value="Auto">Auto</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                </select>
                             </div>
                             <div class="form-group ms-2 me-2">
                                 <label for="txtFuelType">Fuel Type</label>
-                                <input class="form-control" id="txtFuelType" type="text">
+                                <input class="form-control" id="txtFuelType" type="text" name="fuelType">
                                 <span class="control-error" id="lblfueltype"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtLossDammage">Loss Damage</label>
-                                <input class="form-control" id="txtLossDammage" type="text">
-                                <span class="control-error" id="lbllossdammage"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
                                 <label for="txtCarColor">Color</label>
-                                <input class="form-control" id="txtCarColor" type="text">
+                                <input class="form-control" id="txtCarColor" type="text" name="carColor">
                                 <span class="control-error" id="lblcolor"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
+                                <label for="txtPassenger">No Passengers</label>
+                                <input class="form-control" id="txtPassenger" type="text" name="passenger">
+                                <span class="control-error" id="lblPassenger"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtLossDamage">Loss Dammage</label>
+                                <input class="form-control" id="txtLossDamage" type="text" name="lossDamage">
+                                <span class="control-error" id="lblLossDamage"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
                                 <label for="txtDailyRate">Daily rate</label>
-                                <input class="form-control" id="txtDailyRate" type="text">
+                                <input class="form-control" id="txtDailyRate" type="text" name="dailyRate">
                                 <span class="control-error" id="lbldailyrate"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtMonathlyRate">Monthly rate</label>
-                                <input class="form-control" id="txtMonathlyRate" type="text">
+                                <label for="txtMonthlyRate">Monthly rate</label>
+                                <input class="form-control" id="txtMonthlyRate" type="text" name="monthlyRate">
                                 <span class="control-error" id="lblmonthlyrate"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
                                 <label for="txtExtraKm">Extra Km Price</label>
-                                <input class="form-control" id="txtExtraKm" type="text">
+                                <input class="form-control" id="txtExtraKm" type="text" name="extraKm">
                                 <span class="control-error" id="lblextrakm"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
-                                <label for="txtCarImage-1">Image</label>
-                                <input class="form-control" id="txtCarImage-1" type="file">
+                                <label for="CarImage">Image</label>
+                                <input class="form-control" id="CarImage" type="file" name="carImage">
                                 <span class="control-error" id="lblimage"></span>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="carAddBtn">Add</button>
+                        </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="itemAddBtn">Add</button>
 
-                </div>
             </div>
         </div>
     </div>
@@ -224,12 +235,14 @@
                                 <th scope="col">Car Type</th>
                                 <th scope="col">Transmission</th>
                                 <th scope="col">Fuel Type</th>
-                                <th scope="col">Loss Damage</th>
                                 <th scope="col">Color</th>
+                                <th scope="col">Passengers</th>
+                                <th scope="col">Loss Damage</th>
                                 <th scope="col">Daily rate</th>
                                 <th scope="col">Monthly rate</th>
                                 <th scope="col">Extra Km Price</th>
-                                <th scope="col">Images</th>
+                                <th scope="col">Available</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -254,5 +267,132 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+
+<script>
+    let baseUrl = "http://localhost:8080/Car_Rental_System_war/";
+
+    getAllCars();
+
+    //Add Car
+    $("#carAddBtn").click(function () {
+
+        let formData = $("#carAddForm").serialize();
+        // let formData = new FormData();
+        //
+        // let regNo = $("#txtRegNo").val();
+        // let carModel = $("#txtCarModel").val();
+        // let carType = $("#txtCarType").val();
+        // let transmission = $("#txtTransmission").val();
+        // let fuelType = $("#txtFuelType").val();
+        // let carColor = $("#txtCarColor").val();
+        // let passengers = $("#txtPassenger").val();
+        // let lossDamage = $("#txtLossDamage").val();
+        // let dailyRate = $("#txtDailyRate").val();
+        // let monthlyRate = $("#txtMonthlyRate").val();
+        // let extraKm = $("#txtExtraKm").val();
+        //
+        // formData.append("regNo",regNo);
+        // formData.append("carModel",carModel);
+        // formData.append("carType",carType);
+        // formData.append("carTransmission",transmission);
+        // formData.append("fuelType",fuelType);
+        // formData.append("carColor",carColor);
+        // formData.append("passenger",passengers);
+        // formData.append("lossDamage",lossDamage);
+        // formData.append("dailyRate",dailyRate);
+        // formData.append("monthlyRate",monthlyRate);
+        // formData.append("extraKm",extraKm);
+        // //
+        // let file1 = $("#CarImage")[0].files[0];
+        // let fileName1 = $("#CarImage")[0].files[0].name;
+        //
+        // formData.append("carImage",file1,fileName1);
+
+        $.ajax({
+            url: baseUrl + "car",
+            method: "post",
+            data: formData,
+            dataType: "json",
+            // async: true,
+            // contentType: false,
+            // processData: false,
+            // enctype:"multipart/form-data",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                console.log("Success Method Invoked")
+                console.log(res);
+                alert(res.message);
+                getAllCars();
+
+            },
+            error: function (error) {
+                // invokes if status code range is 500 range or 400 range
+                console.log("Error Method Invoked");
+                console.log(JSON.parse(error.responseText));
+                alert(JSON.parse(error.responseText).message);
+
+            }
+        });
+    });
+
+    //Get all Cars Function
+    function getAllCars() {
+        console.log("success load");
+        $("#tblCar").empty();
+        $.ajax({
+            url: baseUrl+"car",
+            success: function (res) {
+                console.log(res);
+                for (let c of res.data) {
+                    let regNo = c.regNo;
+                    let carModel = c.carModel;
+                    let carType = c.carType;
+                    let carTransmission = c.carTransmission;
+                    let fuelType = c.fuelType;
+                    let carColor = c.carColor;
+                    let passenger = c.passenger;
+                    let lossDamage = c.lossDamage;
+                    let dailyRate = c.dailyRate;
+                    let monthlyRate = c.monthlyRate;
+                    let extraKm = c.extraKm;
+                    let carImage = c.carImage;
+                    let available = c.available;
+                    let status = c.status;
+
+                    let row = `<tr>
+
+                        <td>${regNo}</td>
+                        <td>${carModel}</td>
+                        <td>${carType}</td>
+                        <td>${carTransmission}</td>
+                        <td>${fuelType}</td>
+                        <td>${carColor}</td>
+                        <td>${passenger}</td>
+                        <td>${lossDamage}</td>
+                        <td>${dailyRate}</td>
+                        <td>${monthlyRate}</td>
+                        <td>${extraKm}</td>
+                        <td>${available}</td>
+                        <td>${status}</td>
+
+                        <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash" style="margin-left: 10px"></i></td>
+
+                        </tr>`;
+
+
+
+                    $("#tblCar").append(row);
+                }
+                // bindRowClickEvents();
+                // setTextFieldValues("", "", "", "");
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

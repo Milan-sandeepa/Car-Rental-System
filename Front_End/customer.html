@@ -331,7 +331,7 @@
                 console.log("Success Method Invoked")
                 console.log(res);
                 alert(res.message);
-                // getAllCustomers();
+                getAllCustomers();
 
             },
             error: function (error) {
@@ -363,6 +363,8 @@
                     let userPwd = c.userPwd;
                     let role = c.role;
 
+                    console.log(nic_licensePhoto);
+
                     let row = `<tr>
 
                         <td>${name}</td>
@@ -374,7 +376,7 @@
                         <td><img src="${baseUrl + nic_licensePhoto}" width="100px"></td>
                         <td>${role}</td>
                         <td>${userPwd}</td>
-                        <td><button>close</button></td>
+                        <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash" style="margin-left: 10px"></i></td>
 
                         </tr>`;
 
