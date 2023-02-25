@@ -35,12 +35,21 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public void deleteCar(String id) {
-
+        if (!carRepo.existsById(id)) {
+            throw new RuntimeException("Car Not exists.Please enter valid Id");
+        }
+        carRepo.deleteById(id);
     }
 
     @Override
     public void updateCar(CarDTO carDTO) {
+        if (!carRepo.existsById(carDTO.getRegNo())) {
+            throw new RuntimeException("Car Not exists.Please enter valid Id");
+        }
 
+
+        Car map = mapper.map(carDTO, Car.class);
+        carRepo.save(map);
     }
 
     @Override
@@ -51,6 +60,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarDTO searchCarWithRegNo(String id) {
-        return null;
+        return mapper.map(carRepo.findById(id),CarDTO.class);
     }
 }

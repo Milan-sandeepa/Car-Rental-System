@@ -56,4 +56,24 @@ public class CarController {
     public ResponseUtil getCar() {
         return new ResponseUtil("Ok", "Successfully Loaded", carService.getAllCar());
     }
+
+    @PutMapping
+    public ResponseUtil updateCustomer(@RequestBody CarDTO carDTO) {
+
+        carService.updateCar(carDTO);
+        return new ResponseUtil("Ok", carDTO.getRegNo() + " Successfully Updated", null);
+    }
+
+    @DeleteMapping
+    public ResponseUtil deleteCar(String id) {
+        carService.deleteCar(id);
+        return new ResponseUtil("Ok", id + " Successfully Deleted", null);
+    }
+
+    @GetMapping(path = "/{regNo}")
+    public ResponseUtil searchCustomerByName(@PathVariable String regNo){
+        return new ResponseUtil("OK","Successfully Loaded. :" ,carService.searchCarWithRegNo(regNo));
+    }
+
+
 }

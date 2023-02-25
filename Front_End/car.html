@@ -218,6 +218,94 @@
     </div>
     <!--Add Car Modal end-->
 
+    <!--Update car Modal -->
+    <div class="modal fade" id="carEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">Update Car</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="carAddUpdateForm">
+                        <div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateRegNo">Car Reg No</label>
+                                <input class="form-control" id="txtUpdateRegNo" type="text" name="regNo">
+                                <span class="control-error" id="lblUpdateRegNo"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateCarModel">Car Model</label>
+                                <input class="form-control" id="txtUpdateCarModel" type="text" name="carModel">
+                                <span class="control-error" id="lblUpdatemodel"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateCarType">Car Type</label>
+                                <select class="form-control" id="txtUpdateCarType" name="carType">
+                                    <option value="General">General</option>
+                                    <option value="Premium">Premium</option>
+                                    <option value="Luxury">Luxury</option>
+                                </select>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateTransmission">Transmission</label>
+                                <select class="form-control" id="txtUpdateTransmission" name="carTransmission">
+                                    <option value="Auto">Auto</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateFuelType">Fuel Type</label>
+                                <input class="form-control" id="txtUpdateFuelType" type="text" name="fuelType">
+                                <span class="control-error" id="lblUpdatefueltype"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateCarColor">Color</label>
+                                <input class="form-control" id="txtUpdateCarColor" type="text" name="carColor">
+                                <span class="control-error" id="lblUpdatecolor"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdatePassenger">No Passengers</label>
+                                <input class="form-control" id="txtUpdatePassenger" type="text" name="passenger">
+                                <span class="control-error" id="lblUpdatePassenger"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateLossDamage">Loss Dammage</label>
+                                <input class="form-control" id="txtUpdateLossDamage" type="text" name="lossDamage">
+                                <span class="control-error" id="lblUpdateLossDamage"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateDailyRate">Daily rate</label>
+                                <input class="form-control" id="txtUpdateDailyRate" type="text" name="dailyRate">
+                                <span class="control-error" id="lblUpdatedailyrate"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateMonthlyRate">Monthly rate</label>
+                                <input class="form-control" id="txtUpdateMonthlyRate" type="text" name="monthlyRate">
+                                <span class="control-error" id="lblUpdatemonthlyrate"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateExtraKm">Extra Km Price</label>
+                                <input class="form-control" id="txtUpdateExtraKm" type="text" name="extraKm">
+                                <span class="control-error" id="lblUpdateextrakm"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="CarUpdateImage">Image</label>
+                                <input class="form-control" id="CarUpdateImage" type="file" name="carImage">
+                                <span class="control-error" id="lblUpdateimage"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="carAddUpdateBtn">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update car Modal end-->
+
     <section class="row">
         <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
             <div class=" bg-light border shadow rounded-3 p-4">
@@ -361,7 +449,7 @@
 
                     let row = `<tr>
 
-                        <td>${regNo}</td>
+                        <td class="regNoID">${regNo}</td>
                         <td>${carModel}</td>
                         <td>${carType}</td>
                         <td>${carTransmission}</td>
@@ -375,7 +463,8 @@
                         <td>${available}</td>
                         <td>${status}</td>
 
-                        <td><i class="fa-solid fa-pen-to-square"></i><i class="fa-solid fa-trash" style="margin-left: 10px"></i></td>
+             <td><i class="editIconCar fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#carEditModal"></i>
+                 <i class="deleteIconCar fa-solid fa-trash" style="margin-left: 10px"></i></td>
 
                         </tr>`;
 
@@ -383,7 +472,7 @@
 
                     $("#tblCar").append(row);
                 }
-                // bindRowClickEvents();
+                bindRowClickEvents();
                 // setTextFieldValues("", "", "", "");
             },
             error: function (error) {
@@ -392,6 +481,139 @@
             }
         });
     }
+
+
+    function bindRowClickEvents() {
+        $(".editIconCar").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var searchID = row.find(".regNoID").text();
+
+            if (searchID!=null){
+                $.ajax({
+                    url: baseUrl+"car",
+                    success: function (res) {
+                        for (let c of res.data) {
+
+                            if (c.regNo == searchID) {
+                                $('#txtUpdateRegNo').val(c.regNo);
+                                $('#txtUpdateCarModel').val(c.carModel);
+                                $('#txtUpdateCarType').val(c.carType);
+                                $('#txtUpdateTransmission').val(c.carTransmission);
+                                $('#txtUpdateFuelType').val(c.fuelType);
+                                $('#txtUpdateCarColor').val(c.carColor);
+                                $('#txtUpdatePassenger').val(c.passenger);
+                                $('#txtUpdateLossDamage').val(c.lossDamage);
+                                $('#txtUpdateDailyRate').val(c.dailyRate);
+                                $('#txtUpdateMonthlyRate').val(c.monthlyRate);
+                                $('#txtUpdateExtraKm').val(c.extraKm);
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+
+            }else {
+                alert("No such customer to edit. please try Again");
+            }
+        });
+
+        $(".deleteIconCar").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var id = row.find(".regNoID").text();
+
+            let option = confirm("Do you really want to delete Car regNo :" + id);
+
+            if (option){
+                $.ajax({
+                    url: baseUrl+"car?id=" + id,
+                    method: "delete",
+                    success: function (resp) {
+                        getAllCars();
+                        alert(resp.message);
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+            }
+        });
+    }
+
+    $("#carAddUpdateBtn").click(function () {
+        let res = confirm("Do you want to add this Update Car.?");
+        if (res) {
+
+            let regNo =$('#txtUpdateRegNo').val();
+            let carModel =$('#txtUpdateCarModel').val();
+            let carType =$('#txtUpdateCarType').val();
+            let carTransmission =$('#txtUpdateTransmission').val();
+            let fuelType =$('#txtUpdateFuelType').val();
+            let carColor =$('#txtUpdateCarColor').val();
+            let passenger =$('#txtUpdatePassenger').val();
+            let lossDamage =$('#txtUpdateLossDamage').val();
+            let dailyRate =$('#txtUpdateDailyRate').val();
+            let monthlyRate =$('#txtUpdateMonthlyRate').val();
+            let extraKm =$('#txtUpdateExtraKm').val();
+
+
+            var carOb = {
+                regNo: regNo,
+                carModel: carModel,
+                carType: carType,
+                carTransmission: carTransmission,
+                fuelType: fuelType,
+                carColor: carColor,
+                passenger: passenger,
+                lossDamage: lossDamage,
+                dailyRate: dailyRate,
+                monthlyRate: monthlyRate,
+                extraKm: extraKm
+            }
+
+            $.ajax({
+                url: baseUrl+"car",
+                method: "put",
+                contentType: "application/json",
+                data: JSON.stringify(carOb),
+                dataType: "json",
+                success: function (resp) {
+                    getAllCars();
+                    alert(resp.message);
+                },
+                error: function (error) {
+                    let message = JSON.parse(error.responseText).message;
+                    alert(message);
+                }
+            });
+
+        }else {
+            alert("Update Failed..!");
+        }
+    });
+
+
+    // car seach bar
+    $(document).ready(function (){
+        $("#searchCarInput").on('keyup',function (){
+            var value = $(this).val().toLowerCase();
+
+            $("#tblCar>tr").filter(function (){
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
 
 </script>
 </body>
