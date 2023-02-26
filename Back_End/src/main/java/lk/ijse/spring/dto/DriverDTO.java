@@ -11,5 +11,4 @@ import lombok.ToString;
 @Data
 public class DriverDTO {
     private String driverID;
-
 }

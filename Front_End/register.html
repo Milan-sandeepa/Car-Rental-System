@@ -129,11 +129,6 @@
                     <span class="input-group-text"><i class="fa fa-lock"></i></span>
                     <input type="password" class="form-control" placeholder="Password" id="txtUserPwd" name="userPwd">
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                    <input type="password" class="form-control" placeholder="Conform Password" id="txtUserConPwd"
-                           name="userConPwd">
-                </div>
                 <div class="d-grid mb-3">
                     <button type="button" class="btn btn-primary" id="btnUser">SignUp Now</button>
                     <p class="text-center text-muted mt-2">When You Register by Clicking Signup Button, You Agree to our
@@ -182,15 +177,15 @@
         let contact = $("#txtUserContact").val();
         let email = $("#txtUserEmail").val();
         let nicNo = $("#txtUserNic").val();
-        let pass = $("#txtUserPwd").val();
+        let userPwd = $("#txtUserPwd").val();
 
         formData.append("name",name);
         formData.append("gender",gender);
         formData.append("address",address);
         formData.append("contact",contact);
         formData.append("email",email);
-        formData.append("nic/licenseNo",nicNo);
-        formData.append("pass",pass);
+        formData.append("nicNo",nicNo);
+        formData.append("userPwd",userPwd);
 
         let file1 = $("#file-1")[0].files[0];
         let fileName1 = $("#file-1")[0].files[0].name;
@@ -198,7 +193,7 @@
         formData.append("nic/licensePhoto",file1,fileName1);
 
         $.ajax({
-            url: baseUrl + "user",
+            url: baseUrl + "customer",
             method: "post",
             data: formData,
             dataType: "json",

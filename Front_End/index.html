@@ -75,11 +75,11 @@
                         <form id="btnLoginForm">
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="text" class="form-control" placeholder="User Name" id="txtUserName">
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input type="password" class="form-control" placeholder="Password" id="txtPassword">
                             </div>
                             <div class="d-grid mb-3">
                                 <button id="btnLogin" type="button" class="btn btn-primary">Sign In</button>
@@ -457,20 +457,43 @@
     let baseUrl="http://localhost:8080/Car_Rental_System_war/";
 
     $("#btnLogin").click(function () {
-        let formData = $("#btnLoginForm").serialize();
+        let userName = $("#txtUserName").val();
+        let password = $("#txtPassword").val();
+
         $.ajax({
             url: baseUrl+"login",
-            method: "post",
-            data: formData,
-            dataType: "json",
             success: function (res) {
                 // invoked if the response status code is in 200 range
-                console.log("Success Method Invoked")
-                console.log(res);
-                $("#btnProfile").css("display","block");
-                $("#btnLoginHome").css("display","none");
-                $("#btnRegister").css("display","none");
-                window.location.replace("userDashboard.html");
+                for (let u of res.data) {
+
+                    if (u.username==userName && u.password==password && u.role=="Guest"){
+                        console.log(userName);
+                        console.log("wade hari")
+                        $("#btnProfile").css("display","block");
+                        $("#btnLoginHome").css("display","none");
+                        $("#btnRegister").css("display","none");
+                        window.open("userDashboard.html", '_self');
+                    }
+
+                    if(u.username==userName && u.password==password && u.role=="Admin"){
+                        console.log(userName);
+                        console.log("wade hari")
+                        $("#btnProfile").css("display","block");
+                        $("#btnLoginHome").css("display","none");
+                        $("#btnRegister").css("display","none");
+                        window.open("adminDashboard.html", '_self');
+                    }
+                    if(u.username==userName && u.password==password && u.role=="Driver"){
+                        console.log(userName);
+                        console.log("wade hari")
+                        $("#btnProfile").css("display","block");
+                        $("#btnLoginHome").css("display","none");
+                        $("#btnRegister").css("display","none");
+                        window.open("driverDashboard.html", '_self');
+                    }
+                }
+
+                // window.location.replace("userDashboard.html");
             },
             error: function (error) {
                 // invokes if status code range is 500 range or 400 range

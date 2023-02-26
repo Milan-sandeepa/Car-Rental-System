@@ -71,7 +71,7 @@ public class CarController {
     }
 
     @GetMapping(path = "/{regNo}")
-    public ResponseUtil searchCustomerByName(@PathVariable String regNo){
+    public ResponseUtil searchCarByName(@PathVariable String regNo){
         return new ResponseUtil("OK","Successfully Loaded. :" ,carService.searchCarWithRegNo(regNo));
     }
 

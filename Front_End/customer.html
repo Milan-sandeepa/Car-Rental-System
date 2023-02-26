@@ -325,8 +325,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">NIC/LICENSE No</th>
                                 <th scope="col">Photo</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
@@ -384,7 +382,7 @@
         formData.append("nic/licensePhoto",file1,fileName1);
 
         $.ajax({
-            url: baseUrl + "user",
+            url: baseUrl + "customer",
             method: "post",
             data: formData,
             dataType: "json",
@@ -416,7 +414,7 @@
         console.log("success load");
         $("#tblCustomer").empty();
         $.ajax({
-            url: baseUrl+"user",
+            url: baseUrl+"customer",
             success: function (res) {
                 for (let c of res.data) {
                     let name = c.name;
@@ -424,13 +422,13 @@
                     let address = c.address;
                     let contact = c.contact;
                     let email = c.email;
-                    let nic_licenseNo = c.nic_licenseNo;
-                    let nic_licensePhoto = c.nic_licensePhoto;
+                    let nicNo = c.nicNo;
+                    let nic_Photo = c.nic_Photo;
                     let userPwd = c.userPwd;
                     let role = c.role;
-                    let status = c.status;
+                    // let status = c.status;
 
-                    console.log(nic_licensePhoto);
+                    console.log(c);
 
                     let row = `<tr>
 
@@ -438,12 +436,10 @@
                         <td>${gender}</td>
                         <td>${address}</td>
                         <td>${contact}</td>
-                        <td class="email">${email}</td>
-                        <td>${nic_licenseNo}</td>
-                        <td><img src="${baseUrl + nic_licensePhoto}" width="100px"></td>
-                        <td>${role}</td>
-                        <td>${userPwd}</td>
-                        <td>${status}</td>
+                        <td>${email}</td>
+                        <td class="nic">${nicNo}</td>
+                        <td><img src="${baseUrl + nic_Photo}" width="100px"></td>
+                        <td>${"Pending"}</td>
                         <td><i class="editIconCustomer fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#customerEditModal"></i>
                         <i class="deleteIconCustomer fa-solid fa-trash" style="margin-left: 10px"></i></td>
 
@@ -470,14 +466,15 @@
             var row = $(this).closest("tr");
 
             // Find the text
-            var searchID = row.find(".email").text();
+            var searchID = row.find(".nic").text();
 
             if (searchID!=null){
                 $.ajax({
-                    url: baseUrl+"user",
+                    url: baseUrl+"customer",
                     success: function (res) {
                         for (let c of res.data) {
-                            if (c.email == searchID) {
+                            console.log(c)
+                            if (c.nicNo == searchID) {
                                 $('#txtUpdateUserName').val(c.name);
                                 $('#txtUpdateUserGender').val(c.gender);
                                 $('#txtUpdateUserAddress').val(c.address);
@@ -506,13 +503,13 @@
             var row = $(this).closest("tr");
 
             // Find the text
-            var id = row.find(".email").text();
+            var id = row.find(".nic").text();
 
-            let option = confirm("Do you really want to delete Customer Email :" + id);
+            let option = confirm("Do you really want to delete Customer Nic :" + id);
 
             if (option){
                 $.ajax({
-                    url: baseUrl+"user?id=" + id,
+                    url: baseUrl+"customer?id=" + id,
                     method: "delete",
                     success: function (resp) {
                         getAllCustomers();

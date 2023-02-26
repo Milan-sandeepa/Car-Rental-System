@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserDTO userDTO) {
-        if (userRepo.existsById(userDTO.getEmail())) {
+        if (userRepo.existsById(userDTO.getUsername())) {
             throw new RuntimeException("User already exists");
         }
 
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserDTO userDTO) {
-        if (!userRepo.existsById(userDTO.getEmail())) {
+        if (!userRepo.existsById(userDTO.getUsername())) {
             throw new RuntimeException("Car Not exists.Please enter valid Id");
         }
 

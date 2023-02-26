@@ -107,6 +107,77 @@
         });
     }
 
+    $("#btnSignIn").click(function () {
+        // window.location.href="registeredUserHomePage.html";
+
+        $.ajax({
+            url: baseURL + "home/login",
+            dataType: "json",
+            success: function (res) {
+                let count = 0;
+                for (let x of res.data) {
+                    if (x.email === $('#emailInput').val() && x.pwd === $('#pwdInput').val()) {
+                        if (x.role === "User") {
+                            $.ajax({
+                                url: baseURL + "user/set",
+                                method: "post",
+                                data: x,
+                                success: function (resp) {
+                                    window.location.href = "registeredUserHomePage.html";
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+
+                            break;
+                        }
+                        if (x.role === "Admin") {
+                            $.ajax({
+                                url: baseURL + "admin/set",
+                                method: "post",
+                                data: x,
+                                success: function (resp) {
+                                    window.location.href = "adminDashboard.html";
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+
+                            break;
+                        }
+                        if (x.role === "Driver") {
+                            $.ajax({
+                                url: baseURL + "driver/set",
+                                method: "post",
+                                data: x,
+                                success: function (resp) {
+                                    window.location.href = "driverDashboard.html";
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            });
+
+                            break;
+                        }
+                    } else {
+                        count = count + 1;
+                        if (count === res.data.length) {
+                            alert("Your Email or Password is Incorrect...!")
+                        }
+                        continue;
+                    }
+                }
+            },
+            error: function (error) {
+                var jsObject = JSON.parse(error.responseText);
+                alert(jsObject.message);
+            }
+        });
+
+    });
 
 </script>
 </body>
