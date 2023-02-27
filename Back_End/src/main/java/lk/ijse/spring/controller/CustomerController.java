@@ -1,5 +1,6 @@
 package lk.ijse.spring.controller;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.UserDTO;
 import lk.ijse.spring.service.impl.CustomerServiceImpl;
@@ -37,8 +38,7 @@ public class CustomerController {
 
             customerDTO.setNic_Photo("uploads/"+file1.getOriginalFilename());
 
-            UserDTO userDTO = new UserDTO(customerDTO.getName(), customerDTO.getUserPwd(), "Guest");
-            customerDTO.setUserDTO(userDTO);
+            UserDTO userDTO = new UserDTO(customerDTO.getName(), customerDTO.getUserPwd(), "Admin");
             userService.saveUser(userDTO);
 
             customerService.saveCustomer(customerDTO);
@@ -62,7 +62,9 @@ public class CustomerController {
 
     @PutMapping
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO) {
-        System.out.println(customerDTO);
+        CustomerDTO customerDTO1 = customerService.searchCustomerWithNic(customerDTO.getNicNo());
+        String nic_photo = customerDTO1.getNic_Photo();
+        customerDTO.setNic_Photo(nic_photo);
 
         customerService.updateCustomer(customerDTO);
         return new ResponseUtil("Ok", customerDTO.getNicNo() + " Successfully Updated", null);
@@ -70,7 +72,11 @@ public class CustomerController {
 
     @DeleteMapping
     public ResponseUtil deleteCustomer(String id) {
+        System.out.println(id);
+
         customerService.deleteCustomer(id);
+
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
+
 }

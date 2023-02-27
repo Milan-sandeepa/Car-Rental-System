@@ -1,5 +1,6 @@
 package lk.ijse.spring.service.impl;
 
+import lk.ijse.spring.dto.CarDTO;
 import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.UserDTO;
 import lk.ijse.spring.entity.Customer;
@@ -58,7 +59,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO searchCustomerWithName(String name) {
-        return null;
+    public CustomerDTO searchCustomerWithNic(String id) {
+        return mapper.map(customerRepo.findById(id), CustomerDTO.class);
     }
 }

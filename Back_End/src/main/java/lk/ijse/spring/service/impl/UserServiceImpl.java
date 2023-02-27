@@ -1,5 +1,6 @@
 package lk.ijse.spring.service.impl;
 
+import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.UserDTO;
 import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.entity.User;
@@ -41,7 +42,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(UserDTO userDTO) {
         if (!userRepo.existsById(userDTO.getUsername())) {
-            throw new RuntimeException("Car Not exists.Please enter valid Id");
+            throw new RuntimeException("User Not exists.Please enter valid Id");
         }
 
 

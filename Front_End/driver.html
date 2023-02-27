@@ -139,53 +139,115 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+
                     <form id="driverAddForm">
-                        <div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverId">DriverID</label>
-                                <input class="form-control" id="txtDriverId" type="text">
-                                <span class="control-error" id="lblDriverId"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverName">Name</label>
-                                <input class="form-control" id="txtDriverName" type="text">
-                                <span class="control-error" id="lblDriverName"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverLicenNo">Driver Licen No</label>
-                                <input class="form-control" id="txtDriverLicenNo" type="text">
-                                <span class="control-error" id="lblDriverLicenNo"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverAddress">Address</label>
-                                <input class="form-control" id="txtDriverAddress" type="text">
-                                <span class="control-error" id="lblDriverAddress"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverGender">Gender</label>
-                                <input class="form-control" id="txtDriverGender" type="text">
-                                <span class="control-error" id="lblDriverGender"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverContact">Contact</label>
-                                <input class="form-control" id="txtDriverContact" type="text">
-                                <span class="control-error" id="lblDriverContact"></span>
-                            </div>
-                            <div class="form-group ms-2 me-2">
-                                <label for="txtDriverEmail">Email</label>
-                                <input class="form-control" id="txtDriverEmail" type="text">
-                                <span class="control-error" id="lblDriverEmail"></span>
-                            </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="DriverID" id="txtDriverId" name="driverID">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtDriverName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Driver License No" id="txtDriverLicenseNo" name="licenseNo">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtDriverAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtDriverGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact" id="txtDriverContact" name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtDriverEmail" name="email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtDriverPass" name="password">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverAddBtn">Add</button>
                         </div>
                     </form>
+
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverAddBtn">Add</button>
-                </div>
+
             </div>
         </div>
     </div>
     <!--Add Driver Modal end-->
+
+    <!--Update Driver Modal -->
+    <div class="modal fade" id="driverEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">Update Driver</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="driverUpdateForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="DriverID" id="txtUpdateDriverId" name="driverID">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtUpdateDriverName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Driver License No" id="txtUpdateDriverLicenseNo" name="licenseNo">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtUpdateDriverAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtUpdateDriverGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact" id="txtUpdateDriverContact" name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtUpdateDriverEmail" name="email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtUpdateDriverPass" name="password">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverUpdateBtn">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update Driver Modal end-->
 
     <section class="row">
         <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
@@ -230,5 +292,218 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
+
+<script>
+    let baseUrl="http://localhost:8080/Car_Rental_System_war/";
+
+    getAllDrivers();
+
+    //Add Driver
+    $("#driverAddBtn").click(function () {
+        let formData = $("#driverAddForm").serialize();
+        $.ajax({
+            url: baseUrl+"driver",
+            method: "post",
+            data: formData,
+            dataType: "json",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                console.log("Success Method Invoked")
+                console.log(res);
+                alert(res.message);
+                getAllDrivers();
+            },
+            error: function (error) {
+                // invokes if status code range is 500 range or 400 range
+                console.log("Error Method Invoked");
+                console.log(JSON.parse(error.responseText));
+                alert(JSON.parse(error.responseText).message);
+
+            }
+        });
+
+    });
+
+    // Get all Driver Function
+    function getAllDrivers() {
+        $("#tblDriver").empty();
+        $.ajax({
+            url: baseUrl+"driver",
+            success: function (res) {
+                for (let c of res.data) {
+                    let driverID = c.driverID;
+                    let name = c.name;
+                    let licenseNo = c.licenseNo;
+                    let address = c.address;
+                    let gender = c.gender;
+                    let contact = c.contact;
+                    let email = c.email;
+                    let password = c.password;
+
+                    let row = `<tr>
+
+                        <td class="driverID">${driverID}</td>
+                        <td class="name">${name}</td>
+                        <td>${licenseNo}</td>
+                        <td>${address}</td>
+                        <td>${gender}</td>
+                        <td >${contact}</td>
+                        <td >${email}</td>
+                        <td><i class="editIconDriver fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#driverEditModal"></i>
+                        <i class="deleteIconDriver fa-solid fa-trash" style="margin-left: 10px"></i></td>
+
+                        </tr>`;
+
+                    $("#tblDriver").append(row);
+                }
+                bindRowClickEvents();
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    function bindRowClickEvents() {
+        $(".editIconDriver").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var searchID = row.find(".driverID").text();
+
+
+            if (searchID!=null){
+                $.ajax({
+                    url: baseUrl+"driver",
+                    success: function (res) {
+                        for (let c of res.data) {
+
+                            if (c.driverID == searchID) {
+                                $('#txtUpdateDriverId').val(c.driverID);
+                                $('#txtUpdateDriverName').val(c.name);
+                                $('#txtUpdateDriverLicenseNo').val(c.licenseNo);
+                                $('#txtUpdateDriverAddress').val(c.address);
+                                $('#txtUpdateDriverGender').val(c.gender);
+                                $('#txtUpdateDriverContact').val(c.contact);
+                                $('#txtUpdateDriverEmail').val(c.email);
+                                // $('#txtUpdateUserConPwd').val(c.userPwd);
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+
+
+
+            }else {
+                alert("No such Driver to edit. please try Again");
+            }
+
+            var searchName = row.find(".name").text();
+            if (searchID!=null){
+                $.ajax({
+                    url: baseUrl+"user",
+                    success: function (res) {
+                        for (let c of res.data) {
+                            console.log(c)
+                            if (c.username == searchName) {
+                                $('#txtUpdateDriverPass').val(c.password);
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+
+
+
+            }else {
+                alert("No such customer to edit. please try Again");
+            }
+
+        });
+
+        $(".deleteIconDriver").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var id = row.find(".driverID").text();
+
+            let option = confirm("Do you really want to delete Driver Id :" + id);
+
+            if (option){
+                $.ajax({
+                    url: baseUrl+"driver?id=" + id,
+                    method: "delete",
+                    success: function (resp) {
+                        getAllDrivers();
+                        alert(resp.message);
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+            }
+        });
+    }
+
+    $("#driverUpdateBtn").click(function () {
+        let res = confirm("Do you want to add this Update Driver.?");
+        if (res) {
+
+            let driverID =$('#txtUpdateDriverId').val();
+            let name =$('#txtUpdateDriverName').val();
+            let licenseNo =$('#txtUpdateDriverLicenseNo').val();
+            let address =$('#txtUpdateDriverAddress').val();
+            let gender =$('#txtUpdateDriverGender').val();
+            let contact =$('#txtUpdateDriverContact').val();
+            let email =$('#txtUpdateDriverEmail').val();
+            let password =$('#txtUpdateDriverPass').val();
+
+
+            var driverOb = {
+                driverID: driverID,
+                name: name,
+                licenseNo: licenseNo,
+                address: address,
+                gender: gender,
+                contact: contact,
+                email: email,
+                password: password,
+            }
+
+            $.ajax({
+                url: baseUrl+"driver",
+                method: "put",
+                contentType: "application/json",
+                data: JSON.stringify(driverOb),
+                dataType: "json",
+                success: function (resp) {
+                    getAllDrivers();
+                    alert(resp.message);
+                },
+                error: function (error) {
+                    let message = JSON.parse(error.responseText).message;
+                    alert(message);
+                }
+            });
+
+        }else {
+            alert("Update Failed..!");
+        }
+    });
+
+</script>
 </body>
 </html>

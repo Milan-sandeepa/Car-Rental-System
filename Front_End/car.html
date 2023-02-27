@@ -426,7 +426,6 @@
     //Get all Cars Function
     function getAllCars() {
         console.log("success load");
-        $("#tblCar").empty();
         $.ajax({
             url: baseUrl+"car",
             success: function (res) {

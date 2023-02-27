@@ -5,10 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
@@ -25,6 +22,7 @@ public class Customer {
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "role", referencedColumnName = "role")
     private User user;
 
     private String nicImage;

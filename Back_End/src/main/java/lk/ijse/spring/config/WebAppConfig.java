@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {AppWideExceptionHandler.class, AdminController.class, UserController.class, LoginController.class, CarController.class, CustomerController.class})
+@ComponentScan(basePackageClasses = {AppWideExceptionHandler.class, AdminController.class, UserController.class, LoginController.class, CarController.class, CustomerController.class,DriverController.class})
 public class WebAppConfig implements WebMvcConfigurer {
 
     @Bean

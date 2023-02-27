@@ -14,5 +14,5 @@ public interface CustomerService {
 
     public ArrayList<CustomerDTO> getAllCustomer();
 
-    public CustomerDTO searchCustomerWithName(String name);
+    public CustomerDTO searchCustomerWithNic(String id);
 }

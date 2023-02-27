@@ -27,7 +27,7 @@ public class CarDTO {
     private double extraKm;
     private MultipartFile carImage;
     private String carImageUrl;
-    private String available="good";
+    private String available="Available";
     private String status="Active";
 
 }

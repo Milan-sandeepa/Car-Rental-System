@@ -68,6 +68,4 @@ public class CarController {
     public ResponseUtil searchCarByName(@PathVariable String regNo){
         return new ResponseUtil("OK","Successfully Loaded. :" ,carService.searchCarWithRegNo(regNo));
     }
-
-
 }
