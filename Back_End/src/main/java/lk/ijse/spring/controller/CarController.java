@@ -21,32 +21,24 @@ public class CarController {
     @Autowired
     CarServiceImpl carService;
 
-    @PostMapping
-    public ResponseUtil saveCar(CarDTO carDTO) {
+    @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
+    public ResponseUtil saveCar(CarDTO carDTO,@RequestPart("carImage") MultipartFile file1) {
 
-//        @RequestPart("regNo") String regNo,@RequestPart("carModel") String carModel, @RequestPart("carType") String carType,
-//        @RequestPart("carTransmission") String carTransmission, @RequestPart("fuelType") String fuelType, @RequestPart("carColor") String carColor,
-//        @RequestPart("passenger") int passenger, @RequestPart("lossDamage") double lossDamage,@RequestPart("dailyRate") double dailyRate,
-//        @RequestPart("monthlyRate")double monthlyRate, @RequestPart("extraKm") double extraKm,@RequestPart("available") String available,@RequestPart("status") String status
-//            ,@RequestPart("carImage") MultipartFile file1
+        try {
+            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
+            File uploadsDir = new File(projectPath + "/uploads");
+//            System.out.println(projectPath);
+            uploadsDir.mkdir();
+            file1.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file1.getOriginalFilename()));
 
+            carDTO.setCarImageUrl("uploads/"+file1.getOriginalFilename());
+            carService.saveCar(carDTO);
 
-//        try {
-//            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-//            File uploadsDir = new File(projectPath + "/uploads/car");
-////            System.out.println(projectPath);
-//            uploadsDir.mkdir();
-//            file1.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + file1.getOriginalFilename()));
-//
-//            carDTO.setCarImage("uploads/car"+file1.getOriginalFilename());
-//            carService.saveCar(carDTO);
-//
-//        } catch (IOException | URISyntaxException e) {
-//            e.printStackTrace();
-//            return new ResponseUtil("Ok", "Successfully Saved", null);
-//        }
+        } catch (IOException | URISyntaxException e) {
+            e.printStackTrace();
+            return new ResponseUtil("Ok", "Successfully Saved", null);
+        }
 
-        carService.saveCar(carDTO);
         System.out.println(carDTO);
         return new ResponseUtil("Ok", "Successfully Saved", null);
 
@@ -59,7 +51,9 @@ public class CarController {
 
     @PutMapping
     public ResponseUtil updateCar(@RequestBody CarDTO carDTO) {
-
+        CarDTO carDTO1 = carService.searchCarWithRegNo(carDTO.getRegNo());
+        String carImageUrl = carDTO1.getCarImageUrl();
+        carDTO.setCarImageUrl(carImageUrl);
         carService.updateCar(carDTO);
         return new ResponseUtil("Ok", carDTO.getRegNo() + " Successfully Updated", null);
     }

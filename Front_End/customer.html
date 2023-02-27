@@ -180,11 +180,6 @@
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control" placeholder="Password" id="txtUserPwd" name="userPwd">
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" placeholder="Conform Password" id="txtUserConPwd"
-                                   name="userConPwd">
-                        </div>
                     </form>
 
 <!--                    <form id="customerAddForm">-->
@@ -291,11 +286,6 @@
                             <span class="input-group-text"><i class="fa fa-lock"></i></span>
                             <input type="password" class="form-control" placeholder="Password" id="txtUpdateUserPwd" name="userPwd">
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" placeholder="Conform Password" id="txtUpdateUserConPwd"
-                                   name="userConPwd">
-                        </div>
                         <div class="modal-footer">
                             <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerUpdateBtn">Update</button>
                         </div>
@@ -325,7 +315,6 @@
                                 <th scope="col">Email</th>
                                 <th scope="col">NIC/LICENSE No</th>
                                 <th scope="col">Photo</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                             </thead>
@@ -366,15 +355,15 @@
         let contact = $("#txtUserContact").val();
         let email = $("#txtUserEmail").val();
         let nicNo = $("#txtUserNic").val();
-        let pass = $("#txtUserPwd").val();
+        let userPwd = $("#txtUserPwd").val();
 
         formData.append("name",name);
         formData.append("gender",gender);
         formData.append("address",address);
         formData.append("contact",contact);
         formData.append("email",email);
-        formData.append("nic/licenseNo",nicNo);
-        formData.append("pass",pass);
+        formData.append("nicNo",nicNo);
+        formData.append("userPwd",userPwd);
 
         let file1 = $("#file-1")[0].files[0];
         let fileName1 = $("#file-1")[0].files[0].name;
@@ -413,6 +402,7 @@
     function getAllCustomers() {
         console.log("success load");
         $("#tblCustomer").empty();
+
         $.ajax({
             url: baseUrl+"customer",
             success: function (res) {
@@ -424,22 +414,17 @@
                     let email = c.email;
                     let nicNo = c.nicNo;
                     let nic_Photo = c.nic_Photo;
-                    let userPwd = c.userPwd;
-                    let role = c.role;
-                    // let status = c.status;
-
-                    console.log(c);
 
                     let row = `<tr>
 
-                        <td>${name}</td>
+                        <td class="name">${name}</td>
                         <td>${gender}</td>
                         <td>${address}</td>
                         <td>${contact}</td>
                         <td>${email}</td>
                         <td class="nic">${nicNo}</td>
                         <td><img src="${baseUrl + nic_Photo}" width="100px"></td>
-                        <td>${"Pending"}</td>
+
                         <td><i class="editIconCustomer fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#customerEditModal"></i>
                         <i class="deleteIconCustomer fa-solid fa-trash" style="margin-left: 10px"></i></td>
 
@@ -468,6 +453,7 @@
             // Find the text
             var searchID = row.find(".nic").text();
 
+
             if (searchID!=null){
                 $.ajax({
                     url: baseUrl+"customer",
@@ -480,9 +466,9 @@
                                 $('#txtUpdateUserAddress').val(c.address);
                                 $('#txtUpdateUserContact').val(c.contact);
                                 $('#txtUpdateUserEmail').val(c.email);
-                                $('#txtUpdateUserNic').val(c.nic_licenseNo);
-                                $('#txtUpdateUserPwd').val(c.userPwd);
-                                $('#txtUpdateUserConPwd').val(c.userPwd);
+                                $('#txtUpdateUserNic').val(c.nicNo);
+                                // $('#txtUpdateUserPwd').val(c.userPwd);
+                                // $('#txtUpdateUserConPwd').val(c.userPwd);
                             }
                         }
                     },
@@ -492,9 +478,36 @@
                     }
                 });
 
+
+
             }else {
                 alert("No such customer to edit. please try Again");
             }
+
+            var searchName = row.find(".name").text();
+            if (searchID!=null){
+                $.ajax({
+                    url: baseUrl+"user",
+                    success: function (res) {
+                        for (let c of res.data) {
+                            if (c.username == searchName) {
+
+                                $('#txtUpdateUserPwd').val(c.password);
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+
+
+
+            }else {
+                alert("No such customer to edit. please try Again");
+            }
+
         });
 
         $(".deleteIconCustomer").click(function () {
@@ -535,7 +548,6 @@
             let email =$('#txtUpdateUserEmail').val();
             let nic_licenseNo =$('#txtUpdateUserNic').val();
             let userPwd =$('#txtUpdateUserPwd').val();
-            let role =$('#txtUpdateUserConPwd').val();
 
 
             var customerOb = {
@@ -544,13 +556,12 @@
                 address: address,
                 contact: contact,
                 email: email,
-                nic_licenseNo: nic_licenseNo,
+                nicNo: nic_licenseNo,
                 userPwd: userPwd,
-                role: role
             }
 
             $.ajax({
-                url: baseUrl+"user",
+                url: baseUrl+"customer",
                 method: "put",
                 contentType: "application/json",
                 data: JSON.stringify(customerOb),

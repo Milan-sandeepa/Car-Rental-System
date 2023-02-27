@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.Id;
 
@@ -24,7 +25,9 @@ public class CarDTO {
     private double dailyRate;
     private double monthlyRate;
     private double extraKm;
-    private String carImage;
+    private MultipartFile carImage;
+    private String carImageUrl;
     private String available="good";
     private String status="Active";
+
 }

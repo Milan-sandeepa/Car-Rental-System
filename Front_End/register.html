@@ -62,14 +62,14 @@
                 <form action="#">
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fa fa-envelope"></i></span>
-                        <input type="text" class="form-control" placeholder="Email">
+                        <input id="txtUserNameR" type="text" class="form-control" placeholder="User Name">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input id="txtPasswordR" type="password" class="form-control" placeholder="Password">
                     </div>
                     <div class="d-grid mb-3">
-                        <button type="button" class="btn btn-primary">Sign In</button>
+                        <button type="button" class="btn btn-primary" id="btnLogin">Sign In</button>
                         <p class="text-center mt-3">
                             Register Now for Free by clicking <a href="register.html">Register Now</a> Button
                         </p>
@@ -208,6 +208,56 @@
                 alert(res.message);
                 // getAllCustomers();
 
+            },
+            error: function (error) {
+                // invokes if status code range is 500 range or 400 range
+                console.log("Error Method Invoked");
+                console.log(JSON.parse(error.responseText));
+                alert(JSON.parse(error.responseText).message);
+
+            }
+        });
+
+    });
+
+    $("#btnLogin").click(function () {
+        let userName = $("#txtUserNameR").val();
+        let password = $("#txtPasswordR").val();
+
+        $.ajax({
+            url: baseUrl+"login",
+            success: function (res) {
+                // invoked if the response status code is in 200 range
+                for (let u of res.data) {
+
+                    if (u.username==userName && u.password==password && u.role=="Guest"){
+                        console.log(userName);
+                        console.log("wade hari")
+                        $("#btnProfile").css("display","block");
+                        $("#btnLoginHome").css("display","none");
+                        $("#btnRegister").css("display","none");
+                        window.open("userDashboard.html", '_self');
+                    }
+
+                    if(u.username==userName && u.password==password && u.role=="Admin"){
+                        console.log(userName);
+                        console.log("wade hari")
+                        $("#btnProfile").css("display","block");
+                        $("#btnLoginHome").css("display","none");
+                        $("#btnRegister").css("display","none");
+                        window.open("adminDashboard.html", '_self');
+                    }
+                    if(u.username==userName && u.password==password && u.role=="Driver"){
+                        console.log(userName);
+                        console.log("wade hari")
+                        $("#btnProfile").css("display","block");
+                        $("#btnLoginHome").css("display","none");
+                        $("#btnRegister").css("display","none");
+                        window.open("driverDashboard.html", '_self');
+                    }
+                }
+
+                // window.location.replace("userDashboard.html");
             },
             error: function (error) {
                 // invokes if status code range is 500 range or 400 range

@@ -26,7 +26,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
         if (customerRepo.existsById(customerDTO.getNicNo())) {
-            throw new RuntimeException("User already exists");
+            throw new RuntimeException("Customer already exists");
         }
 
         Customer map = mapper.map(customerDTO, Customer.class);
@@ -43,10 +43,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
-        if (!customerRepo.existsById(customerDTO.getEmail())) {
-            throw new RuntimeException("Car Not exists.Please enter valid Id");
+        if (!customerRepo.existsById(customerDTO.getNicNo())) {
+            throw new RuntimeException("Customer Not exists.Please enter valid Id");
         }
-
 
         Customer map = mapper.map(customerDTO, Customer.class);
         customerRepo.save(map);

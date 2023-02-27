@@ -329,6 +329,7 @@
                                 <th scope="col">Daily rate</th>
                                 <th scope="col">Monthly rate</th>
                                 <th scope="col">Extra Km Price</th>
+                                <th scope="col">Image</th>
                                 <th scope="col">Available</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Action</th>
@@ -364,47 +365,47 @@
     //Add Car
     $("#carAddBtn").click(function () {
 
-        let formData = $("#carAddForm").serialize();
-        // let formData = new FormData();
+        // let formData = $("#carAddForm").serialize();
+        let formData = new FormData();
+
+        let regNo = $("#txtRegNo").val();
+        let carModel = $("#txtCarModel").val();
+        let carType = $("#txtCarType").val();
+        let transmission = $("#txtTransmission").val();
+        let fuelType = $("#txtFuelType").val();
+        let carColor = $("#txtCarColor").val();
+        let passengers = $("#txtPassenger").val();
+        let lossDamage = $("#txtLossDamage").val();
+        let dailyRate = $("#txtDailyRate").val();
+        let monthlyRate = $("#txtMonthlyRate").val();
+        let extraKm = $("#txtExtraKm").val();
+
+        formData.append("regNo",regNo);
+        formData.append("carModel",carModel);
+        formData.append("carType",carType);
+        formData.append("carTransmission",transmission);
+        formData.append("fuelType",fuelType);
+        formData.append("carColor",carColor);
+        formData.append("passenger",passengers);
+        formData.append("lossDamage",lossDamage);
+        formData.append("dailyRate",dailyRate);
+        formData.append("monthlyRate",monthlyRate);
+        formData.append("extraKm",extraKm);
         //
-        // let regNo = $("#txtRegNo").val();
-        // let carModel = $("#txtCarModel").val();
-        // let carType = $("#txtCarType").val();
-        // let transmission = $("#txtTransmission").val();
-        // let fuelType = $("#txtFuelType").val();
-        // let carColor = $("#txtCarColor").val();
-        // let passengers = $("#txtPassenger").val();
-        // let lossDamage = $("#txtLossDamage").val();
-        // let dailyRate = $("#txtDailyRate").val();
-        // let monthlyRate = $("#txtMonthlyRate").val();
-        // let extraKm = $("#txtExtraKm").val();
-        //
-        // formData.append("regNo",regNo);
-        // formData.append("carModel",carModel);
-        // formData.append("carType",carType);
-        // formData.append("carTransmission",transmission);
-        // formData.append("fuelType",fuelType);
-        // formData.append("carColor",carColor);
-        // formData.append("passenger",passengers);
-        // formData.append("lossDamage",lossDamage);
-        // formData.append("dailyRate",dailyRate);
-        // formData.append("monthlyRate",monthlyRate);
-        // formData.append("extraKm",extraKm);
-        // //
-        // let file1 = $("#CarImage")[0].files[0];
-        // let fileName1 = $("#CarImage")[0].files[0].name;
-        //
-        // formData.append("carImage",file1,fileName1);
+        let file1 = $("#CarImage")[0].files[0];
+        let fileName1 = $("#CarImage")[0].files[0].name;
+
+        formData.append("carImage",file1,fileName1);
 
         $.ajax({
             url: baseUrl + "car",
             method: "post",
             data: formData,
             dataType: "json",
-            // async: true,
-            // contentType: false,
-            // processData: false,
-            // enctype:"multipart/form-data",
+            async: true,
+            contentType: false,
+            processData: false,
+            enctype:"multipart/form-data",
             success: function (res) {
                 // invoked if the response status code is in 200 range
                 console.log("Success Method Invoked")
@@ -418,7 +419,6 @@
                 console.log("Error Method Invoked");
                 console.log(JSON.parse(error.responseText));
                 alert(JSON.parse(error.responseText).message);
-
             }
         });
     });
@@ -443,7 +443,7 @@
                     let dailyRate = c.dailyRate;
                     let monthlyRate = c.monthlyRate;
                     let extraKm = c.extraKm;
-                    let carImage = c.carImage;
+                    let carImage = c.carImageUrl;
                     let available = c.available;
                     let status = c.status;
 
@@ -460,6 +460,7 @@
                         <td>${dailyRate}</td>
                         <td>${monthlyRate}</td>
                         <td>${extraKm}</td>
+                        <td><img src="${baseUrl + carImage}" width="100px"></td>
                         <td>${available}</td>
                         <td>${status}</td>
 

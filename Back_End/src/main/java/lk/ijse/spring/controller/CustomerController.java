@@ -37,11 +37,11 @@ public class CustomerController {
 
             customerDTO.setNic_Photo("uploads/"+file1.getOriginalFilename());
 
-            customerService.saveCustomer(customerDTO);
-
             UserDTO userDTO = new UserDTO(customerDTO.getName(), customerDTO.getUserPwd(), "Guest");
-
+            customerDTO.setUserDTO(userDTO);
             userService.saveUser(userDTO);
+
+            customerService.saveCustomer(customerDTO);
 
             System.out.println(userDTO);
 
@@ -62,6 +62,7 @@ public class CustomerController {
 
     @PutMapping
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO) {
+        System.out.println(customerDTO);
 
         customerService.updateCustomer(customerDTO);
         return new ResponseUtil("Ok", customerDTO.getNicNo() + " Successfully Updated", null);

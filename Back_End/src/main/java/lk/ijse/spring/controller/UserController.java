@@ -27,14 +27,10 @@ import java.util.ArrayList;
 @RequestMapping("/user")
 public class UserController {
 
-    @GetMapping
-    public ResponseUtil getUser() {
-        return new ResponseUtil("Ok", "Successfully Loaded", null);
-    }
+
+    @Autowired
+    UserServiceImpl userService;
 //
-//    @Autowired
-//    UserServiceImpl userService;
-////
 //////    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 ////    @PostMapping(consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE,MediaType.MULTIPART_FORM_DATA_VALUE})
 ////    public ResponseUtil saveUser(@RequestPart("name") String name,@RequestPart("gender") String gender, @RequestPart("address") String address,
@@ -66,11 +62,11 @@ public class UserController {
 ////        return new ResponseUtil("Ok", "Successfully Saved", null);
 ////    }
 //
-//    @GetMapping
-//    public ResponseUtil getCustomer() {
-//
-//        return new ResponseUtil("Ok", "Successfully Loaded", userService.getAllUser());
-//    }
+    @GetMapping
+    public ResponseUtil getUser() {
+
+        return new ResponseUtil("Ok", "Successfully Loaded", userService.getAllUser());
+    }
 //
 //    @PutMapping
 //    public ResponseUtil updateCustomer(@RequestBody UserDTO userDTO) {

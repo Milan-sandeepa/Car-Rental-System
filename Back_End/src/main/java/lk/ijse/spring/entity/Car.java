@@ -27,6 +27,7 @@ public class Car {
     private double monthlyRate;
     private double extraKm;
     private String carImage;
+    private String carImageUrl;
     private String available;
     private String status;
 }
