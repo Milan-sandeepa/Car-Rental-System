@@ -5,10 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Entity(name = "car")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -21,6 +22,7 @@ public class Car {
     private String carTransmission;
     private String fuelType;
     private String carColor;
+    private int qty;
     private int passenger;
     private double lossDamage;
     private double dailyRate;
@@ -30,4 +32,7 @@ public class Car {
     private String carImageUrl;
     private String available;
     private String status;
+
+    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private List<Reservation> resList = new ArrayList<>();
 }

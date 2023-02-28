@@ -233,8 +233,8 @@
                                 <h1>Customer Details</h1>
 
                                 <div class="form-group">
-                                    <label>Order ID :</label>
-                                    <input readonly class="form-control" id="txtReservationID" type="text">
+                                    <label>Booking ID :</label>
+                                    <input class="form-control" id="txtReservationID" type="text">
                                     <span class="control-error"
                                           id="orderId-invalid-error"></span>
                                 </div>
@@ -274,6 +274,7 @@
                                           id="ModelEmail-invalid-error"></span>
                                 </div>
                             </div>
+
                             <div class="col-xl-6">
                                 <h1>Car Details</h1>
 
@@ -314,6 +315,13 @@
                                                   id="CarFuel-invalid-error"></span>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label>Available Cars :</label>
+                                            <input readonly class="form-control" id="txtCarQty" type="text">
+                                            <span class="control-error"
+                                                  id="CarQty-invalid-error"></span>
+                                        </div>
+
                                     </div>
                                     <div>
                                         <div class="form-group">
@@ -347,15 +355,72 @@
                                 </div>
                             </div>
 
-                            <div class="col-xl-12">
-                                <div class="d-flex justify-content-end" id="selectedImage">
+                            <div class="col-xl-6">
+                                <h1>Rent Summary</h1>
+                                <div class="d-flex justify-content-around ms-3">
+                                    <div>
+                                        <div class="form-group">
+                                            <label>Rent Start Date :</label>
+                                            <input class="form-control" id="txtCarRentStartDate" type="date">
+                                            <span class="control-error"
+                                                  id="CarRentStartDate-invalid-error"></span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="form-group">
+                                            <label>Rent End Date :</label>
+                                            <input class="form-control" id="txtCarRentEndDate" type="date">
+                                            <span class="control-error"
+                                                  id="CarRentEndDate-invalid-error"></span>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div class="form-group">
+                                            <label>Car Qty :</label>
+                                            <input class="form-control" id="txtCarRentQty" type="text">
+                                            <span class="control-error"
+                                                  id="CarRentQty-invalid-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="txtSelfDrive">
+                                        <label class="form-check-label" for="txtSelfDrive">
+                                            self Drive
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="txtWithDriver" checked>
+                                        <label class="form-check-label" for="txtWithDriver">
+                                            With Driver
+                                        </label>
+                                    </div>
+
+                                    <p>Driver Charge RS.1000/= per Day Additionally</p>
+                                    <div class="col-xl-6">
+                                        <h1>Total :</h1>
+                                        <input class="form-control" id="txtTotal" type="text">
+<!--                                        <h1 id="txtTotal">00.00</h1>-->
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="d-flex justify-content-end" id="selectedImage" >
 
                                 </div>
                             </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Request</button>
+                            <button class="btn btn-primary ms-5 mt-3" id="totalCalBtn" type="button"> calculate Total</button>
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="rentRequestBtn">Request</button>
                         </div>
                     </form>
                 </div>
@@ -655,10 +720,11 @@
             $("#txtCarDailyRate").val(res[0].dailyRate);
             $("#txtCarMonthlyRate").val(res[0].monthlyRate);
             $("#txtCarExtraPriceKm").val(res[0].extraKm);
+            $("#txtCarQty").val(res[0].qty);
 
             content +=`
 
-            <img src="${baseUrl + res[0].carImageUrl}" alt="car" style="    width: 220px;height: 162px;margin-right: 30px;margin-bottom: 6x;">
+            <img src="${baseUrl + res[0].carImageUrl}" alt="car" style=" width: 415px;height: 261px;margin-right: 2px;margin-bottom: 6px;margin-top: 54px;">
 
             `
 
@@ -666,6 +732,99 @@
 
         }
     });
+
+    $("#totalCalBtn").click(function () {
+        let total=0;
+        const diffInMs=new Date($("#txtCarRentEndDate").val()) - new Date($("#txtCarRentStartDate").val());
+        const diffInDays= diffInMs/(1000 * 60 * 60 * 24);
+        const remainDays=diffInDays % 30;
+        let driverCharge = 0;
+
+        if ($("#txtWithDriver").is(":checked")){
+            driverCharge = 1000 * diffInDays;
+        }else if ($("#txtSelfDrive").is(":checked")){
+            driverCharge = 0;
+        }
+
+        let dailyRate = $("#txtCarDailyRate").val();
+        let monthlyRate = $("#txtCarMonthlyRate").val();
+        if (diffInDays<20){
+            total = dailyRate * diffInDays;
+        }else if(diffInDays>20){
+            total = monthlyRate * diffInDays/20;
+        }
+
+        let qty = $("#txtCarRentQty").val();
+        let lossdamage = $("#txtCarLossDamage").val();
+
+        let totls=lossdamage*qty;
+
+        let tot=total*qty;
+
+        $("#txtTotal").val(tot+driverCharge+totls);
+
+        // console.log(totalRent);
+        // if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
+        //     totalRent=totalRent+days*1000;
+        // }
+        // $("#bk_total").val(totalRent);
+        //
+    });
+
+    $("#rentRequestBtn").click(function () {
+        let resId = $("#txtReservationID").val();
+        let pickDate = $("#txtCarRentStartDate").val();
+        let endDate = $("#txtCarRentEndDate").val();
+        let qty = $("#txtCarRentQty").val();
+        let total = $("#txtTotal").val();
+        let status="pending"
+
+        let cusId = $("#txtUserModelNic").val();
+        // let carId = $("#selectCarCode").val();
+        let cus=getCustomerDetails(cusId);
+        // let ob={
+        //     resId:resId,
+        //     pickDate:pickDate,
+        //     returnDate:endDate,
+        //     qty:qty,
+        //     total:total,
+        //     status:status,
+        //     cus:cus,
+        // }
+        //
+        // //send request
+        // $.ajax({
+        //     url: baseUrl + "reservation",
+        //     method:"post",
+        //     dataType: "json",
+        //     data:JSON.stringify(ob),
+        //     contentType:"application/json",
+        //     success: function (resp) {
+        //         alert(resp.message);
+        //     },
+        //     error:function (error){
+        //         alert(JSON.parse(error.responseText).message);
+        //     }
+        // });
+
+    });
+
+    function getCustomerDetails(cusId) {
+        let cus ="";
+        $.ajax({
+            url: baseUrl+"customer?nicNo"+cusId,
+            success: function (res) {
+                cus=res;
+                console.log(cus);
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+
+        return cus;
+    }
 
 </script>
 </body>

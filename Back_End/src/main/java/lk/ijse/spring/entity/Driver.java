@@ -6,12 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Entity(name = "driver")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -28,4 +27,7 @@ public class Driver {
 
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
+
+    @OneToMany(mappedBy = "driver", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    private List<Reservation> resList = new ArrayList<>();
 }

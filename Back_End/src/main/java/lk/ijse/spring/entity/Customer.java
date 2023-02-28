@@ -6,8 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity
+@Entity(name = "customer")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -26,4 +28,7 @@ public class Customer {
 
     private String nicImage;
     private String nic_Photo;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    private List<Reservation> resList = new ArrayList<>();
 }

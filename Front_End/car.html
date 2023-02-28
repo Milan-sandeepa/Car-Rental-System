@@ -177,6 +177,11 @@
                                 <span class="control-error" id="lblcolor"></span>
                             </div>
                             <div class="form-group ms-2 me-2">
+                                <label for="txtCarQty">Car Qty</label>
+                                <input class="form-control" id="txtCarQty" type="text" name="qty">
+                                <span class="control-error" id="lblCarQty"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
                                 <label for="txtPassenger">No Passengers</label>
                                 <input class="form-control" id="txtPassenger" type="text" name="passenger">
                                 <span class="control-error" id="lblPassenger"></span>
@@ -265,6 +270,13 @@
                                 <input class="form-control" id="txtUpdateCarColor" type="text" name="carColor">
                                 <span class="control-error" id="lblUpdatecolor"></span>
                             </div>
+
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCarQty">Car Qty</label>
+                                <input class="form-control" id="txtUpdateCarQty" type="text" name="qty">
+                                <span class="control-error" id="lblUpdateCarQty"></span>
+                            </div>
+
                             <div class="form-group ms-2 me-2">
                                 <label for="txtUpdatePassenger">No Passengers</label>
                                 <input class="form-control" id="txtUpdatePassenger" type="text" name="passenger">
@@ -324,6 +336,7 @@
                                 <th scope="col">Transmission</th>
                                 <th scope="col">Fuel Type</th>
                                 <th scope="col">Color</th>
+                                <th scope="col">Qty</th>
                                 <th scope="col">Passengers</th>
                                 <th scope="col">Loss Damage</th>
                                 <th scope="col">Daily rate</th>
@@ -374,6 +387,7 @@
         let transmission = $("#txtTransmission").val();
         let fuelType = $("#txtFuelType").val();
         let carColor = $("#txtCarColor").val();
+        let qty = $("#txtCarQty").val();
         let passengers = $("#txtPassenger").val();
         let lossDamage = $("#txtLossDamage").val();
         let dailyRate = $("#txtDailyRate").val();
@@ -386,6 +400,7 @@
         formData.append("carTransmission",transmission);
         formData.append("fuelType",fuelType);
         formData.append("carColor",carColor);
+        formData.append("qty",qty);
         formData.append("passenger",passengers);
         formData.append("lossDamage",lossDamage);
         formData.append("dailyRate",dailyRate);
@@ -437,6 +452,7 @@
                     let carTransmission = c.carTransmission;
                     let fuelType = c.fuelType;
                     let carColor = c.carColor;
+                    let qty = c.qty;
                     let passenger = c.passenger;
                     let lossDamage = c.lossDamage;
                     let dailyRate = c.dailyRate;
@@ -454,6 +470,7 @@
                         <td>${carTransmission}</td>
                         <td>${fuelType}</td>
                         <td>${carColor}</td>
+                        <td>${qty}</td>
                         <td>${passenger}</td>
                         <td>${lossDamage}</td>
                         <td>${dailyRate}</td>
@@ -505,6 +522,7 @@
                                 $('#txtUpdateTransmission').val(c.carTransmission);
                                 $('#txtUpdateFuelType').val(c.fuelType);
                                 $('#txtUpdateCarColor').val(c.carColor);
+                                $('#txtUpdateCarQty').val(c.qty);
                                 $('#txtUpdatePassenger').val(c.passenger);
                                 $('#txtUpdateLossDamage').val(c.lossDamage);
                                 $('#txtUpdateDailyRate').val(c.dailyRate);
@@ -561,6 +579,7 @@
             let carTransmission =$('#txtUpdateTransmission').val();
             let fuelType =$('#txtUpdateFuelType').val();
             let carColor =$('#txtUpdateCarColor').val();
+            let qty =$('#txtUpdateCarQty').val();
             let passenger =$('#txtUpdatePassenger').val();
             let lossDamage =$('#txtUpdateLossDamage').val();
             let dailyRate =$('#txtUpdateDailyRate').val();
@@ -575,6 +594,7 @@
                 carTransmission: carTransmission,
                 fuelType: fuelType,
                 carColor: carColor,
+                qty: qty,
                 passenger: passenger,
                 lossDamage: lossDamage,
                 dailyRate: dailyRate,

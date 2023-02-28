@@ -78,4 +78,10 @@ public class CustomerController {
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
 
+    @GetMapping(params = "nicNo")
+    public ResponseUtil searchCustomerByNic(String nicNo){
+
+        return new ResponseUtil("OK","Successfully Loaded. :" ,customerService.searchCustomerWithNic(nicNo));
+    }
+
 }
