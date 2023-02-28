@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
 @ToString
 public class User {
     @Id
+    private String nic;
     private String username;
     private String password;
     private String role;

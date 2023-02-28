@@ -24,7 +24,7 @@ public class DriverController {
     public ResponseUtil saveDriver(DriverDTO driverDTO) {
 
         System.out.println(driverDTO);
-        UserDTO userDTO = new UserDTO(driverDTO.getDriverID(), driverDTO.getPassword(), "Driver");
+        UserDTO userDTO = new UserDTO(driverDTO.getDriverID(),driverDTO.getDriverID(), driverDTO.getPassword(), "Driver");
         userService.saveUser(userDTO);
         driverService.saveDriver(driverDTO);
 

@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @Data
 public class UserDTO {
     @Id
+    private String nic;
     private String username;
     private String password;
     private String role;

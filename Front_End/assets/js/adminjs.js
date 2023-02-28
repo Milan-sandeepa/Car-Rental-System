@@ -2,7 +2,7 @@ $(document).on('click','#sidebar li',function () {
     $(this).addClass('active').siblings().removeClass('active')
 });
 
-$("#car-section").css("display", "none");
+$("#booking-section").css("display", "none");
 $("#customer-section").css("display", "none");
 $("#driver-section").css("display", "none");
 $("#booking-section").css("display", "none");

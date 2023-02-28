@@ -22,7 +22,6 @@ public class Customer {
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "role", referencedColumnName = "role")
     private User user;
 
     private String nicImage;

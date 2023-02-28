@@ -1,5 +1,6 @@
 package lk.ijse.spring.controller;
 
+import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.DriverDTO;
 import lk.ijse.spring.dto.UserDTO;
 import lk.ijse.spring.service.impl.CarServiceImpl;
@@ -19,6 +20,9 @@ public class LoginController {
 
     @Autowired
     DriverServiceImpl driverService;
+
+    @Autowired
+    CustomerServiceImpl customerService;
 
     private String logId;
 
@@ -40,10 +44,18 @@ public class LoginController {
         return new ResponseUtil("Ok", "Successfully Loaded", userService.getAllUser());
     }
 
-    @GetMapping(path = "/user")
-    public ResponseUtil getUserDetails() {
+    @GetMapping(path = "/driver")
+    public ResponseUtil getDriverDetails() {
         DriverDTO driverDTO = driverService.searchDriverWithId(logId);
         System.out.println(driverDTO);
         return new ResponseUtil("Ok", "Successfully Loaded", driverDTO);
+    }
+
+    @GetMapping(path = "/user")
+    public ResponseUtil getUserDetails() {
+        CustomerDTO customerDTO = customerService.searchCustomerWithName(logId);
+        String nicNo = customerDTO.getNicNo();
+        CustomerDTO customerDTO1 = customerService.searchCustomerWithNic(nicNo);
+        return new ResponseUtil("Ok", "Successfully Loaded", customerDTO1);
     }
 }

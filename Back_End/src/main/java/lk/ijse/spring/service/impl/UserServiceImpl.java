@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserDTO userDTO) {
-        if (!userRepo.existsById(userDTO.getUsername())) {
+        if (!userRepo.existsById(userDTO.getNic())) {
             throw new RuntimeException("User Not exists.Please enter valid Id");
         }
 

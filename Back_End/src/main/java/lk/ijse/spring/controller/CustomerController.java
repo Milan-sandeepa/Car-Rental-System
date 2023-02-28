@@ -38,7 +38,7 @@ public class CustomerController {
 
             customerDTO.setNic_Photo("uploads/"+file1.getOriginalFilename());
 
-            UserDTO userDTO = new UserDTO(customerDTO.getName(), customerDTO.getUserPwd(), "Admin");
+            UserDTO userDTO = new UserDTO(customerDTO.getNicNo(),customerDTO.getName(), customerDTO.getUserPwd(), "Guest");
             userService.saveUser(userDTO);
 
             customerService.saveCustomer(customerDTO);
@@ -73,9 +73,8 @@ public class CustomerController {
     @DeleteMapping
     public ResponseUtil deleteCustomer(String id) {
         System.out.println(id);
-
+        userService.deleteUser(id);
         customerService.deleteCustomer(id);
-
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
 

@@ -62,4 +62,9 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDTO searchCustomerWithNic(String id) {
         return mapper.map(customerRepo.findById(id), CustomerDTO.class);
     }
+
+    @Override
+    public CustomerDTO searchCustomerWithName(String name) {
+        return mapper.map(customerRepo.findCustomerByName(name), CustomerDTO.class);
+    }
 }
