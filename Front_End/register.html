@@ -224,35 +224,83 @@
         let userName = $("#txtUserNameR").val();
         let password = $("#txtPasswordR").val();
 
+        let logId="";
+
         $.ajax({
             url: baseUrl+"login",
             success: function (res) {
                 // invoked if the response status code is in 200 range
                 for (let u of res.data) {
 
+                    console.log()
                     if (u.username==userName && u.password==password && u.role=="Guest"){
-                        console.log(userName);
-                        console.log("wade hari")
+                        logId=u.username;
                         $("#btnProfile").css("display","block");
                         $("#btnLoginHome").css("display","none");
                         $("#btnRegister").css("display","none");
+                        $.ajax({
+                            url: baseUrl+"login?id="+logId,
+                            method: "post",
+                            success: function (res) {
+                                // invoked if the response status code is in 200 range
+                                console.log(res);
+                            },
+                            error: function (error) {
+                                // invokes if status code range is 500 range or 400 range
+                                console.log("Error Method Invoked");
+                                console.log(JSON.parse(error.responseText));
+                                alert(JSON.parse(error.responseText).message);
+
+                            }
+                        });
                         window.open("userDashboard.html", '_self');
                     }
 
                     if(u.username==userName && u.password==password && u.role=="Admin"){
-                        console.log(userName);
-                        console.log("wade hari")
+                        logId=u.username;
                         $("#btnProfile").css("display","block");
                         $("#btnLoginHome").css("display","none");
                         $("#btnRegister").css("display","none");
+
+                        $.ajax({
+                            url: baseUrl+"login?id="+logId,
+                            method: "post",
+                            success: function (res) {
+                                // invoked if the response status code is in 200 range
+                                console.log(res);
+                            },
+                            error: function (error) {
+                                // invokes if status code range is 500 range or 400 range
+                                console.log("Error Method Invoked");
+                                console.log(JSON.parse(error.responseText));
+                                alert(JSON.parse(error.responseText).message);
+
+                            }
+                        });
+
+
                         window.open("adminDashboard.html", '_self');
                     }
                     if(u.username==userName && u.password==password && u.role=="Driver"){
-                        console.log(userName);
-                        console.log("wade hari")
+                        logId=u.username;
                         $("#btnProfile").css("display","block");
                         $("#btnLoginHome").css("display","none");
                         $("#btnRegister").css("display","none");
+                        $.ajax({
+                            url: baseUrl+"login?id="+logId,
+                            method: "post",
+                            success: function (res) {
+                                // invoked if the response status code is in 200 range
+                                console.log(res);
+                            },
+                            error: function (error) {
+                                // invokes if status code range is 500 range or 400 range
+                                console.log("Error Method Invoked");
+                                console.log(JSON.parse(error.responseText));
+                                alert(JSON.parse(error.responseText).message);
+
+                            }
+                        });
                         window.open("driverDashboard.html", '_self');
                     }
                 }
@@ -268,7 +316,54 @@
             }
         });
 
+
+
+        // $.ajax({
+        //     url: baseUrl+"login",
+        //     success: function (res) {
+        //         // invoked if the response status code is in 200 range
+        //         for (let u of res.data) {
+        //
+        //             if (u.username==userName && u.password==password && u.role=="Guest"){
+        //                 console.log(userName);
+        //                 console.log("wade hari")
+        //                 $("#btnProfile").css("display","block");
+        //                 $("#btnLoginHome").css("display","none");
+        //                 $("#btnRegister").css("display","none");
+        //                 window.open("userDashboard.html", '_self');
+        //             }
+        //
+        //             if(u.username==userName && u.password==password && u.role=="Admin"){
+        //                 console.log(userName);
+        //                 console.log("wade hari")
+        //                 $("#btnProfile").css("display","block");
+        //                 $("#btnLoginHome").css("display","none");
+        //                 $("#btnRegister").css("display","none");
+        //                 window.open("adminDashboard.html", '_self');
+        //             }
+        //             if(u.username==userName && u.password==password && u.role=="Driver"){
+        //                 console.log(userName);
+        //                 console.log("wade hari")
+        //                 $("#btnProfile").css("display","block");
+        //                 $("#btnLoginHome").css("display","none");
+        //                 $("#btnRegister").css("display","none");
+        //                 window.open("driverDashboard.html", '_self');
+        //             }
+        //         }
+        //
+        //         // window.location.replace("userDashboard.html");
+        //     },
+        //     error: function (error) {
+        //         // invokes if status code range is 500 range or 400 range
+        //         console.log("Error Method Invoked");
+        //         console.log(JSON.parse(error.responseText));
+        //         alert(JSON.parse(error.responseText).message);
+        //
+        //     }
+        // });
+
     });
+
 
 </script>
 </body>

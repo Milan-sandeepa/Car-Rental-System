@@ -563,9 +563,10 @@
                             }
                         });
                         window.open("userDashboard.html", '_self');
+
                     }
 
-                    if(u.username==userName && u.password==password && u.role=="Admin"){
+                if(u.username==userName && u.password==password && u.role=="Admin"){
                         logId=u.username;
                         $("#btnProfile").css("display","block");
                         $("#btnLoginHome").css("display","none");
@@ -589,8 +590,10 @@
 
 
                         window.open("adminDashboard.html", '_self');
+
                     }
-                    if(u.username==userName && u.password==password && u.role=="Driver"){
+
+                if(u.username==userName && u.password==password && u.role=="Driver"){
                         logId=u.username;
                         $("#btnProfile").css("display","block");
                         $("#btnLoginHome").css("display","none");
@@ -612,6 +615,9 @@
                         });
                         window.open("driverDashboard.html", '_self');
                     }
+
+
+
                 }
 
                 // window.location.replace("userDashboard.html");
@@ -623,8 +629,9 @@
                 alert(JSON.parse(error.responseText).message);
 
             }
-        });
 
+
+        });
 
 
     });

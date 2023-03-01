@@ -141,15 +141,7 @@
                         </tr>
                         </thead>
                         <tbody id="tblCarActive">
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -169,31 +161,15 @@
                             <th scope="col">Customer</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">End Date</th>
+                            <th scope="col">Car ID</th>
                             <th scope="col">Driver</th>
                             <th scope="col">Amount</th>
-                            <th scope="col">Option</th>
+                            <th scope="col">Status</th>
                         </tr>
                         </tr>
                         </thead>
                         <tbody id="tblCarRequest">
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">INV-0123</th>
-                            <td>Jhon Smith</td>
-                            <td>10-Sep 2022</td>
-                            <td>13-Sep 2022</td>
-                            <td>Yes</td>
-                            <td>100$</td>
-                            <td>Paid</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -234,14 +210,14 @@
 
                                 <div class="form-group">
                                     <label>Booking ID :</label>
-                                    <input class="form-control" id="txtReservationID" type="text">
+                                    <input name="resId" class="form-control" id="txtReservationID" type="text">
                                     <span class="control-error"
                                           id="orderId-invalid-error"></span>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Nic :</label>
-                                    <input readonly class="form-control" id="txtUserModelNic" type="text">
+                                    <input name="cusId" readonly class="form-control" id="txtUserModelNic" type="text">
                                     <span class="control-error"
                                           id="ModelNic-invalid-error"></span>
                                 </div>
@@ -280,7 +256,7 @@
 
                                 <div class="form-group">
                                     <label>Register ID :</label>
-                                    <select class="form-control" id="selectCarCode"></select>
+                                    <select name="carId" class="form-control" id="selectCarCode"></select>
                                     <span class="control-error"
                                           id="CarRegId-invalid-error"></span>
                                 </div>
@@ -361,7 +337,7 @@
                                     <div>
                                         <div class="form-group">
                                             <label>Rent Start Date :</label>
-                                            <input class="form-control" id="txtCarRentStartDate" type="date">
+                                            <input name="pickDate" class="form-control" id="txtCarRentStartDate" type="date">
                                             <span class="control-error"
                                                   id="CarRentStartDate-invalid-error"></span>
                                         </div>
@@ -370,7 +346,7 @@
                                     <div>
                                         <div class="form-group">
                                             <label>Rent End Date :</label>
-                                            <input class="form-control" id="txtCarRentEndDate" type="date">
+                                            <input name="returnDate" class="form-control" id="txtCarRentEndDate" type="date">
                                             <span class="control-error"
                                                   id="CarRentEndDate-invalid-error"></span>
                                         </div>
@@ -379,7 +355,7 @@
                                     <div>
                                         <div class="form-group">
                                             <label>Car Qty :</label>
-                                            <input class="form-control" id="txtCarRentQty" type="text">
+                                            <input name="qty" class="form-control" id="txtCarRentQty" type="text">
                                             <span class="control-error"
                                                   id="CarRentQty-invalid-error"></span>
                                         </div>
@@ -404,7 +380,7 @@
                                     <p>Driver Charge RS.1000/= per Day Additionally</p>
                                     <div class="col-xl-6">
                                         <h1>Total :</h1>
-                                        <input class="form-control" id="txtTotal" type="text">
+                                        <input name="total" class="form-control" id="txtTotal" type="text">
 <!--                                        <h1 id="txtTotal">00.00</h1>-->
                                     </div>
                                 </div>
@@ -452,60 +428,8 @@
                             </tr>
                             </thead>
                             <tbody id="tblCar">
-                            <tr>
-                                <th scope="row">INV-0123</th>
-                                <td>Jhon Smith</td>
-                                <td>10-Sep 2022</td>
-                                <td>13-Sep 2022</td>
-                                <td>Yes</td>
-                                <td>100$</td>
-                                <td>Paid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">INV-0123</th>
-                                <td>Jhon Smith</td>
-                                <td>10-Sep 2022</td>
-                                <td>13-Sep 2022</td>
-                                <td>Yes</td>
-                                <td>100$</td>
-                                <td>Paid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">INV-0123</th>
-                                <td>Jhon Smith</td>
-                                <td>10-Sep 2022</td>
-                                <td>13-Sep 2022</td>
-                                <td>Yes</td>
-                                <td>100$</td>
-                                <td>Paid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">INV-0123</th>
-                                <td>Jhon Smith</td>
-                                <td>10-Sep 2022</td>
-                                <td>13-Sep 2022</td>
-                                <td>Yes</td>
-                                <td>100$</td>
-                                <td>Paid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">INV-0123</th>
-                                <td>Jhon Smith</td>
-                                <td>10-Sep 2022</td>
-                                <td>13-Sep 2022</td>
-                                <td>Yes</td>
-                                <td>100$</td>
-                                <td>Paid</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">INV-0123</th>
-                                <td>Jhon Smith</td>
-                                <td>10-Sep 2022</td>
-                                <td>13-Sep 2022</td>
-                                <td>Yes</td>
-                                <td>100$</td>
-                                <td>Paid</td>
-                            </tr>
+
+
                             </tbody>
                         </table>
                     </div>
@@ -602,9 +526,16 @@
 <script>
     let baseUrl = "http://localhost:8080/Car_Rental_System_war/";
 
+    let driverID;
+    let driverNonId = "0000";
+
     loadAllDetails();
 
     loadAllCars();
+
+    loadAllDrivers();
+
+    loadRequests();
 
     function loadAllDetails() {
 
@@ -772,6 +703,9 @@
     });
 
     $("#rentRequestBtn").click(function () {
+
+        let formData = new FormData();
+
         let resId = $("#txtReservationID").val();
         let pickDate = $("#txtCarRentStartDate").val();
         let endDate = $("#txtCarRentEndDate").val();
@@ -780,50 +714,71 @@
         let status="pending"
 
         let cusId = $("#txtUserModelNic").val();
-        // let carId = $("#selectCarCode").val();
-        let cus=getCustomerDetails(cusId);
-        // let ob={
-        //     resId:resId,
-        //     pickDate:pickDate,
-        //     returnDate:endDate,
-        //     qty:qty,
-        //     total:total,
-        //     status:status,
-        //     cus:cus,
-        // }
-        //
-        // //send request
+        let carId = $("#selectCarCode").val();
+
+
+        formData.append("resId",resId);
+        formData.append("pickDate",pickDate);
+        formData.append("returnDate",endDate);
+        formData.append("qty",qty);
+        formData.append("total",total);
+        formData.append("cusId",cusId);
+        formData.append("carId",carId);
+
+        if ($("#txtWithDriver").is(":checked")){
+            formData.append("driverID",driverID);
+        }
+        if ($("#txtSelfDrive").is(":checked")){
+            formData.append("driverID",driverNonId);
+        }
+
+            $.ajax({
+                url: baseUrl + "reservation",
+                method: "post",
+                data: formData,
+                dataType: "json",
+                async: true,
+                contentType: false,
+                processData: false,
+                enctype:"multipart/form-data",
+                success: function (resp) {
+                    alert(resp.message);
+                },
+                error:function (error){
+                    alert(JSON.parse(error.responseText).message);
+                }
+            });
+
+    });
+
+
+    function loadAllDrivers() {
+        $.ajax({
+            url: baseUrl + "driver",
+            success: function (resp) {
+                driverID=resp.data[0].driverID;
+            },
+            error:function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    }
+
+
+
+    function loadRequests() {
+
         // $.ajax({
         //     url: baseUrl + "reservation",
-        //     method:"post",
+        //     method:"GET",
         //     dataType: "json",
-        //     data:JSON.stringify(ob),
-        //     contentType:"application/json",
         //     success: function (resp) {
-        //         alert(resp.message);
+        //         console.log(resp.data)
         //     },
         //     error:function (error){
         //         alert(JSON.parse(error.responseText).message);
         //     }
         // });
-
-    });
-
-    function getCustomerDetails(cusId) {
-        let cus ="";
-        $.ajax({
-            url: baseUrl+"customer?nicNo"+cusId,
-            success: function (res) {
-                cus=res;
-                console.log(cus);
-            },
-            error: function (error) {
-                let message = JSON.parse(error.responseText).message;
-                alert(message);
-            }
-        });
-
-        return cus;
     }
 
 </script>

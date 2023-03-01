@@ -56,7 +56,7 @@ public class CustomerController {
 
     @GetMapping
     public ResponseUtil getCustomer() {
-
+        System.out.println("map1");
         return new ResponseUtil("Ok", "Successfully Loaded", customerService.getAllCustomer());
     }
 
@@ -78,9 +78,9 @@ public class CustomerController {
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
 
-    @GetMapping(params = "nicNo")
-    public ResponseUtil searchCustomerByNic(String nicNo){
-
+    @GetMapping(path = "/search")
+    public ResponseUtil searchCustomerByNic(@RequestParam String nicNo){
+        System.out.println(nicNo);
         return new ResponseUtil("OK","Successfully Loaded. :" ,customerService.searchCustomerWithNic(nicNo));
     }
 

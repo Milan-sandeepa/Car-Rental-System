@@ -1,5 +1,6 @@
 package lk.ijse.spring.repo;
 
+import lk.ijse.spring.dto.ReservationDTO;
 import lk.ijse.spring.entity.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
