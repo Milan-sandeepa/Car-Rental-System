@@ -45,6 +45,7 @@ public class JPAConfig {
         ds.setUrl(env.getRequiredProperty("pro.url"));
         ds.setUsername(env.getRequiredProperty("pro.username"));
         ds.setPassword(env.getRequiredProperty("pro.password"));
+
         return ds;
     }
 

@@ -9,11 +9,12 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "customer")
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @ToString
+@Entity(name = "customer")
 public class Customer {
     @Id
     private String nicNo;
@@ -22,13 +23,22 @@ public class Customer {
     private String address;
     private String contact;
     private String email;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private User user;
-
-    private String nicImage;
     private String nic_Photo;
 
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
-    private List<Reservation> resList = new ArrayList<>();
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private User user;
+
+    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER ,cascade = CascadeType.REMOVE)
+    private List<Reservation> resList;
+
+    public Customer(String nicNo,String name,String gender,String address,String contact,String email,String nic_Photo,User user){
+        this.nicNo=nicNo;
+        this.name=name;
+        this.gender=gender;
+        this.address=address;
+        this.contact=contact;
+        this.email=email;
+        this.nic_Photo=nic_Photo;
+        this.user=user;
+    }
 }

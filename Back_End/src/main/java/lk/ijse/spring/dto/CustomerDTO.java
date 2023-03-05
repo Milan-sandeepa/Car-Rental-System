@@ -17,17 +17,14 @@ import javax.persistence.OneToOne;
 @Data
 @ToString
 public class CustomerDTO {
-    @Id
     private String nicNo;
     private String name;
     private String gender;
     private String address;
     private String contact;
     private String email;
-
-    private MultipartFile nic_licensePhoto;
     private String nic_Photo;
-
     private String userPwd;
 
+    private UserDTO userDTO;
 }

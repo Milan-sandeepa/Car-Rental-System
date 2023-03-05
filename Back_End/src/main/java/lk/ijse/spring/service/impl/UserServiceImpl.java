@@ -57,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO searchUserWithName(String name) {
-        return null;
+    public UserDTO searchUserWithNic(String id) {
+        return mapper.map(userRepo.findUserByNic(id), UserDTO.class);
     }
 }

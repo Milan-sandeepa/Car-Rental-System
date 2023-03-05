@@ -406,6 +406,7 @@
         $.ajax({
             url: baseUrl+"customer",
             success: function (res) {
+                console.log(res)
                 for (let c of res.data) {
                     let name = c.name;
                     let gender = c.gender;
@@ -582,7 +583,7 @@
     });
 
 
-    // customer seach bar
+    // customer search bar
     $(document).ready(function (){
         $("#searchCustomerInput").on('keyup',function (){
             var value = $(this).val().toLowerCase();

@@ -13,5 +13,5 @@ public interface UserService {
 
     public ArrayList<UserDTO> getAllUser();
 
-    public UserDTO searchUserWithName(String name);
+    public UserDTO searchUserWithNic(String name);
 }

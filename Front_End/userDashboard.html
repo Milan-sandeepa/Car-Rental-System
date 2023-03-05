@@ -291,13 +291,6 @@
                                                   id="CarFuel-invalid-error"></span>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label>Available Cars :</label>
-                                            <input readonly class="form-control" id="txtCarQty" type="text">
-                                            <span class="control-error"
-                                                  id="CarQty-invalid-error"></span>
-                                        </div>
-
                                     </div>
                                     <div>
                                         <div class="form-group">
@@ -349,15 +342,6 @@
                                             <input name="returnDate" class="form-control" id="txtCarRentEndDate" type="date">
                                             <span class="control-error"
                                                   id="CarRentEndDate-invalid-error"></span>
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <div class="form-group">
-                                            <label>Car Qty :</label>
-                                            <input name="qty" class="form-control" id="txtCarRentQty" type="text">
-                                            <span class="control-error"
-                                                  id="CarRentQty-invalid-error"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -651,7 +635,6 @@
             $("#txtCarDailyRate").val(res[0].dailyRate);
             $("#txtCarMonthlyRate").val(res[0].monthlyRate);
             $("#txtCarExtraPriceKm").val(res[0].extraKm);
-            $("#txtCarQty").val(res[0].qty);
 
             content +=`
 
@@ -685,14 +668,10 @@
             total = monthlyRate * diffInDays/20;
         }
 
-        let qty = $("#txtCarRentQty").val();
         let lossdamage = $("#txtCarLossDamage").val();
 
-        let totls=lossdamage*qty;
 
-        let tot=total*qty;
-
-        $("#txtTotal").val(tot+driverCharge+totls);
+        $("#txtTotal").val(driverCharge+lossdamage+total);
 
         // console.log(totalRent);
         // if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
@@ -709,7 +688,6 @@
         let resId = $("#txtReservationID").val();
         let pickDate = $("#txtCarRentStartDate").val();
         let endDate = $("#txtCarRentEndDate").val();
-        let qty = $("#txtCarRentQty").val();
         let total = $("#txtTotal").val();
         let status="pending"
 
@@ -720,7 +698,6 @@
         formData.append("resId",resId);
         formData.append("pickDate",pickDate);
         formData.append("returnDate",endDate);
-        formData.append("qty",qty);
         formData.append("total",total);
         formData.append("cusId",cusId);
         formData.append("carId",carId);

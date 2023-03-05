@@ -20,7 +20,6 @@ public class ReservationDTO {
     private String resId;
     private String pickDate;
     private String returnDate;
-    private int qty;
     private double total;
     private String status="pending";
 

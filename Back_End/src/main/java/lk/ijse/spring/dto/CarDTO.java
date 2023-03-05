@@ -20,7 +20,6 @@ public class CarDTO {
     private String carTransmission;
     private String fuelType;
     private String carColor;
-    private int qty;
     private int passenger;
     private double lossDamage;
     private double dailyRate;

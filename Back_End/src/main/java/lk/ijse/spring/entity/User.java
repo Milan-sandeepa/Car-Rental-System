@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import sun.security.util.Password;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
@@ -17,6 +14,7 @@ import javax.persistence.OneToOne;
 @Data
 @ToString
 public class User {
+
     @Id
     private String nic;
     private String username;

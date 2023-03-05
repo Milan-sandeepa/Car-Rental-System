@@ -41,9 +41,10 @@ public class CustomerController {
             UserDTO userDTO = new UserDTO(customerDTO.getNicNo(),customerDTO.getName(), customerDTO.getUserPwd(), "Guest");
             userService.saveUser(userDTO);
 
+            customerDTO.setUserDTO(userDTO);
+
             customerService.saveCustomer(customerDTO);
 
-            System.out.println(userDTO);
 
 
         } catch (IOException | URISyntaxException e) {
@@ -56,7 +57,6 @@ public class CustomerController {
 
     @GetMapping
     public ResponseUtil getCustomer() {
-        System.out.println("map1");
         return new ResponseUtil("Ok", "Successfully Loaded", customerService.getAllCustomer());
     }
 
