@@ -16,7 +16,6 @@ import java.time.LocalDate;
 @Data
 @ToString
 public class ReservationDTO {
-    @Id
     private String resId;
     private String pickDate;
     private String returnDate;

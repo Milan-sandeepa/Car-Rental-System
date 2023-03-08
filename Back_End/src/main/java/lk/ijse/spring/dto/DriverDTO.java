@@ -12,8 +12,7 @@ import javax.persistence.Id;
 @ToString
 @Data
 public class DriverDTO {
-    @Id
-    private String driverID;
+    private String driverID="0000";
     private String name;
     private String licenseNo;
     private String address;

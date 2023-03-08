@@ -62,4 +62,28 @@ public class CarServiceImpl implements CarService {
     public CarDTO searchCarWithRegNo(String id) {
         return mapper.map(carRepo.findById(id),CarDTO.class);
     }
+
+    @Override
+    public int countCar() {
+        int count = carRepo.countCar();
+        return count;
+    }
+
+    @Override
+    public String generateCarId() {
+        String id = carRepo.generatedCarId();
+        if (id!=null){
+            int tempId = Integer.parseInt(id.split("-")[1]);
+            tempId=tempId+1;
+            if (tempId<=9){
+                return "C-00"+tempId;
+            }else if (tempId<=99){
+                return "C-0"+tempId;
+            }else {
+                return "C-"+tempId;
+            }
+        }else {
+            return "C-001";
+        }
+    }
 }

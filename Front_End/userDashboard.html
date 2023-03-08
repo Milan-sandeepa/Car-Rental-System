@@ -116,7 +116,7 @@
     <div class="col-12 col-md-2 col-xl-3 d-flex ms-3">
     <div class="d-flex" style="margin-top: 30px; margin-left: 15px;font-size: 20px">
         <i class="fa-solid fa-globe mt-1"></i>
-        <p style="margin-left: 10px">Active</p>
+        <p style="margin-left: 10px" id="userStatus">Active</p>
     </div>
     </div>
 
@@ -134,9 +134,11 @@
                             <th scope="col">Customer</th>
                             <th scope="col">Start Date</th>
                             <th scope="col">End Date</th>
+                            <th scope="col">Car ID</th>
                             <th scope="col">Driver</th>
                             <th scope="col">Amount</th>
-                            <th scope="col">Option</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </tr>
                         </thead>
@@ -165,6 +167,7 @@
                             <th scope="col">Driver</th>
                             <th scope="col">Amount</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Action</th>
                         </tr>
                         </tr>
                         </thead>
@@ -521,6 +524,10 @@
 
     loadRequests();
 
+    loadActiveRent();
+
+    generateResId();
+
     function loadAllDetails() {
 
         $.ajax({
@@ -536,6 +543,7 @@
                 $("#txtUserContact").val(resp.data.contact);
                 $("#txtUserEmail").val(resp.data.email);
                 $("#txtUserNic").val(resp.data.nicNo);
+                $("#userStatus").text(resp.data.status);
 
 
                 $("#txtUserModelNic").val(resp.data.nicNo);
@@ -595,9 +603,11 @@
             url: baseUrl + "car",
             success: function (res) {
                 for (let c of res.data) {
-                    console.log(c);
                     let code = c.regNo;
-                    $("#selectCarCode").append(`<option value="${code}">${code}</option>`);
+
+                    if (c.available=="Available"){
+                        $("#selectCarCode").append(`<option value="${code}">${code}</option>`);
+                    }
                 }
             },
             error: function (error) {
@@ -651,7 +661,6 @@
         let total=0;
         const diffInMs=new Date($("#txtCarRentEndDate").val()) - new Date($("#txtCarRentStartDate").val());
         const diffInDays= diffInMs/(1000 * 60 * 60 * 24);
-        const remainDays=diffInDays % 30;
         let driverCharge = 0;
 
         if ($("#txtWithDriver").is(":checked")){
@@ -671,7 +680,9 @@
         let lossdamage = $("#txtCarLossDamage").val();
 
 
-        $("#txtTotal").val(driverCharge+lossdamage+total);
+        let tot=(parseInt(driverCharge)+parseInt(lossdamage)+parseInt(total));
+        console.log(tot)
+        $("#txtTotal").val(tot);
 
         // console.log(totalRent);
         // if ($("input[name='bk_withdriver']:checked").val() == "withdriver"){
@@ -709,6 +720,9 @@
             formData.append("driverID",driverNonId);
         }
 
+        let userStatus = $("#userStatus").text();
+
+        if (userStatus=="Active"){
             $.ajax({
                 url: baseUrl + "reservation",
                 method: "post",
@@ -720,14 +734,16 @@
                 enctype:"multipart/form-data",
                 success: function (resp) {
                     alert(resp.message);
+                    loadRequests();
                 },
                 error:function (error){
                     alert(JSON.parse(error.responseText).message);
                 }
             });
-
+        }else {
+            alert("Your account not Activated yet.please try again later")
+        }
     });
-
 
     function loadAllDrivers() {
         $.ajax({
@@ -741,21 +757,128 @@
         });
     }
 
-
-
     function loadRequests() {
 
-        // $.ajax({
-        //     url: baseUrl + "reservation",
-        //     method:"GET",
-        //     dataType: "json",
-        //     success: function (resp) {
-        //         console.log(resp.data)
-        //     },
-        //     error:function (error){
-        //         alert(JSON.parse(error.responseText).message);
-        //     }
-        // });
+        $("#tblCarRequest").empty();
+        $.ajax({
+            url: baseUrl + "reservation",
+            method:"get",
+            dataType: "json",
+            success: function (res) {
+                // let driverID;
+                let userNic = $("#txtUserNic").val();
+                for (let c of res.data) {
+                    let status = c.status;
+
+                    if (userNic==c.customer.nicNo && c.status=="pending"){
+                        let id = c.resId;
+                        let nicNo = c.customer.name;
+                        let pickDate = c.pickDate;
+                        let returnDate = c.returnDate;
+                        let carID = c.car.regNo;
+                        let driverID = c.driver.driverID;
+                        let total = c.total;
+
+
+                        // if (c.driver.driverID==null){
+                        //     driverID = "No";
+                        // }else {
+                        //     driverID = c.driver.driverID;
+                        // }
+
+                        let row = `<tr>
+
+                        <td class="name">${id}</td>
+                          <td>${nicNo}</td>
+                        <td>${pickDate}</td>
+                        <td>${returnDate}</td>
+                        <td>${carID}</td>
+                        <td>${driverID}</td>
+                        <td>${total}</td>
+                        <td>${status}</td>
+                        <td>
+                        <i class="deleteIconCustomer fa-solid fa-trash" style="margin-left: 10px"></i></td>
+
+                        </tr>`;
+
+                        $("#tblCarRequest").append(row);
+                    }
+
+                }
+            },
+            error:function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    }
+
+    function loadActiveRent() {
+
+        $("#tblCarActive").empty();
+        $.ajax({
+            url: baseUrl + "reservation",
+            method:"get",
+            dataType: "json",
+            success: function (res) {
+                let userNic = $("#txtUserNic").val();
+                for (let c of res.data) {
+
+                    let status = c.status;
+                    if (userNic==c.customer.nicNo && c.status=="confirm"){
+                        let id = c.resId;
+                        let nicNo = c.customer.name;
+                        let pickDate = c.pickDate;
+                        let returnDate = c.returnDate;
+                        let carID = c.car.regNo;
+                        let driverID = c.driver.driverID;
+                        let total = c.total;
+
+                        // if (c.driver.driverID==null){
+                        //     driverID = "No";
+                        // }else {
+                        //     driverID = c.driver.driverID;
+                        // }
+
+
+                        let row = `<tr>
+
+                        <td class="name">${id}</td>
+                          <td>${nicNo}</td>
+                        <td>${pickDate}</td>
+                        <td>${returnDate}</td>
+                        <td>${carID}</td>
+                        <td>${driverID}</td>
+                        <td>${total}</td>
+                        <td>${status}</td>
+                        <td>
+                        <i class="deleteIconCustomer fa-solid fa-trash" style="margin-left: 10px"></i></td>
+
+                        </tr>`;
+
+                        $("#tblCarActive").append(row);
+                    }
+
+                }
+            },
+            error:function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    }
+
+    function generateResId() {
+
+        $.ajax({
+            url: baseUrl + "reservation/gererateId",
+            method:"get",
+            dataType: "json",
+            success: function (res) {
+                $("#txtReservationID").val(res.data);
+            },
+            error:function (error){
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
     }
 
 </script>

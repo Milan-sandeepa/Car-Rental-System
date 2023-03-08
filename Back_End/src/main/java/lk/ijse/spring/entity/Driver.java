@@ -28,6 +28,6 @@ public class Driver {
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-    @OneToMany(mappedBy = "driver", fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "driver", fetch = FetchType.EAGER ,cascade = CascadeType.DETACH)
     private List<Reservation> resList = new ArrayList<>();
 }

@@ -1,9 +1,7 @@
 package lk.ijse.spring.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,8 +10,11 @@ import java.time.LocalDate;
 
 @Transactional
 @NoArgsConstructor
-@AllArgsConstructor
-@Data
+//@AllArgsConstructor
+//@Data
+//@ToString
+@Getter
+@Setter
 @Entity(name = "reservation")
 public class Reservation {
     @Id
@@ -24,7 +25,7 @@ public class Reservation {
     private String status;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "nicNo",referencedColumnName = "nicNo",insertable = true,updatable = true)
     @JsonIgnore
     private Customer customer;

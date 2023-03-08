@@ -14,4 +14,5 @@ public interface UserService {
     public ArrayList<UserDTO> getAllUser();
 
     public UserDTO searchUserWithNic(String name);
+
 }

@@ -13,7 +13,6 @@ import javax.persistence.Id;
 @Data
 @ToString
 public class CarDTO {
-    @Id
     private String regNo;
     private String carModel;
     private String carType;

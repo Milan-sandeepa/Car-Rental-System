@@ -67,4 +67,10 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDTO searchCustomerWithName(String name) {
         return mapper.map(customerRepo.findCustomerByName(name), CustomerDTO.class);
     }
+
+    @Override
+    public int countCustomer() {
+        int count = customerRepo.countCustomer();
+        return count;
+    }
 }

@@ -15,4 +15,8 @@ public interface DriverService {
     public ArrayList<DriverDTO> getAllDriver();
 
     public DriverDTO searchDriverWithId(String id);
+
+    public int countDriver();
+
+    public String generateDriverId();
 }

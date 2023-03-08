@@ -62,4 +62,28 @@ public class ReservationServiceImpl implements ReservationService {
     public ReservationDTO searchReservationWithId(String id) {
         return mapper.map(repo.findById(id),ReservationDTO.class);
     }
+
+    @Override
+    public String generateResId() {
+        String id = repo.generatedResId();
+        if (id!=null){
+            int tempId = Integer.parseInt(id.split("-")[1]);
+            tempId=tempId+1;
+            if (tempId<=9){
+                return "B-00"+tempId;
+            }else if (tempId<=99){
+                return "B-0"+tempId;
+            }else {
+                return "B-"+tempId;
+            }
+        }else {
+            return "B-001";
+        }
+    }
+
+    @Override
+    public int countReservation() {
+        int count = repo.countReservation();
+        return count;
+    }
 }

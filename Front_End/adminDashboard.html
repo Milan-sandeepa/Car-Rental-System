@@ -41,7 +41,7 @@
                         <li class="nav-item">
                             <a class="nav-link user" data-bs-toggle="dropdown-menu" data-bs-target="#navbarNav"
                                aria-current="page" href="#">
-                                <img src="assets/img/icons/bell.png" alt="notify" class="icon">
+                                <img src="assets/img/icons/bell.png" alt="notify" class="icon" id="notificationBell">
                                 <p class="count">1</p>
                             </a>
                             <div class="dropdown-menu" id="#navbarNav">
@@ -81,26 +81,26 @@
             <nav>
                 <ul id="sidebar">
                     <li class="active mt-2 d-flex justify-content-center" id="homeBtn">
-                        <a href="adminDashboard.html" ><i class="fa-solid fa-house"></i>Dashboard</a>
+                        <a href="#" ><i class="fa-solid fa-house"></i>Dashboard</a>
                     </li>
                     <li id="requestBtn">
-                        <a href="request.html"><i class="fa-solid fa-comment"></i>Request</a>
+                        <a href="#"><i class="fa-solid fa-comment"></i>Request</a>
                     </li>
                     <li id="carBtn">
-                        <a href="car.html"><i class="fa-solid fa-car-side"></i>Car</a>
+                        <a href="#"><i class="fa-solid fa-car-side"></i>Car</a>
                     </li>
                     <li id="customerBtn">
-                        <a href="customer.html"><i class="fa-solid fa-users"></i>Customer</a>
+                        <a href="#"><i class="fa-solid fa-users"></i>Customer</a>
                     </li>
                     <li id="driverBtn">
-                        <a href="driver.html"><i class="fa-solid fa-user"></i>Driver</a>
+                        <a href="#"><i class="fa-solid fa-user"></i>Driver</a>
                     </li>
                     <li id="bookingBtn">
-                        <a href="booking.html"><i class="fa-solid fa-book"></i>Booking</a>
+                        <a href="#"><i class="fa-solid fa-book"></i>Booking</a>
                     </li>
-                    <li id="incomeBtn">
-                        <a href="#"><i class="fa-solid fa-dollar-sign"></i>Income</a>
-                    </li>
+<!--                    <li id="incomeBtn">-->
+<!--                        <a href="#"><i class="fa-solid fa-dollar-sign"></i>Income</a>-->
+<!--                    </li>-->
                     <li id="settingBtn">
                         <a href="#"><i class="fa-solid fa-gear"></i>Setting</a>
                     </li>
@@ -126,12 +126,8 @@
                     <div class="item-title">
                         <h2>Cars</h2>
                         <div class="d-flex">
-                            <p>Available</p>
-                            <p>40</p>
-                        </div>
-                        <div class="d-flex">
-                            <p>Reserved</p>
-                            <p>40</p>
+                            <p style="font-size: 20px">Total</p>
+                            <p id="carCount" style="font-size: 20px">40</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -147,8 +143,8 @@
                     <div class="item-title">
                         <h2>Customers</h2>
                         <div class="d-flex">
-                            <p>Total</p>
-                            <p>40</p>
+                            <p style="font-size: 20px">Total</p>
+                            <p style="font-size: 20px" id="customerCount">40</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -163,13 +159,10 @@
                     <div class="item-title">
                         <h2>Drivers</h2>
                         <div class="d-flex">
-                            <p>Available</p>
-                            <p>40</p>
+                            <p style="font-size: 20px">Total</p>
+                            <p style="font-size: 20px" id="driverCount">40</p>
                         </div>
-                        <div class="d-flex">
-                            <p>Hired</p>
-                            <p>5</p>
-                        </div>
+
                     </div>
                     <div class="d-flex align-items-center">
                         <img class="card-img-3" src="assets/img/icons/driver.png" alt="car">
@@ -183,12 +176,8 @@
                     <div class="item-title">
                         <h2>Reservations</h2>
                         <div class="d-flex">
-                            <p>Active</p>
-                            <p>5</p>
-                        </div>
-                        <div class="d-flex">
-                            <p>Total</p>
-                            <p>10</p>
+                            <p style="font-size: 20px">Total</p>
+                            <p style="font-size: 20px" id="reservationCount">10</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -199,11 +188,76 @@
         </div>
     </div>
 
+    <!--Update Request Customer Modal -->
+    <div class="modal fade" id="ReqcustomerDashboardEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabelDashboardcus">Approve Rent Request</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="DashboarRentRequestForm">
+
+                        <div class="col-xl-12">
+                            <div class="d-flex justify-content-center" id="selectedCarDashboardImage" >
+
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Name" id="txtReqDashboarUserName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Address" id="txtReqDashboarUserAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Contact Number" id="txtReqDashboarUserContact"
+                                   name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Email" id="txtReqDashboarUserEmail" name="email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Nic/License Number" id="txtReqDashboarUserNic" name="nic/licenseNo">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Booking Id" id="txtReqDashboarResId" name="resId">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtReqDashboarRentStatus" name="status">
+                                <option value="None">Select Status</option>
+                                <option value="confirm">Confirm</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerRequestDashboarUpdateBtn">Approve</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update Request Customer Modal end-->
+
     <div>
         <div class="col-12 col-xl-12 d-flex justify-content-center" id="table-1" style="margin-left: 10px">
             <div  class="table-style   mt-4 border shadow rounded-3 p-3"  style="width: 83vw">
                 <div class="pb-2"><h2>Recent Requests</h2></div>
-                <div class="col mt-2 table-responsive">
+                <div class="col mt-2 table-responsive pt-3" style="height: 350px; overflow-y: scroll">
                     <table class="table table-bordered table-hover" >
                         <thead style="background:rgba(154, 248, 154, 0.47);">
                         <tr>
@@ -586,6 +640,706 @@
 <!--</main>-->
 <!--&lt;!&ndash;Driver End&ndash;&gt;-->
 
+<!--Request Start-->
+<main class="container" id="Request-section">
+    <div class="row">
+        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
+            <div class="col-6">
+                <h4>Customer Request List</h4>
+                <p>Manage your Customer Request</p>
+            </div>
+        </div>
+    </div>
+
+    <!--Update Request Customer Modal -->
+    <div class="modal fade" id="ReqcustomerEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabelcus">Approve User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerRequestForm">
+
+                        <div class="col-xl-12">
+                            <div class="d-flex justify-content-center" id="selectedNicImage" >
+
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Name" id="txtReqUserName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Address" id="txtReqUserAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Contact Number" id="txtReqUserContact"
+                                   name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Email" id="txtReqUserEmail" name="email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <input readonly type="text" class="form-control" placeholder="Nic/License Number" id="txtReqUserNic" name="nic/licenseNo">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtReqUserStatus" name="status">
+                                <option value="None">Select Status</option>
+                                <option value="Active">Active</option>
+                                <option value="Not Active">Not Active</option>
+                            </select>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerRequestUpdateBtn">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update Request Customer Modal end-->
+
+    <section class="row">
+        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
+            <div class=" bg-light border shadow rounded-3 p-4">
+                <div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconReq"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchReqInput">
+                    </div>
+                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
+                        <table class="table  table-hover">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">NIC/LICENSE No</th>
+                                <th scope="col">Photo</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </tr>
+                            </thead>
+                            <tbody id="tblReq">
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!--Request End-->
+
+<!--Car Start-->
+<main class="container" id="car-section">
+    <div class="row">
+        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
+            <div class="col-6">
+                <h4>Car List</h4>
+                <p>Manage your Cars</p>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#carAddModal" style="background: #FF9F43;color: white;" >+ Add Car</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Car Modal -->
+    <div class="modal fade" id="carAddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Car</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="carAddForm">
+                        <div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtRegNo">Car Reg No</label>
+                                <input class="form-control" id="txtRegNo" type="text" name="regNo">
+                                <span class="control-error" id="lblRegNo"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCarModel">Car Model</label>
+                                <input class="form-control" id="txtCarModel" type="text" name="carModel">
+                                <span class="control-error" id="lblmodel"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCarType">Car Type</label>
+                                <select class="form-control" id="txtCarType" name="carType">
+                                    <option value="General">General</option>
+                                    <option value="Premium">Premium</option>
+                                    <option value="Luxury">Luxury</option>
+                                </select>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtTransmission">Transmission</label>
+                                <select class="form-control" id="txtTransmission" name="carTransmission">
+                                    <option value="Auto">Auto</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtFuelType">Fuel Type</label>
+                                <input class="form-control" id="txtFuelType" type="text" name="fuelType">
+                                <span class="control-error" id="lblfueltype"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtCarColor">Color</label>
+                                <input class="form-control" id="txtCarColor" type="text" name="carColor">
+                                <span class="control-error" id="lblcolor"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtPassenger">No Passengers</label>
+                                <input class="form-control" id="txtPassenger" type="text" name="passenger">
+                                <span class="control-error" id="lblPassenger"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtLossDamage">Loss Dammage</label>
+                                <input class="form-control" id="txtLossDamage" type="text" name="lossDamage">
+                                <span class="control-error" id="lblLossDamage"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtDailyRate">Daily rate</label>
+                                <input class="form-control" id="txtDailyRate" type="text" name="dailyRate">
+                                <span class="control-error" id="lbldailyrate"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtMonthlyRate">Monthly rate</label>
+                                <input class="form-control" id="txtMonthlyRate" type="text" name="monthlyRate">
+                                <span class="control-error" id="lblmonthlyrate"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtExtraKm">Extra Km Price</label>
+                                <input class="form-control" id="txtExtraKm" type="text" name="extraKm">
+                                <span class="control-error" id="lblextrakm"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="CarImage">Image</label>
+                                <input class="form-control" id="CarImage" type="file" name="carImage">
+                                <span class="control-error" id="lblimage"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="carAddBtn">Add</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Add Car Modal end-->
+
+    <!--Update car Modal -->
+    <div class="modal fade" id="carEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">Update Car</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="carAddUpdateForm">
+                        <div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateRegNo">Car Reg No</label>
+                                <input class="form-control" id="txtUpdateRegNo" type="text" name="regNo">
+                                <span class="control-error" id="lblUpdateRegNo"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateCarModel">Car Model</label>
+                                <input class="form-control" id="txtUpdateCarModel" type="text" name="carModel">
+                                <span class="control-error" id="lblUpdatemodel"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateCarType">Car Type</label>
+                                <select class="form-control" id="txtUpdateCarType" name="carType">
+                                    <option value="General">General</option>
+                                    <option value="Premium">Premium</option>
+                                    <option value="Luxury">Luxury</option>
+                                </select>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateTransmission">Transmission</label>
+                                <select class="form-control" id="txtUpdateTransmission" name="carTransmission">
+                                    <option value="Auto">Auto</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Hybrid">Hybrid</option>
+                                </select>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateFuelType">Fuel Type</label>
+                                <input class="form-control" id="txtUpdateFuelType" type="text" name="fuelType">
+                                <span class="control-error" id="lblUpdatefueltype"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateCarColor">Color</label>
+                                <input class="form-control" id="txtUpdateCarColor" type="text" name="carColor">
+                                <span class="control-error" id="lblUpdatecolor"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdatePassenger">No Passengers</label>
+                                <input class="form-control" id="txtUpdatePassenger" type="text" name="passenger">
+                                <span class="control-error" id="lblUpdatePassenger"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateLossDamage">Loss Dammage</label>
+                                <input class="form-control" id="txtUpdateLossDamage" type="text" name="lossDamage">
+                                <span class="control-error" id="lblUpdateLossDamage"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateDailyRate">Daily rate</label>
+                                <input class="form-control" id="txtUpdateDailyRate" type="text" name="dailyRate">
+                                <span class="control-error" id="lblUpdatedailyrate"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateMonthlyRate">Monthly rate</label>
+                                <input class="form-control" id="txtUpdateMonthlyRate" type="text" name="monthlyRate">
+                                <span class="control-error" id="lblUpdatemonthlyrate"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="txtUpdateExtraKm">Extra Km Price</label>
+                                <input class="form-control" id="txtUpdateExtraKm" type="text" name="extraKm">
+                                <span class="control-error" id="lblUpdateextrakm"></span>
+                            </div>
+                            <div class="form-group ms-2 me-2">
+                                <label for="CarUpdateImage">Image</label>
+                                <input class="form-control" id="CarUpdateImage" type="file" name="carImage">
+                                <span class="control-error" id="lblUpdateimage"></span>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="carAddUpdateBtn">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update car Modal end-->
+
+    <section class="row">
+        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
+            <div class=" bg-light border shadow rounded-3 p-4">
+                <div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconCar"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchCarInput">
+                    </div>
+                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
+                        <table class="table  table-hover">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">Car Reg No</th>
+                                <th scope="col">Car Model</th>
+                                <th scope="col">Car Type</th>
+                                <th scope="col">Transmission</th>
+                                <th scope="col">Fuel Type</th>
+                                <th scope="col">Color</th>
+                                <th scope="col">Passengers</th>
+                                <th scope="col">Loss Damage</th>
+                                <th scope="col">Daily rate</th>
+                                <th scope="col">Monthly rate</th>
+                                <th scope="col">Extra Km Price</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Available</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblCar">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!--Car End-->
+
+<!--Customer Start-->
+<main class="container" id="customer-section">
+    <div class="row">
+        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
+            <div class="col-6">
+                <h4>Customer List</h4>
+                <p>Manage your Customers</p>
+            </div>
+<!--            <div class="col-6 d-flex justify-content-end">-->
+<!--                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#customerAddModal" style="background: #FF9F43;color: white;" >+ Add Customer</button>-->
+<!--            </div>-->
+        </div>
+    </div>
+
+    <!--Add Customer Modal -->
+    <div class="modal fade" id="customerAddModal" tabindex="-1" aria-labelledby="exampleCustomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleCustomerModalLabel">Add Customer</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="customerAddForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtUserName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtUserGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtUserAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact Number" id="txtUserContact"
+                                   name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtUserEmail" name="email">
+                        </div>
+
+                        <!--image upload section start-->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <input type="text" class="form-control" placeholder="Nic/License Number" id="txtUserNic" name="nic/licenseNo">
+                            <span class="input-group-text"><i class="fa fa-file"></i></span>
+                            <input id="file-1" type="file" name="nic/licensePhoto" class="form-control" placeholder="Nic Photo Upload here">
+                        </div>
+                        <!--image upload section end-->
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtUserPwd" name="userPwd">
+                        </div>
+                    </form>
+
+                    <!--                    <form id="customerAddForm">-->
+                    <!--                        <div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusId">CID</label>-->
+                    <!--                                <input class="form-control" id="txtCusId" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusId"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusName">Name</label>-->
+                    <!--                                <input class="form-control" id="txtCusName" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusName"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusNic">NIC</label>-->
+                    <!--                                <input class="form-control" id="txtCusNic" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusNic"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusGender">Gender</label>-->
+                    <!--                                <input class="form-control" id="txtCusGender" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusGender"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusAddress">Address</label>-->
+                    <!--                                <input class="form-control" id="txtCusAddress" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusAddress"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusContact">Contact</label>-->
+                    <!--                                <input class="form-control" id="txtCusContact" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusContact"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusEmail">Email</label>-->
+                    <!--                                <input class="form-control" id="txtCusEmail" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusEmail"></span>-->
+                    <!--                            </div>-->
+                    <!--                            <div class="form-group ms-2 me-2">-->
+                    <!--                                <label for="txtCusPwd">Password</label>-->
+                    <!--                                <input class="form-control" id="txtCusPwd" type="text">-->
+                    <!--                                <span class="control-error" id="lblCusPwd"></span>-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                    </form>-->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerAddBtn">Add</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Add Customer Modal end-->
+
+    <!--Update Customer Modal -->
+<!--    <div class="modal fade" id="customerEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--            <div class="modal-content">-->
+<!--                <div class="modal-header">-->
+<!--                    <h1 class="modal-title fs-5" id="editModalLabelcus">Update Customer</h1>-->
+<!--                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+<!--                <div class="modal-body">-->
+<!--                    <form id="customerUpdateForm">-->
+
+
+<!--                        &lt;!&ndash;image upload section start&ndash;&gt;-->
+<!--                        <div class="input-group mb-3">-->
+
+<!--                            <span class="input-group-text"><i class="fa fa-file"></i></span>-->
+<!--                            <input id="file-2" type="file" name="nic/licensePhoto" class="form-control" placeholder="Nic Photo Upload here">-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash;image upload section end&ndash;&gt;-->
+
+<!--                        <div class="input-group mb-3">-->
+<!--                            <span class="input-group-text"><i class="fa fa-lock"></i></span>-->
+<!--                            <input type="password" class="form-control" placeholder="Password" id="txtUpdateUserPwd" name="userPwd">-->
+<!--                        </div>-->
+<!--                        <div class="modal-footer">-->
+<!--                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="customerUpdateBtn">Update</button>-->
+<!--                        </div>-->
+<!--                    </form>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!--Update Customer Modal end-->
+
+    <section class="row">
+        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
+            <div class=" bg-light border shadow rounded-3 p-4">
+                <div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconCustomer"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchCustomerInput">
+                    </div>
+                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
+                        <table class="table  table-hover">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">NIC/LICENSE No</th>
+                                <th scope="col">Photo</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblCustomer">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!--Customer End-->
+
+<!--Driver Start-->
+<main class="container" id="driver-section">
+    <div class="row">
+        <div class="d-flex" style="margin-top: 25px;padding-left: 45px;padding-right: 19px;">
+            <div class="col-6">
+                <h4>Driver List</h4>
+                <p>Manage your Drivers</p>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button class="btn h-75 mt-1 col-12 col-sm-6 col-md-6 col-xl-4" data-bs-toggle="modal" data-bs-target="#driverAddModal" style="background: #FF9F43;color: white;" >+ Add Driver</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Add Driver Modal -->
+    <div class="modal fade" id="driverAddModal" tabindex="-1" aria-labelledby="exampleDriverModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleDriverModalLabel">Add Driver</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="driverAddForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="DriverID" id="txtDriverId" name="driverID">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtDriverName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Driver License No" id="txtDriverLicenseNo" name="licenseNo">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtDriverAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtDriverGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact" id="txtDriverContact" name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtDriverEmail" name="email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtDriverPass" name="password">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverAddBtn">Add</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Add Driver Modal end-->
+
+    <!--Update Driver Modal -->
+    <div class="modal fade" id="driverEditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabeldriver">Update Driver</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="driverUpdateForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="DriverID" id="txtUpdateDriverId" name="driverID">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Name" id="txtUpdateDriverName" name="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Driver License No" id="txtUpdateDriverLicenseNo" name="licenseNo">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Address" id="txtUpdateDriverAddress" name="address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-list-numeric"></i></span>
+                            <select class="form-control" id="txtUpdateDriverGender" name="gender">
+                                <option value="None">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-address-book"></i></span>
+                            <input type="text" class="form-control" placeholder="Contact" id="txtUpdateDriverContact" name="contact">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control" placeholder="Email" id="txtUpdateDriverEmail" name="email">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" id="txtUpdateDriverPass" name="password">
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-3 col-12 col-sm-12 col-md-3 col-xl-2" type="button" id="driverUpdateBtn">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Update Driver Modal end-->
+
+    <section class="row">
+        <div class="col-12 col-xl-12 mt-3 " style="padding-left: 35px;padding-right: 15px;">
+            <div class=" bg-light border shadow rounded-3 p-4">
+                <div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-magnifying-glass" id="seachIconDriver"></i>
+                        <input class="form-control" type="text" placeholder="Search.." id="searchDriverInput">
+                    </div>
+                    <div class="col mt-2 table-responsive pt-3" style="height: 470px; overflow-y: scroll">
+                        <table class="table  table-hover">
+                            <thead>
+                            <tr class="table-primary">
+                                <th scope="col">DriverID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Licen No</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tblDriver">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<!--Driver End-->
+
+
 <!--Booking Start-->
 <main class="container" id="booking-section">
     <div>
@@ -741,12 +1495,20 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-<script src="assets/js/adminjs.js"></script>
+<script src="assets/js/adminNav.js"></script>
+<script src="assets/js/requestController.js"></script>
+<script src="assets/js/carController.js"></script>
+<script src="assets/js/customerController.js"></script>
+<script src="assets/js/driverController.js"></script>
 <script>
     let baseUrl="http://localhost:8080/Car_Rental_System_war/";
 
     loadAllbookingRequest();
-
+    loadAllCarCount();
+    loadAllCustomerCount();
+    loadAllDriverCount();
+    loadAllReservationCount();
+    bindRowClickEventsReqDashboard();
     //Get all Booking Request Function
     function loadAllbookingRequest() {
 
@@ -755,17 +1517,26 @@
         $.ajax({
             url: baseUrl+"reservation",
             success: function (res) {
+                let driverID
                 for (let c of res.data) {
+
+                    if (c.driver.driverID==null){
+                        driverID = "No";
+                    }else {
+                        driverID = c.driver.driverID;
+                    }
 
                     let id = c.resId;
                     let nicNo = c.customer.name;
                     let pickDate = c.pickDate;
                     let returnDate = c.returnDate;
-                    let driverID = c.driver.driverID;
+
                     let total = c.total;
                     let status = c.status;
 
-                    let row = `<tr>
+                    if (status=="pending"){
+
+                        let row = `<tr>
 
                         <td class="name">${id}</td>
                           <td>${nicNo}</td>
@@ -774,14 +1545,17 @@
                         <td>${driverID}</td>
                         <td>${total}</td>
                         <td>${status}</td>
-                        <td><i class="editIconCustomer fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#customerEditModal"></i>
-                        <i class="deleteIconCustomer fa-solid fa-trash" style="margin-left: 10px"></i></td>
+                        <td><i class="editIconReqDashboardRent fa-solid fa-pen-to-square" data-bs-toggle="modal"data-bs-target="#ReqcustomerDashboardEditModal"></i>
+                        </td>
 
                         </tr>`;
 
-                    $("#table-dashboard-bookingRequest").append(row);
+                        $("#table-dashboard-bookingRequest").append(row);
+                    }
+
+
                 }
-                // bindRowClickEvents();
+                bindRowClickEventsReqDashboard();
                 // setTextFieldValues("", "", "", "");
             },
             error: function (error) {
@@ -790,6 +1564,141 @@
             }
         });
     }
+
+    function loadAllCarCount() {
+        $.ajax({
+            url: baseUrl+"car/count",
+            method:"get",
+            success: function (res) {
+                $("#carCount").text(res.data);
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+    function loadAllCustomerCount() {
+        $.ajax({
+            url: baseUrl+"customer/count",
+            method:"get",
+            success: function (res) {
+                $("#customerCount").text(res.data);
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+    function loadAllDriverCount() {
+        $.ajax({
+            url: baseUrl+"driver/count",
+            method:"get",
+            success: function (res) {
+                $("#driverCount").text(res.data);
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+    function loadAllReservationCount() {
+        $.ajax({
+            url: baseUrl+"reservation/count",
+            method:"get",
+            success: function (res) {
+                $("#reservationCount").text(res.data);
+            },
+            error: function (error) {
+                let message = JSON.parse(error.responseText).message;
+                alert(message);
+            }
+        });
+    }
+
+    function bindRowClickEventsReqDashboard() {
+        $(".editIconReqDashboardRent").click(function () {
+
+            // Find the row
+            var row = $(this).closest("tr");
+
+            // Find the text
+            var searchID = row.find(".name").text();
+
+            if (searchID!=null){
+                $.ajax({
+                    url: baseUrl+"reservation",
+                    success: function (res) {
+                        for (let c of res.data) {
+
+                            if (c.status == "pending" && searchID==c.resId) {
+                                $('#txtReqDashboarUserName').val(c.customer.name);
+                                $('#txtReqDashboarUserAddress').val(c.customer.address);
+                                $('#txtReqDashboarUserContact').val(c.customer.contact);
+                                $('#txtReqDashboarUserEmail').val(c.customer.email);
+                                $('#txtReqDashboarUserNic').val(c.customer.nicNo);
+                                $('#txtReqDashboarResId').val(c.resId);
+                                $('#txtReqDashboarUserStatus').val(c.status);
+
+                                // content +=`<img src="${baseUrlReqCustomer + c.nic_Photo}" alt="car" style=" width: 415px;height: 261px;margin-right: 2px;margin-bottom: 6px;margin-top: 54px;"> `
+                                content=`<img src="${baseUrl + c.car.carImage}" alt="car" style=" width: 400px;height: 400px;margin-right: 2px;margin-bottom: 6px;"> `
+
+                                document.querySelector("#selectedCarDashboardImage").innerHTML = content;
+
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        let message = JSON.parse(error.responseText).message;
+                        alert(message);
+                    }
+                });
+
+
+
+            }else {
+                alert("No such customer to edit. please try Again");
+            }
+
+        });
+
+    }
+
+    $("#customerRequestDashboarUpdateBtn").click(function () {
+        let res = confirm("Do you want to Approve this Rent Request.?");
+        if (res) {
+
+            let resId =$('#txtReqDashboarResId').val();
+            let status =$('#txtReqDashboarRentStatus').val();
+            let formData = new FormData();
+
+            formData.append("resId",resId);
+            formData.append("status",status);
+
+            $.ajax({
+                url: baseUrlReqCustomer+"reservation/status",
+                method: "post",
+                data: formData,
+                dataType: "json",
+                async: true,
+                contentType: false,
+                processData: false,
+                success: function (resp) {
+                    loadAllbookingRequest();
+                    alert(resp.message);
+                },
+                error: function (error) {
+                    let message = JSON.parse(error.responseText).message;
+                    alert(message);
+                }
+            });
+
+        }else {
+            alert("Update Failed..!");
+        }
+    });
 
 </script>
 </body>

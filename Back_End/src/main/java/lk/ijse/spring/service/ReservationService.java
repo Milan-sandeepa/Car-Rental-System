@@ -15,4 +15,8 @@ public interface ReservationService {
     public ArrayList<ReservationDTO> getAllReservation();
 
     public ReservationDTO searchReservationWithId(String id);
+
+    public String generateResId();
+
+    public int countReservation();
 }

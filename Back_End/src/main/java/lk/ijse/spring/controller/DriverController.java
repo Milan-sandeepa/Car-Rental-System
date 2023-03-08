@@ -50,4 +50,15 @@ public class DriverController {
         driverService.deleteDriver(id);
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
+
+    @GetMapping(path = "/count")
+    public ResponseUtil getDriverCount() {
+        return new ResponseUtil("Ok", "Successfully Loaded", driverService.countDriver());
+    }
+
+    @GetMapping(path = "/gererateId")
+    public ResponseUtil generateDriverId() {
+
+        return new ResponseUtil("Ok", "Successfully Generated", driverService.generateDriverId());
+    }
 }

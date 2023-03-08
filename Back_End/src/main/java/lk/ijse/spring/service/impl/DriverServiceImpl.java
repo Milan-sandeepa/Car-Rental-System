@@ -60,4 +60,28 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO searchDriverWithId(String id) {
         return mapper.map(driverRepo.findById(id),DriverDTO.class);
     }
+
+    @Override
+    public int countDriver() {
+        int count = driverRepo.countDriver();
+        return count;
+    }
+
+    @Override
+    public String generateDriverId() {
+        String id = driverRepo.generatedDriverId();
+        if (id!=null){
+            int tempId = Integer.parseInt(id.split("-")[1]);
+            tempId=tempId+1;
+            if (tempId<=9){
+                return "D-00"+tempId;
+            }else if (tempId<=99){
+                return "D-0"+tempId;
+            }else {
+                return "D-"+tempId;
+            }
+        }else {
+            return "D-001";
+        }
+    }
 }

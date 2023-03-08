@@ -38,7 +38,7 @@ public class CustomerController {
 
             customerDTO.setNic_Photo("uploads/"+file1.getOriginalFilename());
 
-            UserDTO userDTO = new UserDTO(customerDTO.getNicNo(),customerDTO.getName(), customerDTO.getUserPwd(), "Guest");
+            UserDTO userDTO = new UserDTO(customerDTO.getNicNo(),customerDTO.getName(), customerDTO.getUserPwd(), "User");
             userService.saveUser(userDTO);
 
             customerDTO.setUserDTO(userDTO);
@@ -70,9 +70,19 @@ public class CustomerController {
         return new ResponseUtil("Ok", customerDTO.getNicNo() + " Successfully Updated", null);
     }
 
+    @PostMapping(path = "/status")
+    public ResponseUtil updateCustomerStatus(@RequestPart("nic/licenseNo")String id,@RequestPart("status") String status) {
+        CustomerDTO customerDTO1 = customerService.searchCustomerWithNic(id);
+        customerDTO1.setStatus(status);
+
+        customerService.updateCustomer(customerDTO1);
+
+        System.out.println(id+status);
+        return new ResponseUtil("Ok", customerDTO1.getNicNo() + " Successfully Updated", null);
+    }
+
     @DeleteMapping
     public ResponseUtil deleteCustomer(String id) {
-        System.out.println(id);
         userService.deleteUser(id);
         customerService.deleteCustomer(id);
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
@@ -84,4 +94,8 @@ public class CustomerController {
         return new ResponseUtil("OK","Successfully Loaded. :" ,customerService.searchCustomerWithNic(nicNo));
     }
 
+    @GetMapping(path = "/count")
+    public ResponseUtil getCustomerCount() {
+        return new ResponseUtil("Ok", "Successfully Loaded", customerService.countCustomer());
+    }
 }

@@ -1,8 +1,6 @@
 package lk.ijse.spring.service.impl;
 
-import lk.ijse.spring.dto.CustomerDTO;
 import lk.ijse.spring.dto.UserDTO;
-import lk.ijse.spring.entity.Car;
 import lk.ijse.spring.entity.User;
 import lk.ijse.spring.repo.UserRepo;
 import lk.ijse.spring.service.UserService;
@@ -60,4 +58,5 @@ public class UserServiceImpl implements UserService {
     public UserDTO searchUserWithNic(String id) {
         return mapper.map(userRepo.findUserByNic(id), UserDTO.class);
     }
+
 }

@@ -17,4 +17,6 @@ public interface CustomerService {
     public CustomerDTO searchCustomerWithNic(String id);
 
     public CustomerDTO searchCustomerWithName(String name);
+
+    public int countCustomer();
 }

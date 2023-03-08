@@ -15,4 +15,8 @@ public interface CarService {
     public ArrayList<CarDTO> getAllCar();
 
     public CarDTO searchCarWithRegNo(String id);
+
+    public int countCar();
+
+    public String generateCarId();
 }

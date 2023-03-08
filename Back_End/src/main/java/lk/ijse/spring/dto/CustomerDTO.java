@@ -24,6 +24,7 @@ public class CustomerDTO {
     private String contact;
     private String email;
     private String nic_Photo;
+    private String status="Not Active";
     private String userPwd;
 
     private UserDTO userDTO;

@@ -39,23 +39,27 @@ public class ReservationController {
     public ResponseUtil saveReservation(ReservationDTO reservationDTO,@RequestPart("cusId") String cid,@RequestPart("carId") String carId,@RequestPart("driverID") String driverId) {
         CustomerDTO customerDTO = customerService.searchCustomerWithNic(cid);
         CarDTO carDTO = carService.searchCarWithRegNo(carId);
-
+        carDTO.setAvailable("Reserved");
         UserDTO userDTO = userService.searchUserWithNic(customerDTO.getNicNo());
 
 //        Customer map1 = mapper.map(customerDTO, Customer.class);
         User map = mapper.map(userDTO, User.class);
-        Customer customer = new Customer(customerDTO.getNicNo(),customerDTO.getName(),customerDTO.getGender(),customerDTO.getAddress(),customerDTO.getContact(),customerDTO.getEmail(),customerDTO.getNic_Photo(),map);
+        Customer customer = new Customer(customerDTO.getNicNo(),customerDTO.getName(),customerDTO.getGender(),customerDTO.getAddress(),customerDTO.getContact(),customerDTO.getEmail(),customerDTO.getNic_Photo(),customerDTO.getStatus(),map);
         Car map2 = mapper.map(carDTO, Car.class);
 
         if (driverId.equals("0000")){
 //            reservationDTO.setCustomer(map1);
+//            DriverDTO driverDTO = new DriverDTO();
+//            driverDTO.setDriverID("0000");
+//            Driver map4 = mapper.map(driverDTO, Driver.class);
+//            reservationDTO.setDriver(map4);
+
             reservationDTO.setCustomer(customer);
             reservationDTO.setCar(map2);
             reservationService.saveReservation(reservationDTO);
             return new ResponseUtil("Ok", "Successfully Saved", null);
         }
         DriverDTO driverDTO = driverService.searchDriverWithId(driverId);
-        System.out.println(driverDTO);
 
 
         Driver map3 = mapper.map(driverDTO, Driver.class);
@@ -66,8 +70,6 @@ public class ReservationController {
         reservationDTO.setDriver(map3);
 
         reservationService.saveReservation(reservationDTO);
-        System.out.println(reservationDTO);
-        System.out.println(driverId);
         return new ResponseUtil("Ok", "Successfully Saved", null);
     }
 
@@ -97,15 +99,32 @@ public class ReservationController {
         return new ResponseUtil("Ok", reservationDTO.getResId() + " Successfully Updated", null);
     }
 
+    @PostMapping(path = "/status")
+    public ResponseUtil updateReservationStatus(@RequestPart("resId")String id,@RequestPart("status") String status) {
+        ReservationDTO reservationDTO = reservationService.searchReservationWithId(id);
+        reservationDTO.setStatus(status);
+
+        reservationService.updateReservation(reservationDTO);
+
+        System.out.println(id+reservationDTO);
+
+        return new ResponseUtil("Ok", reservationDTO.getResId() + " Successfully Updated", null);
+    }
+
     @DeleteMapping
     public ResponseUtil deleteReservation(String id) {
         reservationService.deleteReservation(id);
         return new ResponseUtil("Ok", id + " Successfully Deleted", null);
     }
 
-//    @GetMapping(path = "/search")
-//    public ResponseUtil getReservationWithId(String rId) {
-//        System.out.println("wade hari  "+rId);
-//        return new ResponseUtil("Ok", "Successfully Loaded", reservationService.searchReservationWithId(rId));
-//    }
+    @GetMapping(path = "/gererateId")
+    public ResponseUtil generateResId() {
+
+        return new ResponseUtil("Ok", "Successfully Generated", reservationService.generateResId());
+    }
+
+    @GetMapping(path = "/count")
+    public ResponseUtil getReservationCount() {
+        return new ResponseUtil("Ok", "Successfully Loaded", reservationService.countReservation());
+    }
 }

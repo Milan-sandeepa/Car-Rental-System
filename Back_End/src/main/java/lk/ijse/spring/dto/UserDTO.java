@@ -14,7 +14,6 @@ import javax.persistence.Id;
 @ToString
 @Data
 public class UserDTO {
-    @Id
     private String nic;
     private String username;
     private String password;

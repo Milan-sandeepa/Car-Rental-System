@@ -68,4 +68,15 @@ public class CarController {
     public ResponseUtil searchCarByName(@PathVariable String regNo){
         return new ResponseUtil("OK","Successfully Loaded. :" ,carService.searchCarWithRegNo(regNo));
     }
+
+    @GetMapping(path = "/count")
+    public ResponseUtil getCarCount() {
+        return new ResponseUtil("Ok", "Successfully Loaded", carService.countCar());
+    }
+
+    @GetMapping(path = "/gererateId")
+    public ResponseUtil generateCarId() {
+
+        return new ResponseUtil("Ok", "Successfully Generated", carService.generateCarId());
+    }
 }

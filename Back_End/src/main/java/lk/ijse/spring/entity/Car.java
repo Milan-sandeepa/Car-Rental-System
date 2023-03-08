@@ -32,6 +32,6 @@ public class Car {
     private String available;
     private String status;
 
-    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "car",fetch = FetchType.EAGER,cascade = CascadeType.DETACH)
     private List<Reservation> resList = new ArrayList<>();
 }
